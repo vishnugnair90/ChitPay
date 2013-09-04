@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2041C9F417D734490091F42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F317D734490091F42C /* UIKit.framework */; };
+		2041C9F617D734490091F42C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F517D734490091F42C /* Foundation.framework */; };
+		2041C9F817D734490091F42C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F717D734490091F42C /* CoreGraphics.framework */; };
+		2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2041C9FC17D734490091F42C /* InfoPlist.strings */; };
+		2041CA0017D734490091F42C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2041C9FF17D734490091F42C /* main.m */; };
+		2041CA0417D734490091F42C /* CPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2041CA0317D734490091F42C /* CPAppDelegate.m */; };
+		2041CA0617D734490091F42C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA0517D734490091F42C /* Default.png */; };
+		2041CA0817D734490091F42C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA0717D734490091F42C /* Default@2x.png */; };
+		2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA0917D734490091F42C /* Default-568h@2x.png */; };
+		2041CA0D17D734490091F42C /* CPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2041CA0C17D734490091F42C /* CPViewController.m */; };
+		2041CA1017D734490091F42C /* CPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA0E17D734490091F42C /* CPViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2041C9EF17D734490091F42C /* ChitPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2041C9F317D734490091F42C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2041C9F517D734490091F42C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2041C9F717D734490091F42C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2041C9FB17D734490091F42C /* ChitPay-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChitPay-Info.plist"; sourceTree = "<group>"; };
+		2041C9FD17D734490091F42C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2041C9FF17D734490091F42C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2041CA0117D734490091F42C /* ChitPay-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChitPay-Prefix.pch"; sourceTree = "<group>"; };
+		2041CA0217D734490091F42C /* CPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAppDelegate.h; sourceTree = "<group>"; };
+		2041CA0317D734490091F42C /* CPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAppDelegate.m; sourceTree = "<group>"; };
+		2041CA0517D734490091F42C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2041CA0717D734490091F42C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		2041CA0917D734490091F42C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2041CA0B17D734490091F42C /* CPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPViewController.h; sourceTree = "<group>"; };
+		2041CA0C17D734490091F42C /* CPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPViewController.m; sourceTree = "<group>"; };
+		2041CA0F17D734490091F42C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CPViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2041C9EC17D734490091F42C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2041C9F417D734490091F42C /* UIKit.framework in Frameworks */,
+				2041C9F617D734490091F42C /* Foundation.framework in Frameworks */,
+				2041C9F817D734490091F42C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2041C9E417D734490091F42C = {
+			isa = PBXGroup;
+			children = (
+				2041C9F917D734490091F42C /* ChitPay */,
+				2041C9F217D734490091F42C /* Frameworks */,
+				2041C9F017D734490091F42C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2041C9F017D734490091F42C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2041C9EF17D734490091F42C /* ChitPay.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2041C9F217D734490091F42C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2041C9F317D734490091F42C /* UIKit.framework */,
+				2041C9F517D734490091F42C /* Foundation.framework */,
+				2041C9F717D734490091F42C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2041C9F917D734490091F42C /* ChitPay */ = {
+			isa = PBXGroup;
+			children = (
+				2041CA0217D734490091F42C /* CPAppDelegate.h */,
+				2041CA0317D734490091F42C /* CPAppDelegate.m */,
+				2041CA0B17D734490091F42C /* CPViewController.h */,
+				2041CA0C17D734490091F42C /* CPViewController.m */,
+				2041CA0E17D734490091F42C /* CPViewController.xib */,
+				2041C9FA17D734490091F42C /* Supporting Files */,
+			);
+			path = ChitPay;
+			sourceTree = "<group>";
+		};
+		2041C9FA17D734490091F42C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2041C9FB17D734490091F42C /* ChitPay-Info.plist */,
+				2041C9FC17D734490091F42C /* InfoPlist.strings */,
+				2041C9FF17D734490091F42C /* main.m */,
+				2041CA0117D734490091F42C /* ChitPay-Prefix.pch */,
+				2041CA0517D734490091F42C /* Default.png */,
+				2041CA0717D734490091F42C /* Default@2x.png */,
+				2041CA0917D734490091F42C /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2041C9EE17D734490091F42C /* ChitPay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2041CA1317D734490091F42C /* Build configuration list for PBXNativeTarget "ChitPay" */;
+			buildPhases = (
+				2041C9EB17D734490091F42C /* Sources */,
+				2041C9EC17D734490091F42C /* Frameworks */,
+				2041C9ED17D734490091F42C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChitPay;
+			productName = ChitPay;
+			productReference = 2041C9EF17D734490091F42C /* ChitPay.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2041C9E617D734490091F42C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CP;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Armia;
+			};
+			buildConfigurationList = 2041C9E917D734490091F42C /* Build configuration list for PBXProject "ChitPay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2041C9E417D734490091F42C;
+			productRefGroup = 2041C9F017D734490091F42C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2041C9EE17D734490091F42C /* ChitPay */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2041C9ED17D734490091F42C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */,
+				2041CA0617D734490091F42C /* Default.png in Resources */,
+				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
+				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
+				2041CA1017D734490091F42C /* CPViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2041C9EB17D734490091F42C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2041CA0017D734490091F42C /* main.m in Sources */,
+				2041CA0417D734490091F42C /* CPAppDelegate.m in Sources */,
+				2041CA0D17D734490091F42C /* CPViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2041C9FC17D734490091F42C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2041C9FD17D734490091F42C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2041CA0E17D734490091F42C /* CPViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2041CA0F17D734490091F42C /* en */,
+			);
+			name = CPViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2041CA1117D734490091F42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2041CA1217D734490091F42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2041CA1417D734490091F42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChitPay/ChitPay-Prefix.pch";
+				INFOPLIST_FILE = "ChitPay/ChitPay-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2041CA1517D734490091F42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChitPay/ChitPay-Prefix.pch";
+				INFOPLIST_FILE = "ChitPay/ChitPay-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2041C9E917D734490091F42C /* Build configuration list for PBXProject "ChitPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2041CA1117D734490091F42C /* Debug */,
+				2041CA1217D734490091F42C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2041CA1317D734490091F42C /* Build configuration list for PBXNativeTarget "ChitPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2041CA1417D734490091F42C /* Debug */,
+				2041CA1517D734490091F42C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2041C9E617D734490091F42C /* Project object */;
+}
