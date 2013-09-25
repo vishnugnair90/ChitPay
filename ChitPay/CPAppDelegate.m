@@ -8,16 +8,24 @@
 
 #import "CPAppDelegate.h"
 
-#import "CPViewController.h"
+#import "CPWelcomeViewController.h"
+
+#import "TestFlight.h"
 
 @implementation CPAppDelegate
 
+@synthesize navigationController;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
+    [TestFlight takeOff:@"12df1410-97cc-4593-be6b-de311af5580b"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[CPViewController alloc] initWithNibName:@"CPViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc] initWithNibName:@"CPWelcomeViewController" bundle:nil];
+    navigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
+    self.window.rootViewController = navigationController;
+    [self.navigationController.navigationBar setHidden:YES];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -48,5 +56,14 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    [TestFlight passCheckpoint:@"NOTIFICATIONS OK"];
+    NSLog(@"My token is: %@", deviceToken);
+}
 
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error: %@", error);
+}
 @end

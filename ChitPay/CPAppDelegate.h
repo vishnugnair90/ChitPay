@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) CPViewController *viewController;
 
+@property (strong, nonatomic) UINavigationController *navigationController;
+
 @end
