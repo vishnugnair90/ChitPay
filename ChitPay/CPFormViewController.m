@@ -327,24 +327,41 @@
         //menuListArray = [[[[responseDictionary objectForKey:@"response"]objectForKey:@"menu"]objectForKey:@"groups"]objectForKey:@"group"];
         [SVProgressHUD dismiss];
         NSLog(@"RESPONSE %@",responseDictionary);
-        FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"transaction id %@",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"transaction_id"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
-        alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
-        alertView.defaultButtonColor = [UIColor midnightBlueColor];
-        alertView.alertContainer.backgroundColor = [UIColor whiteColor];
-        alertView.defaultButtonShadowColor = [UIColor clearColor];
-        alertView.defaultButtonTitleColor = [UIColor whiteColor];
-        [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
-        [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
-        alertView.animationDuration = 0.15;
-        alertView.tag = 888;
-        [alertView show];
+        if([[[responseDictionary objectForKey:@"response"]objectForKey:@"transaction"]objectForKey:@"pin_details"] != NULL)
+        {
+            FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"PIN    %@\nSERIAL  %@\nBATCH   %@",[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_no"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_serial"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_batch"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
+            alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+            alertView.defaultButtonColor = [UIColor midnightBlueColor];
+            alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+            alertView.defaultButtonShadowColor = [UIColor clearColor];
+            alertView.defaultButtonTitleColor = [UIColor whiteColor];
+            [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+            [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
+            alertView.animationDuration = 0.15;
+            alertView.tag = 888;
+            [alertView show];
+        }
+        else
+        {
+            FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"transaction id %@",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"transaction_id"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
+            alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+            alertView.defaultButtonColor = [UIColor midnightBlueColor];
+            alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+            alertView.defaultButtonShadowColor = [UIColor clearColor];
+            alertView.defaultButtonTitleColor = [UIColor whiteColor];
+            [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+            [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
+            alertView.animationDuration = 0.15;
+            alertView.tag = 888;
+            [alertView show];
+        }
 
     }
     else
     {
         [SVProgressHUD dismiss];
         NSLog(@"RESPONSE %@",responseDictionary);
-        FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION FAILED" message:@"" delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
+        FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION FAILED" message:[NSString stringWithFormat:@"%@",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"transaction_id"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
         alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
         alertView.defaultButtonColor = [UIColor midnightBlueColor];
         alertView.alertContainer.backgroundColor = [UIColor whiteColor];
