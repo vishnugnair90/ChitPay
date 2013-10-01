@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165E04AA17FAF49600E9E64B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 165E04A917FAF49600E9E64B /* MBProgressHUD.m */; };
+		165E04AE17FAF4AE00E9E64B /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 165E04AB17FAF4AE00E9E64B /* SVProgressHUD.bundle */; };
+		165E04AF17FAF4AE00E9E64B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 165E04AD17FAF4AE00E9E64B /* SVProgressHUD.m */; };
 		16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */; };
 		2041C9F417D734490091F42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F317D734490091F42C /* UIKit.framework */; };
 		2041C9F617D734490091F42C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F517D734490091F42C /* Foundation.framework */; };
@@ -31,9 +34,6 @@
 		2041CA5F17D73FBC0091F42C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041CA5E17D73FBC0091F42C /* CFNetwork.framework */; };
 		2041CA6117D73FC30091F42C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041CA6017D73FC30091F42C /* libz.dylib */; };
 		2041CA6217D73FE10091F42C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F717D734490091F42C /* CoreGraphics.framework */; };
-		2041CA6617D7412E0091F42C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2041CA6517D7412E0091F42C /* MBProgressHUD.m */; };
-		2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA6817D742420091F42C /* SVProgressHUD.bundle */; };
-		2041CA6C17D742420091F42C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2041CA6A17D742420091F42C /* SVProgressHUD.m */; };
 		2041CA6E17D742B30091F42C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041CA6D17D742B30091F42C /* QuartzCore.framework */; };
 		2041CA7217D745980091F42C /* CPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2041CA7017D745980091F42C /* CPHomeViewController.m */; };
 		2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA7117D745980091F42C /* CPHomeViewController.xib */; };
@@ -85,6 +85,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		165E04A817FAF49600E9E64B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		165E04A917FAF49600E9E64B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		165E04AB17FAF4AE00E9E64B /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		165E04AC17FAF4AE00E9E64B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		165E04AD17FAF4AE00E9E64B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationHandler.h; sourceTree = "<group>"; };
 		16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationHandler.m; sourceTree = "<group>"; };
 		2041C9EF17D734490091F42C /* ChitPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,11 +132,6 @@
 		2041CA5C17D73FB40091F42C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2041CA5E17D73FBC0091F42C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2041CA6017D73FC30091F42C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		2041CA6417D7412E0091F42C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		2041CA6517D7412E0091F42C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		2041CA6817D742420091F42C /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		2041CA6917D742420091F42C /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		2041CA6A17D742420091F42C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		2041CA6D17D742B30091F42C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2041CA6F17D745980091F42C /* CPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPHomeViewController.h; sourceTree = "<group>"; };
 		2041CA7017D745980091F42C /* CPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPHomeViewController.m; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 		2041CA6317D7411B0091F42C /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				2041CA6417D7412E0091F42C /* MBProgressHUD.h */,
-				2041CA6517D7412E0091F42C /* MBProgressHUD.m */,
+				165E04A817FAF49600E9E64B /* MBProgressHUD.h */,
+				165E04A917FAF49600E9E64B /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -396,9 +396,9 @@
 		2041CA6717D742310091F42C /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				2041CA6817D742420091F42C /* SVProgressHUD.bundle */,
-				2041CA6917D742420091F42C /* SVProgressHUD.h */,
-				2041CA6A17D742420091F42C /* SVProgressHUD.m */,
+				165E04AB17FAF4AE00E9E64B /* SVProgressHUD.bundle */,
+				165E04AC17FAF4AE00E9E64B /* SVProgressHUD.h */,
+				165E04AD17FAF4AE00E9E64B /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -532,7 +532,6 @@
 				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
 				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
 				2041CA1A17D735780091F42C /* CPWelcomeViewController.xib in Resources */,
-				2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */,
 				2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */,
 				2041CA7817D745B80091F42C /* CPMenuViewController.xib in Resources */,
 				20CEFDE217D87B730042F95F /* CPSignupViewController.xib in Resources */,
@@ -549,6 +548,7 @@
 				20C0167017F0424A00784FE6 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
 				20C0167117F0424A00784FE6 /* FlatDatePicker-Icon-Close.png in Resources */,
 				20C0167217F0424A00784FE6 /* FlatDatePicker-Icon-Close@2x.png in Resources */,
+				165E04AE17FAF4AE00E9E64B /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,8 +570,7 @@
 				2041CA5417D739B20091F42C /* ASINetworkQueue.m in Sources */,
 				2041CA5517D739B20091F42C /* Reachability.m in Sources */,
 				2041CA5617D739B20091F42C /* XMLReader.m in Sources */,
-				2041CA6617D7412E0091F42C /* MBProgressHUD.m in Sources */,
-				2041CA6C17D742420091F42C /* SVProgressHUD.m in Sources */,
+				165E04AF17FAF4AE00E9E64B /* SVProgressHUD.m in Sources */,
 				2041CA7217D745980091F42C /* CPHomeViewController.m in Sources */,
 				2041CA7717D745B80091F42C /* CPMenuViewController.m in Sources */,
 				20CEFDE117D87B730042F95F /* CPSignupViewController.m in Sources */,
@@ -590,6 +589,7 @@
 				20E49BC117F1743F00B37822 /* FUISwitch.m in Sources */,
 				20E49BC217F1743F00B37822 /* FUITextField.m in Sources */,
 				20E49BC317F1743F00B37822 /* UIBarButtonItem+FlatUI.m in Sources */,
+				165E04AA17FAF49600E9E64B /* MBProgressHUD.m in Sources */,
 				20E49BC417F1743F00B37822 /* UIColor+FlatUI.m in Sources */,
 				20E49BC517F1743F00B37822 /* UIFont+FlatUI.m in Sources */,
 				20E49BC617F1743F00B37822 /* UIImage+FlatUI.m in Sources */,
