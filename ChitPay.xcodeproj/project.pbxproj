@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */; };
 		2041C9F417D734490091F42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F317D734490091F42C /* UIKit.framework */; };
 		2041C9F617D734490091F42C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F517D734490091F42C /* Foundation.framework */; };
 		2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2041C9FC17D734490091F42C /* InfoPlist.strings */; };
@@ -84,6 +85,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationHandler.h; sourceTree = "<group>"; };
+		16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationHandler.m; sourceTree = "<group>"; };
 		2041C9EF17D734490091F42C /* ChitPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2041C9F317D734490091F42C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2041C9F517D734490091F42C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -298,6 +301,8 @@
 				20C0165E17F01B5D00784FE6 /* CPFormViewController.h */,
 				20C0165F17F01B5D00784FE6 /* CPFormViewController.m */,
 				20C0166017F01B5D00784FE6 /* CPFormViewController.xib */,
+				16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */,
+				16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */,
 				20E5360717E84393007B4BAA /* CPServiceViewController.h */,
 				20E5360817E84393007B4BAA /* CPServiceViewController.m */,
 				20E5360917E84393007B4BAA /* CPServiceViewController.xib */,
@@ -596,6 +601,7 @@
 				20E49BCC17F1743F00B37822 /* UITabBar+FlatUI.m in Sources */,
 				20E49BCD17F1743F00B37822 /* UITableViewCell+FlatUI.m in Sources */,
 				20E49BCE17F1743F00B37822 /* UIToolbar+FlatUI.m in Sources */,
+				16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

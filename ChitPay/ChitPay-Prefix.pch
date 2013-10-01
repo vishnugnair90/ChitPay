@@ -17,4 +17,5 @@
     #import "SVProgressHUD.h"
     #import "TestFlight.h"
     #import "FlatUIKit.h"
+    #import "CPNotificationHandler.h"
 #endif

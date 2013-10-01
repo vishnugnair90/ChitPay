@@ -48,6 +48,7 @@
         txtUsername.text = [defaults stringForKey:@"username"];
         txtPassword.text = [defaults stringForKey:@"password"];
     }
+    NSLog(@"NOTIFICATION %d",[[CPNotificationHandler singleton]getNotificaton]);
 }
 - (void)didReceiveMemoryWarning
 {
