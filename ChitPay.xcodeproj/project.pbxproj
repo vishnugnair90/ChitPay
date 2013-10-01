@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */; };
 		16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */; };
 		2041C9F417D734490091F42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F317D734490091F42C /* UIKit.framework */; };
 		2041C9F617D734490091F42C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F517D734490091F42C /* Foundation.framework */; };
@@ -85,6 +86,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		165E04A517FACE7100E9E64B /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
+		165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationHandler.h; sourceTree = "<group>"; };
 		16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationHandler.m; sourceTree = "<group>"; };
 		2041C9EF17D734490091F42C /* ChitPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,6 +333,8 @@
 		2041CA1B17D739140091F42C /* External Classes */ = {
 			isa = PBXGroup;
 			children = (
+				165E04A517FACE7100E9E64B /* MTStatusBarOverlay.h */,
+				165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */,
 				20E49B9417F1743F00B37822 /* FlatUI */,
 				20C0166817F0424A00784FE6 /* FlatDatePicker */,
 				2085980417DDD1D500882F4B /* TestFlightSDK2.0.0 */,
@@ -578,6 +583,7 @@
 				20CEFDE717D87DED0042F95F /* CPSignupDetailViewController.m in Sources */,
 				20C4E01617D9C8BF00C71178 /* CPForgotPasswordViewController.m in Sources */,
 				20E5360417E8437D007B4BAA /* CPGroupViewController.m in Sources */,
+				165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */,
 				20E5360A17E84393007B4BAA /* CPServiceViewController.m in Sources */,
 				20E5360F17E87935007B4BAA /* CPProductsViewController.m in Sources */,
 				20C0166117F01B5D00784FE6 /* CPFormViewController.m in Sources */,
@@ -681,7 +687,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChitPay/ChitPay-Prefix.pch";
 				INFOPLIST_FILE = "ChitPay/ChitPay-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ChitPay/External Classes/TestFlightSDK2.0.0\"",
@@ -697,7 +703,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChitPay/ChitPay-Prefix.pch";
 				INFOPLIST_FILE = "ChitPay/ChitPay-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ChitPay/External Classes/TestFlightSDK2.0.0\"",

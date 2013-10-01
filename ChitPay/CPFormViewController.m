@@ -12,6 +12,10 @@
 
 #import "FlatUIKit.h"
 
+#import <QuartzCore/QuartzCore.h>
+
+
+
 @interface CPFormViewController ()<FlatDatePickerDelegate,FUIAlertViewDelegate>
 {
     FlatDatePicker *datePicker;
@@ -49,6 +53,8 @@
         [textField setTag:100+i];
         [textField setTextColor:[UIColor blackColor]];
         [textField setFont:[UIFont systemFontOfSize:20]];
+        textField.layer.borderWidth = kBorderWidth;
+        textField.layer.cornerRadius = kBorderCurve;
         [textField setDelegate:self];
         NSString *str = [[[fieldsArray objectAtIndex:i] objectForKey:@"field_name"]objectForKey:@"text"];
         [textField setPlaceholder:str];
@@ -76,6 +82,8 @@
         [textField setTag:100+fieldsArray.count];
         [textField setTextColor:[UIColor blackColor]];
         [textField setFont:[UIFont systemFontOfSize:20]];
+        textField.layer.borderWidth = kBorderWidth;
+        textField.layer.cornerRadius = kBorderCurve;
         [textField setDelegate:self];
         [textField setPlaceholder:@"Amount"];
         [textField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -222,8 +230,7 @@
                 [postBody appendData:[[NSString stringWithFormat:@"<transaction>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<pin>%@</pin>",PIN] dataUsingEncoding:NSUTF8StringEncoding]];
-                
-                
+                [postBody appendData:[[NSString stringWithFormat:@"<device>Mobile Web</device>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<services>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<service>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<service_id>%d</service_id>",service_id] dataUsingEncoding:NSUTF8StringEncoding]];

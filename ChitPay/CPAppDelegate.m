@@ -25,7 +25,16 @@
     CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc] initWithNibName:@"CPWelcomeViewController" bundle:nil];
     navigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
     self.window.rootViewController = navigationController;
-    [self.navigationController.navigationBar setHidden:YES];
+    //UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"logo.png"]];
+    //[[UINavigationBar appearance]addSubview:img];
+    // Create your image
+    UIImage *image = [UIImage imageNamed: @"logo.png"];
+    UIImageView *imageview = [[UIImageView alloc] initWithImage: image];
+    // set the text view to the image view
+    
+    //[[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    //[[UINavigationBar appearance]setTintColor:[UIColor clearColor]];
+
     [self.window makeKeyAndVisible];
     return YES;
 }
