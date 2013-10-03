@@ -20,4 +20,5 @@
 @property (nonatomic, strong) IBOutlet UITableView *menuTable;
 -(IBAction)pop:(id)sender;
 -(IBAction)submit:(id)sender;
+-(void)addFavourite:(id)sender;
 @end

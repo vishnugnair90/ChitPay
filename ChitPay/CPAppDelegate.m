@@ -28,13 +28,25 @@
     //UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"logo.png"]];
     //[[UINavigationBar appearance]addSubview:img];
     // Create your image
-    UIImage *image = [UIImage imageNamed: @"logo.png"];
-    UIImageView *imageview = [[UIImageView alloc] initWithImage: image];
-    // set the text view to the image view
     
-    //[[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-    //[[UINavigationBar appearance]setTintColor:[UIColor clearColor]];
-
+    [[UINavigationBar appearance]setTintColor:[UIColor whiteColor]];
+    // Set the background image for *all* UINavigationBars
+    // Set the background image for *all* UINavigationBars
+    [[UIBarButtonItem appearance]
+     setBackButtonBackgroundImage:[UIImage imageWithColor:[UIColor clearColor] cornerRadius:10.0]
+     forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor dullBlueColor],
+      UITextAttributeTextColor,
+      [UIColor clearColor],
+      UITextAttributeTextShadowColor,
+      [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],
+      UITextAttributeTextShadowOffset,
+      [UIFont boldSystemFontOfSize:15.0],
+      UITextAttributeFont,
+      nil]forState:UIControlStateNormal];
     [self.window makeKeyAndVisible];
     return YES;
 }

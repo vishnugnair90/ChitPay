@@ -38,9 +38,11 @@
 {
     [super viewDidLoad];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     [TestFlight passCheckpoint:@"HOME START"];
     //[self.navigationController.navigationBar setHidden:YES];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.navigationController.navigationBar.translucent = NO;
     //NSLog(@"DATA %@",[defaults objectForKey:@"username"]);
     // Do any additional setup after loading the view from its nib.
 }

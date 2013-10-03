@@ -38,18 +38,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImage *image = [UIImage imageNamed: @"logo.png"];
-    UIImageView *imageview = [[UIImageView alloc] initWithImage: image];
     txtUsername.layer.borderWidth = kBorderWidth;
     txtUsername.layer.cornerRadius = kBorderCurve;
     txtPassword.layer.borderWidth = kBorderWidth;
     txtPassword.layer.cornerRadius = kBorderCurve;
-    self.navigationController.navigationItem.titleView = imageview;
+    self.navigationController.navigationBar.translucent = NO;
     // set the text view to the image view
     //self.navigationItem.titleView = imageview;
     //[[UINavigationBar appearance] setItems:[NSArray arrayWithObject:item]];
     // Do any additional setup after loading the view from its nib.
-    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

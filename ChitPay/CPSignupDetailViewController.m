@@ -12,7 +12,7 @@
 
 #import "CPAppDelegate.h"
 
-#define kOFFSET_FOR_KEYBOARD 215.0
+#define kOFFSET_FOR_KEYBOARD 180.0
 
 @interface CPSignupDetailViewController ()
 
