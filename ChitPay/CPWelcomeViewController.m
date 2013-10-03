@@ -100,7 +100,7 @@
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
-        NSUserDefaults *defaults = [NSUserDefaults alloc];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:txtUsername.text forKey:@"username"];
         [defaults setObject:txtPassword.text forKey:@"password"];
         [defaults setObject:responseDictionary forKey:@"account_details"];

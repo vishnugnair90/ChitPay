@@ -221,9 +221,8 @@
                 
                 [postBody appendData:[[NSString stringWithFormat:@"<transaction>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+                [postBody appendData:[[NSString stringWithFormat:@"<device>Mobile Web</device>" ] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<pin>%@</pin>",PIN] dataUsingEncoding:NSUTF8StringEncoding]];
-                
-                
                 [postBody appendData:[[NSString stringWithFormat:@"<services>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<service>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<service_id>%d</service_id>",service_id] dataUsingEncoding:NSUTF8StringEncoding]];
