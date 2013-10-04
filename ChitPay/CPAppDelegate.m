@@ -12,6 +12,8 @@
 
 #import "TestFlight.h"
 
+#import "CPNotificationHandler.h"
+
 @implementation CPAppDelegate
 
 @synthesize navigationController;
@@ -81,8 +83,13 @@
 {
     [TestFlight passCheckpoint:@"NOTIFICATIONS OK"];
     NSLog(@"My token is: %@", deviceToken);
+    [[CPNotificationHandler singleton]getNotificaton];    
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [[CPNotificationHandler singleton]getNotificaton];
+}
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
 	NSLog(@"Failed to get token, error: %@", error);

@@ -13,6 +13,11 @@
     NSArray *menuListArray;
 }
 @property (nonatomic, strong) IBOutlet UITableView *menuTable;
--(IBAction)pop:(id)sender;
--(IBAction)logout:(id)sender;
+@property (nonatomic, strong) IBOutlet UILabel *welcomeLabel;
+-(void)pop:(id)sender;
+-(void)logout:(id)sender;
+-(void)showNotifications;
+-(void)showFavourites;
+-(void)showShareMenu;
+-(void)showSettings;
 @end

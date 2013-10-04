@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
     NSLog(@"DATA %@",[[menuList objectAtIndex:0]objectForKey:@"name"]);
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     // Do any additional setup after loading the view from its nib.
 }
 

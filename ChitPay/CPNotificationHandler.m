@@ -21,9 +21,9 @@
     return shared;
 }
 
--(int)getNotificaton
+-(void)getNotificaton
 {
-    [SVProgressHUD show];
+    //[SVProgressHUD show];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
     [request setDelegate:self];
@@ -39,33 +39,33 @@
     [postBody appendData:[[NSString stringWithFormat:@"</notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setPostBody:postBody];
-    NSLog(@"POSTING DATA %@",postBody);
     [request startAsynchronous];
-    return 1;
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    [SVProgressHUD dismiss];
+    //[SVProgressHUD dismiss];
     
 	NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-    NSLog(@"\n\nRESPONSE\n%@",responseDictionary);
+    NSLog(@"\n\nRESPONSE\n%d",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"]integerValue]);
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
         [TestFlight passCheckpoint:@"NOTIFICATIONS REFRESHED"];
-        [SVProgressHUD showSuccessWithStatus:@"NOTIFICATIONS REFRESHED"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"] forKey:@"notification_count"];
+        [defaults synchronize];
+
+        //[SVProgressHUD showSuccessWithStatus:@"NOTIFICATIONS REFRESHED"];
     }
     else
     {
-        [SVProgressHUD showErrorWithStatus:@"NOTIFICATIONS REFRESH FAILED"];
+        //[SVProgressHUD showErrorWithStatus:@"NOTIFICATIONS REFRESH FAILED"];
     }
 }
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-	NSString *receivedString = [request responseString];
-	UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"NOTIFICATIONS REFRESH FAILED" message:receivedString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[alertView show];
+	
 }
 
 @end

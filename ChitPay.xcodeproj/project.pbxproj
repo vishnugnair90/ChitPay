@@ -11,6 +11,17 @@
 		160678DF17FD5A7E009D6BB9 /* chit.png in Resources */ = {isa = PBXBuildFile; fileRef = 160678DD17FD5A7E009D6BB9 /* chit.png */; };
 		165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */; };
 		16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */; };
+		16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BD17FEAD5600E26B6B /* Home_logo.png */; };
+		16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BE17FEAD5600E26B6B /* Home_logo@2x.png */; };
+		16E470C417FEB3A400E26B6B /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470C117FEB3A400E26B6B /* settings.png */; };
+		16E470C517FEB3A400E26B6B /* fav.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470C217FEB3A400E26B6B /* fav.png */; };
+		16E470C617FEB3A400E26B6B /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470C317FEB3A400E26B6B /* share.png */; };
+		16E470CA17FED83800E26B6B /* CPNotificationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470C817FED83800E26B6B /* CPNotificationListViewController.m */; };
+		16E470CB17FED83800E26B6B /* CPNotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E470C917FED83800E26B6B /* CPNotificationListViewController.xib */; };
+		16E470CF17FEE1CA00E26B6B /* CPFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470CD17FEE1CA00E26B6B /* CPFavouritesViewController.m */; };
+		16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E470CE17FEE1CA00E26B6B /* CPFavouritesViewController.xib */; };
+		16E470D417FEEA8600E26B6B /* CPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */; };
+		16E470D517FEEA8600E26B6B /* CPSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */; };
 		2041C9F417D734490091F42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F317D734490091F42C /* UIKit.framework */; };
 		2041C9F617D734490091F42C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F517D734490091F42C /* Foundation.framework */; };
 		2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2041C9FC17D734490091F42C /* InfoPlist.strings */; };
@@ -94,6 +105,20 @@
 		165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationHandler.h; sourceTree = "<group>"; };
 		16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationHandler.m; sourceTree = "<group>"; };
+		16E470BD17FEAD5600E26B6B /* Home_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home_logo.png; sourceTree = "<group>"; };
+		16E470BE17FEAD5600E26B6B /* Home_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home_logo@2x.png"; sourceTree = "<group>"; };
+		16E470C117FEB3A400E26B6B /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		16E470C217FEB3A400E26B6B /* fav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav.png; sourceTree = "<group>"; };
+		16E470C317FEB3A400E26B6B /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		16E470C717FED83800E26B6B /* CPNotificationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationListViewController.h; sourceTree = "<group>"; };
+		16E470C817FED83800E26B6B /* CPNotificationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationListViewController.m; sourceTree = "<group>"; };
+		16E470C917FED83800E26B6B /* CPNotificationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPNotificationListViewController.xib; sourceTree = "<group>"; };
+		16E470CC17FEE1CA00E26B6B /* CPFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFavouritesViewController.h; sourceTree = "<group>"; };
+		16E470CD17FEE1CA00E26B6B /* CPFavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFavouritesViewController.m; sourceTree = "<group>"; };
+		16E470CE17FEE1CA00E26B6B /* CPFavouritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPFavouritesViewController.xib; sourceTree = "<group>"; };
+		16E470D117FEEA8600E26B6B /* CPSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSettingsViewController.h; sourceTree = "<group>"; };
+		16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSettingsViewController.m; sourceTree = "<group>"; };
+		16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPSettingsViewController.xib; sourceTree = "<group>"; };
 		2041C9EF17D734490091F42C /* ChitPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2041C9F317D734490091F42C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2041C9F517D734490091F42C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -308,6 +333,15 @@
 				20C0165E17F01B5D00784FE6 /* CPFormViewController.h */,
 				20C0165F17F01B5D00784FE6 /* CPFormViewController.m */,
 				20C0166017F01B5D00784FE6 /* CPFormViewController.xib */,
+				16E470CC17FEE1CA00E26B6B /* CPFavouritesViewController.h */,
+				16E470CD17FEE1CA00E26B6B /* CPFavouritesViewController.m */,
+				16E470CE17FEE1CA00E26B6B /* CPFavouritesViewController.xib */,
+				16E470C717FED83800E26B6B /* CPNotificationListViewController.h */,
+				16E470C817FED83800E26B6B /* CPNotificationListViewController.m */,
+				16E470C917FED83800E26B6B /* CPNotificationListViewController.xib */,
+				16E470D117FEEA8600E26B6B /* CPSettingsViewController.h */,
+				16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */,
+				16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */,
 				16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */,
 				16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */,
 				20E5360717E84393007B4BAA /* CPServiceViewController.h */,
@@ -360,6 +394,11 @@
 		2041CA1D17D739380091F42C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				16E470C117FEB3A400E26B6B /* settings.png */,
+				16E470C217FEB3A400E26B6B /* fav.png */,
+				16E470C317FEB3A400E26B6B /* share.png */,
+				16E470BD17FEAD5600E26B6B /* Home_logo.png */,
+				16E470BE17FEAD5600E26B6B /* Home_logo@2x.png */,
 				20CEFDE917D8A90B0042F95F /* logo.png */,
 				160678DC17FD5A7D009D6BB9 /* chit@2x.png */,
 				160678DD17FD5A7E009D6BB9 /* chit.png */,
@@ -539,24 +578,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */,
+				16E470C617FEB3A400E26B6B /* share.png in Resources */,
 				2041CA0617D734490091F42C /* Default.png in Resources */,
 				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
+				16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */,
+				16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */,
 				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
 				2041CA1A17D735780091F42C /* CPWelcomeViewController.xib in Resources */,
 				160678DE17FD5A7E009D6BB9 /* chit@2x.png in Resources */,
 				2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */,
+				16E470CB17FED83800E26B6B /* CPNotificationListViewController.xib in Resources */,
 				2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */,
 				2041CA7817D745B80091F42C /* CPMenuViewController.xib in Resources */,
 				20CEFDE217D87B730042F95F /* CPSignupViewController.xib in Resources */,
 				20CEFDE817D87DED0042F95F /* CPSignupDetailViewController.xib in Resources */,
 				160678DF17FD5A7E009D6BB9 /* chit.png in Resources */,
+				16E470D517FEEA8600E26B6B /* CPSettingsViewController.xib in Resources */,
 				20CEFDEA17D8A90B0042F95F /* logo.png in Resources */,
+				16E470C417FEB3A400E26B6B /* settings.png in Resources */,
 				20C4E01717D9C8BF00C71178 /* CPForgotPasswordViewController.xib in Resources */,
 				2085980C17DDD1D500882F4B /* README.md in Resources */,
 				2085980D17DDD1D500882F4B /* release_notes.md in Resources */,
+				16E470C517FEB3A400E26B6B /* fav.png in Resources */,
 				20E5360517E8437D007B4BAA /* CPGroupViewController.xib in Resources */,
 				20E5360B17E84393007B4BAA /* CPServiceViewController.xib in Resources */,
 				20E5361017E87935007B4BAA /* CPProductsViewController.xib in Resources */,
+				16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */,
 				20C0166217F01B5D00784FE6 /* CPFormViewController.xib in Resources */,
 				20C0166F17F0424A00784FE6 /* FlatDatePicker-Icon-Check.png in Resources */,
 				20C0167017F0424A00784FE6 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
@@ -575,10 +622,12 @@
 				2041CA0017D734490091F42C /* main.m in Sources */,
 				2041CA0417D734490091F42C /* CPAppDelegate.m in Sources */,
 				2041CA1917D735780091F42C /* CPWelcomeViewController.m in Sources */,
+				16E470D417FEEA8600E26B6B /* CPSettingsViewController.m in Sources */,
 				2041CA4F17D739B20091F42C /* ASIAuthenticationDialog.m in Sources */,
 				2041CA5017D739B20091F42C /* ASIDownloadCache.m in Sources */,
 				2041CA5117D739B20091F42C /* ASIFormDataRequest.m in Sources */,
 				2041CA5217D739B20091F42C /* ASIHTTPRequest.m in Sources */,
+				16E470CA17FED83800E26B6B /* CPNotificationListViewController.m in Sources */,
 				2041CA5317D739B20091F42C /* ASIInputStream.m in Sources */,
 				2041CA5417D739B20091F42C /* ASINetworkQueue.m in Sources */,
 				2041CA5517D739B20091F42C /* Reachability.m in Sources */,
@@ -594,6 +643,7 @@
 				165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */,
 				20E5360A17E84393007B4BAA /* CPServiceViewController.m in Sources */,
 				20E5360F17E87935007B4BAA /* CPProductsViewController.m in Sources */,
+				16E470CF17FEE1CA00E26B6B /* CPFavouritesViewController.m in Sources */,
 				20C0166117F01B5D00784FE6 /* CPFormViewController.m in Sources */,
 				20C0167317F0424A00784FE6 /* FlatDatePicker.m in Sources */,
 				20E49BBC17F1743F00B37822 /* FUIAlertView.m in Sources */,

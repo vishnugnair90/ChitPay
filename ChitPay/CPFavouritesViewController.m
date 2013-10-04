@@ -1,22 +1,23 @@
 //
-//  CPProductsViewController.m
+//  CPFavouritesViewController.m
 //  ChitPay
 //
-//  Created by Armia on 17/09/13.
+//  Created by Armia on 10/4/13.
 //  Copyright (c) 2013 Armia. All rights reserved.
 //
 
-#import "CPProductsViewController.h"
+#import "CPFavouritesViewController.h"
 
 #import "CPFormViewController.h"
 
-@interface CPProductsViewController ()
+
+@interface CPFavouritesViewController ()<FUIAlertViewDelegate>
 
 @end
 
-@implementation CPProductsViewController
+@implementation CPFavouritesViewController
 
-@synthesize menuList;
+@synthesize favouritesList,favouritesTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +31,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    [request setDelegate:self];
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"favourites.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setPostBody:postBody];
+    [SVProgressHUD show];
+    [request startAsynchronous];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -39,10 +53,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return menuList.count;
+    return favouritesList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,7 +74,7 @@
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     //NSLog(@"LOAD %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"]);
     //cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"];
-    cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"service_name"]objectForKey:@"text"];
+    cell.textLabel.text = [[[favouritesList objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
@@ -73,60 +86,21 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //NSArray *array = [[NSArray alloc]init];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSArray *array = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"fields"]objectForKey:@"field"];
-    NSLog(@"OBJECT %d",[[[[menuList objectAtIndex:indexPath.row]objectForKey:@"service_id"]objectForKey:@"text"] integerValue]);
-    NSLog(@"FIELDS NUMBER %d",array.count);
     [SVProgressHUD show];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://chitbox247.com/pos/index.php/apiv2?model=services&group_id=&service_id=%d",[[[[menuList objectAtIndex:indexPath.row]objectForKey:@"service_id"]objectForKey:@"text"] integerValue]]]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://chitbox247.com/pos/index.php/apiv2?model=services&group_id=&service_id=%d",[[[[favouritesList objectAtIndex:indexPath.row]objectForKey:@"id"]objectForKey:@"text"] integerValue]]]];
     [request setDelegate:self];
+    [request setUserInfo:[NSDictionary dictionaryWithObject:@"GETSERVICE" forKey:@"TYPE"]];
     [request startAsynchronous];
-    /*
-    if( [[[[menuList objectAtIndex:indexPath.row]objectForKey:@"fields"]objectForKey:@"field"] containsObject:@"char_count"])
-    {
-        NSLog(@"CHOICE 1");
-        //array = [[menuList objectAtIndex:indexPath.row]objectForKey:@"fields"];
-    }
-    else
-    {
-        NSLog(@"CHOICE 2");
-        //array = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"fields"]objectForKey:@"field"];
-    }
-     */
-    //NSLog(@"FIELDS %@",array);
-    //NSLog(@"FIELD COUNT %d",array.count);
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     
-    
-	NSString *receivedString = [request responseString];
+    [SVProgressHUD dismiss];
+    NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-    
-    if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
+    if([[request.userInfo objectForKey:@"TYPE"] isEqualToString:@"GETSERVICE"])
     {
-        /*
-        for(id key=@"field" in responseDictionary)
-            NSLog(@"key=%@ value=%@", key, [[[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"]objectForKey:@"fields"] objectForKey:@"field"]);
-         
-         */
-        
-        /*
-        @try
-        {
-            [[[[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"]objectForKey:@"fields"] objectForKey:@"field"]objectForKey:@"field_id"];
-            
-            NSLog(@"PASS");
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"CRASH");
-        }
-         */
-         
-        
-        
         NSLog(@"RESULT %@",[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"]);
         if([[[[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"]objectForKey:@"fields"]objectForKey:@"field"] isKindOfClass:[NSArray class]])
         {
@@ -171,36 +145,26 @@
         {
             NSLog(@"OTHER");
         }
-        /*
-        NSArray *array = [[NSArray alloc]init];
-        @try
-        {
-            array = [[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"]objectForKey:@"fields"];
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"FAILED %d",array.count);
-        }
-        @finally
-        {
-            NSLog(@"SUCCESS %d",array.count);
-        }
-         */
-        [SVProgressHUD dismiss];
+
     }
     else
     {
-        [SVProgressHUD showErrorWithStatus:@"Login Failure"];
-        [SVProgressHUD dismiss];
+        if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
+        {
+            
+            if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"favourites"]objectForKey:@"favourite"] isKindOfClass:[NSArray class]])
+            {
+                favouritesList = [[[responseDictionary objectForKey:@"response"]objectForKey:@"favourites"]objectForKey:@"favourite"];
+            }
+            else
+            {
+                favouritesList = [NSArray arrayWithObject:[[[responseDictionary objectForKey:@"response"]objectForKey:@"favourites"]objectForKey:@"favourite"]];
+            }
+            NSLog(@"ARRAY %@",favouritesList);
+            [SVProgressHUD dismiss];
+            [favouritesTable reloadData];
+        }
     }
 }
 
--(IBAction)pop:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-
 @end
-
