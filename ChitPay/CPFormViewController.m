@@ -411,7 +411,6 @@
                 alertView.tag = 888;
                 [alertView show];
             }
-            
         }
         else
         {
