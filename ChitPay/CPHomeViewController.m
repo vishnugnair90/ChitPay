@@ -37,9 +37,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     [TestFlight passCheckpoint:@"HOME START"];
-    [self.navigationController.navigationBar setHidden:YES];
+    //[self.navigationController.navigationBar setHidden:YES];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.navigationController.navigationBar.translucent = NO;
     //NSLog(@"DATA %@",[defaults objectForKey:@"username"]);
     // Do any additional setup after loading the view from its nib.
 }
@@ -70,7 +73,6 @@
     UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
     //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     //self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [appNavigationController setNavigationBarHidden:YES];
     [self.navigationController presentViewController:appNavigationController
                                             animated:YES
                                           completion:^{
@@ -128,6 +130,7 @@
     // Here we use the provided setImageWithURL: method to load the web image
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     cell.textLabel.text = [[[menuListArray objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
     //NSLog(@"MENU %@",[[[menuListArray objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];

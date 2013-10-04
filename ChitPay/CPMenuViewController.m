@@ -33,6 +33,7 @@
 {
     [super viewDidLoad];
     NSLog(@"DATA %@",[[menuList objectAtIndex:0]objectForKey:@"name"]);
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -91,6 +92,7 @@
     // Here we use the provided setImageWithURL: method to load the web image
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];

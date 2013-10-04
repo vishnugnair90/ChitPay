@@ -12,6 +12,10 @@
 
 #import "FlatUIKit.h"
 
+#import <QuartzCore/QuartzCore.h>
+
+
+
 @interface CPFormViewController ()<FlatDatePickerDelegate,FUIAlertViewDelegate>
 {
     FlatDatePicker *datePicker;
@@ -32,6 +36,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        UIBarButtonItem *addFavourite = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFavourite:)];
+        addFavourite.tintColor = [UIColor redColor];
+        UIBarButtonItem *addFavourite2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithColor:[UIColor dullBlueColor] cornerRadius:10.0] style:UIBarButtonItemStylePlain target:self action:@selector(addFavourite:)];
+        addFavourite2.tintColor = [UIColor redColor];
+        [addFavourite2 setTitle:@"123"];
+        self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:addFavourite,addFavourite2, nil];
     }
     return self;
 }
@@ -39,16 +49,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
+    
+    //Creating some buttons:
+    
     NSLog(@"DATA COUNT %d",fieldsArray.count);
     NSLog(@"COST %@",cost);
     NSLog(@"SERvId %d",service_id);
     for(int i=0; i<fieldsArray.count; i++)
     {
-        CGRect textFieldFrame = CGRectMake(20.0, 70.0 +(i*50), 280.0, 30.0);
+        CGRect textFieldFrame = CGRectMake(20.0,(i*50) + 10, 280.0, 30.0);
         UITextField *textField = [[UITextField alloc] initWithFrame:textFieldFrame];
         [textField setTag:100+i];
         [textField setTextColor:[UIColor blackColor]];
         [textField setFont:[UIFont systemFontOfSize:20]];
+        textField.layer.borderWidth = kBorderWidth;
+        textField.layer.cornerRadius = kBorderCurve;
         [textField setDelegate:self];
         NSString *str = [[[fieldsArray objectAtIndex:i] objectForKey:@"field_name"]objectForKey:@"text"];
         [textField setPlaceholder:str];
@@ -71,11 +87,13 @@
     if(((mode == 1)&&(type == 2))||((mode == 2)&&(type == 2)))
     {
         NSLog(@"CREATE FIELD");
-        CGRect textFieldFrame = CGRectMake(20.0, 70.0 +(fieldsArray.count*50), 280.0, 30.0);
+        CGRect textFieldFrame = CGRectMake(20.0,(fieldsArray.count*50) +10, 280.0, 30.0);
         UITextField *textField = [[UITextField alloc] initWithFrame:textFieldFrame];
         [textField setTag:100+fieldsArray.count];
         [textField setTextColor:[UIColor blackColor]];
         [textField setFont:[UIFont systemFontOfSize:20]];
+        textField.layer.borderWidth = kBorderWidth;
+        textField.layer.cornerRadius = kBorderCurve;
         [textField setDelegate:self];
         [textField setPlaceholder:@"Amount"];
         [textField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -86,7 +104,7 @@
     else
     {
         NSLog(@"SERVICE CHARGE");
-        CGRect labelFrame = CGRectMake(20.0, 70.0 +(fieldsArray.count*50), 280.0, 30.0);
+        CGRect labelFrame = CGRectMake(20.0,(fieldsArray.count*50) +10, 280.0, 30.0);
         UILabel *label = [[UILabel alloc]initWithFrame:labelFrame];
         [label setTextColor:[UIColor blackColor]];
         [label setFont:[UIFont boldSystemFontOfSize:20.0]];
@@ -221,8 +239,8 @@
                 
                 [postBody appendData:[[NSString stringWithFormat:@"<transaction>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
-                [postBody appendData:[[NSString stringWithFormat:@"<device>Mobile Web</device>" ] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<pin>%@</pin>",PIN] dataUsingEncoding:NSUTF8StringEncoding]];
+                [postBody appendData:[[NSString stringWithFormat:@"<device>Mobile Web</device>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<services>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<service>"] dataUsingEncoding:NSUTF8StringEncoding]];
                 [postBody appendData:[[NSString stringWithFormat:@"<service_id>%d</service_id>",service_id] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -259,6 +277,7 @@
                                                          encoding:NSUTF8StringEncoding];
                 NSLog(@"POST BODY %@",newStr);
                 [SVProgressHUD show];
+                request.userInfo = [NSDictionary dictionaryWithObject:@"TRANSACTION" forKey:@"TYPE"];
                 [request startAsynchronous];
                 
             }
@@ -314,63 +333,103 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
+- (void)addFavourite:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    [request setDelegate:self];
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"favourites.add\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<favourites>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<service_id>%d</service_id>",service_id] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</favourites>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setPostBody:postBody];
+    NSString* newStr = [[NSString alloc] initWithData:postBody
+                                             encoding:NSUTF8StringEncoding];
+    NSLog(@"POST BODY %@",newStr);
+    [SVProgressHUD show];
+    request.userInfo = [NSDictionary dictionaryWithObject:@"ADDFAVOURITE" forKey:@"TYPE"];
+    [request startAsynchronous];
+}
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     [SVProgressHUD dismiss];
-    
-	NSString *receivedString = [request responseString];
-    NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-    
-    if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
+    if([[request.userInfo objectForKey:@"TYPE"] isEqualToString:@"ADDFAVOURITE"])
     {
-        //menuListArray = [[[[responseDictionary objectForKey:@"response"]objectForKey:@"menu"]objectForKey:@"groups"]objectForKey:@"group"];
-        [SVProgressHUD dismiss];
-        NSLog(@"RESPONSE %@",responseDictionary);
-        if([[[responseDictionary objectForKey:@"response"]objectForKey:@"transaction"]objectForKey:@"pin_details"] != NULL)
+        NSString *receivedString = [request responseString];
+        NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
+        NSLog(@"%@",[request responseString]);
+        if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
         {
-            FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"PIN    %@\nSERIAL  %@\nBATCH   %@",[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_no"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_serial"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_batch"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
-            alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
-            alertView.defaultButtonColor = [UIColor midnightBlueColor];
-            alertView.alertContainer.backgroundColor = [UIColor whiteColor];
-            alertView.defaultButtonShadowColor = [UIColor clearColor];
-            alertView.defaultButtonTitleColor = [UIColor whiteColor];
-            [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
-            [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
-            alertView.animationDuration = 0.15;
-            alertView.tag = 888;
-            [alertView show];
+            [SVProgressHUD showSuccessWithStatus:@"Added to favourites"];
         }
         else
         {
-            FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"transaction id %@",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"transaction_id"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
+            [SVProgressHUD showSuccessWithStatus:@"Already in favourites"];
+        }
+    }
+    else
+    {
+        NSString *receivedString = [request responseString];
+        NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
+        
+        if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
+        {
+            //menuListArray = [[[[responseDictionary objectForKey:@"response"]objectForKey:@"menu"]objectForKey:@"groups"]objectForKey:@"group"];
+            [SVProgressHUD dismiss];
+            NSLog(@"RESPONSE %@",responseDictionary);
+            if([[[responseDictionary objectForKey:@"response"]objectForKey:@"transaction"]objectForKey:@"pin_details"] != NULL)
+            {
+                FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"PIN    %@\nSERIAL  %@\nBATCH   %@",[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_no"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_serial"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_batch"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
+                alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+                alertView.defaultButtonColor = [UIColor midnightBlueColor];
+                alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+                alertView.defaultButtonShadowColor = [UIColor clearColor];
+                alertView.defaultButtonTitleColor = [UIColor whiteColor];
+                [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+                [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
+                alertView.animationDuration = 0.15;
+                alertView.tag = 888;
+                [alertView show];
+            }
+            else
+            {
+                FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"transaction id %@",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"transaction_id"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
+                alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+                alertView.defaultButtonColor = [UIColor midnightBlueColor];
+                alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+                alertView.defaultButtonShadowColor = [UIColor clearColor];
+                alertView.defaultButtonTitleColor = [UIColor whiteColor];
+                [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+                [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
+                alertView.animationDuration = 0.15;
+                alertView.tag = 888;
+                [alertView show];
+            }
+            
+        }
+        else
+        {
+            [SVProgressHUD dismiss];
+            NSLog(@"RESPONSE %@",responseDictionary);
+            FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION FAILED" message:[NSString stringWithFormat:@"%@",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"transaction_id"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
             alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
             alertView.defaultButtonColor = [UIColor midnightBlueColor];
             alertView.alertContainer.backgroundColor = [UIColor whiteColor];
             alertView.defaultButtonShadowColor = [UIColor clearColor];
             alertView.defaultButtonTitleColor = [UIColor whiteColor];
             [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
-            [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
+            [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor redColor]];
             alertView.animationDuration = 0.15;
             alertView.tag = 888;
             [alertView show];
         }
 
-    }
-    else
-    {
-        [SVProgressHUD dismiss];
-        NSLog(@"RESPONSE %@",responseDictionary);
-        FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION FAILED" message:[NSString stringWithFormat:@"%@",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"transaction_id"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
-        alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
-        alertView.defaultButtonColor = [UIColor midnightBlueColor];
-        alertView.alertContainer.backgroundColor = [UIColor whiteColor];
-        alertView.defaultButtonShadowColor = [UIColor clearColor];
-        alertView.defaultButtonTitleColor = [UIColor whiteColor];
-        [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
-        [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor redColor]];
-        alertView.animationDuration = 0.15;
-        alertView.tag = 888;
-        [alertView show];
     }
 }
 
@@ -378,6 +437,7 @@
 {
 	[SVProgressHUD dismiss];
     [SVProgressHUD showErrorWithStatus:@"Network error"];
+    
 }
 
 @end

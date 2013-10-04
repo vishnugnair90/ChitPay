@@ -16,6 +16,7 @@
 
 #import "CPForgotPasswordViewController.h"
 
+
 @interface CPWelcomeViewController ()
 @end
 
@@ -37,7 +38,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    txtUsername.layer.borderWidth = kBorderWidth;
+    txtUsername.layer.cornerRadius = kBorderCurve;
+    txtPassword.layer.borderWidth = kBorderWidth;
+    txtPassword.layer.cornerRadius = kBorderCurve;
+    self.navigationController.navigationBar.translucent = NO;
+    // set the text view to the image view
+    //self.navigationItem.titleView = imageview;
+    //[[UINavigationBar appearance] setItems:[NSArray arrayWithObject:item]];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,7 +58,7 @@
         txtUsername.text = [defaults stringForKey:@"username"];
         txtPassword.text = [defaults stringForKey:@"password"];
     }
-    NSLog(@"NOTIFICATION %d",[[CPNotificationHandler singleton]getNotificaton]);
+    //NSLog(@"NOTIFICATION %d",[[CPNotificationHandler singleton]getNotificaton]);
 }
 - (void)didReceiveMemoryWarning
 {
@@ -100,6 +110,7 @@
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
+        NSLog(@"PASSED");
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:txtUsername.text forKey:@"username"];
         [defaults setObject:txtPassword.text forKey:@"password"];
@@ -111,10 +122,10 @@
         CPHomeViewController *homeViewController = [[CPHomeViewController alloc]initWithNibName:@"CPHomeViewController" bundle:nil];
         CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
         UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:homeViewController];
+        
         [self.navigationController presentViewController:appNavigationController
                                                 animated:YES
                                               completion:^{
-                                                  
                                                   appDelegate.window.rootViewController = appNavigationController;
                                                   
                                                   

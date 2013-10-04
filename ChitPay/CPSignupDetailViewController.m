@@ -12,7 +12,7 @@
 
 #import "CPAppDelegate.h"
 
-#define kOFFSET_FOR_KEYBOARD 215.0
+#define kOFFSET_FOR_KEYBOARD 180.0
 
 @interface CPSignupDetailViewController ()
 
@@ -34,6 +34,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont boldSystemFontOfSize:15.0];
+        }
+    }
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
     // Do any additional setup after loading the view from its nib.
 }
 

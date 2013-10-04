@@ -18,4 +18,10 @@
     #import "TestFlight.h"
     #import "FlatUIKit.h"
     #import "CPNotificationHandler.h"
+
+    #define kCellColor [UIColor belizeHoleColor]
+    #define kTableColor [UIColor belizeHoleColor]
+    #define kBorderWidth 2.0;
+    #define kBorderCurve 5.0;
+
 #endif
