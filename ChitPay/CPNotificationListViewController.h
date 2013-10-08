@@ -14,4 +14,6 @@
 }
 @property (nonatomic, strong) NSArray *notificationList;
 @property (nonatomic, strong) IBOutlet UITableView *notificationTable;
+- (IBAction)toggleFavoriteSwitch:(UISwitch *)switchView;
+- (void)LoadNotificationData;
 @end

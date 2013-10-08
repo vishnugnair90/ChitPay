@@ -31,23 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
-    [request setDelegate:self];
-    NSMutableData *postBody = [NSMutableData data];
-    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<pin>%d</pin>",1234] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"</notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setPostBody:postBody];
-    [SVProgressHUD show];
-    [request startAsynchronous];
+    [self LoadNotificationData];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -69,7 +53,7 @@
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:MyIdentifier];
     }
     
@@ -77,8 +61,17 @@
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     //NSLog(@"LOAD %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"]);
     //cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"];
+    
+    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+    cell.accessoryView = switchView;
+    switchView.tag = indexPath.row;
+    [switchView addTarget:self action:@selector(toggleFavoriteSwitch:) forControlEvents:UIControlEventValueChanged];
+    [switchView setOn:YES animated:YES];
     cell.textLabel.text = [[[notificationList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%-20s %-20s", [[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"] UTF8String],[[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]UTF8String]];
+    
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];
@@ -108,17 +101,84 @@
 {
     
     [SVProgressHUD dismiss];
-	NSString *receivedString = [request responseString];
+    NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-    
+    NSLog(@"%@",responseDictionary);
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
-        
-        notificationList = [[[responseDictionary objectForKey:@"response"]objectForKey:@"records"]objectForKey:@"notification"];
-        NSLog(@"ARRAY %@",notificationList);
-        [SVProgressHUD dismiss];
-        [notificationTable reloadData];
-    }
-}
+        if([[request.userInfo objectForKey:@"ACTION"] isEqualToString:@"CHANGESTATUS"])
+        {
+            [self LoadNotificationData];
+        }
+        else
+        {
+            NSString *receivedString = [request responseString];
+            NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
+            
+            if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
+            {
+                
+                notificationList = [[[responseDictionary objectForKey:@"response"]objectForKey:@"records"]objectForKey:@"notification"];
+                NSLog(@"ARRAY %@",notificationList);
+                [SVProgressHUD dismiss];
+                [notificationTable reloadData];
+            }
+        }
 
+    }
+    else
+        NSLog(@"FAILED");
+}
+- (IBAction)toggleFavoriteSwitch:(UISwitch *)switchView
+{
+    UITableViewCell *cell = [notificationTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:switchView.tag inSection:0]];
+    if(![switchView isOn])
+    {
+        //cell.textLabel.text = [NSString stringWithFormat:@"OFF"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+        [request setDelegate:self];
+        NSMutableData *postBody = [NSMutableData data];
+        [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.update\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<unique_id>%@</unique_id>",[[[notificationList objectAtIndex:switchView.tag]objectForKey:@"unique_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<status>OFF</status>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setPostBody:postBody];
+        [request setUserInfo:[NSDictionary dictionaryWithObject:@"CHANGESTATUS" forKey:@"ACTION"]];
+        [SVProgressHUD show];
+        NSLog(@"%@",request.requestHeaders);
+        [request startAsynchronous];
+    }
+    else
+    {
+        //cell.textLabel.text = [NSString stringWithFormat:@"ON"];
+    }
+    //[self updateFavoriteInUserDefaultsFor:cell.textLabel.text withValue:[switchView isOn]];
+}
+- (void)LoadNotificationData
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    [request setDelegate:self];
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<pin>%d</pin>",1234] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setPostBody:postBody];
+    [SVProgressHUD show];
+    [request startAsynchronous];
+}
 @end

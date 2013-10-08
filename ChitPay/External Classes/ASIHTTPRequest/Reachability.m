@@ -69,13 +69,13 @@ static void logNetworkStatus_(const char *name, int line, NetworkStatus status) 
 	
 	switch (status) {
 		case kNotReachable:
-			statusString = [NSString stringWithString: @"Not Reachable"];
+			statusString = [NSString stringWithFormat: @"Not Reachable"];
 			break;
 		case kReachableViaWWAN:
-			statusString = [NSString stringWithString: @"Reachable via WWAN"];
+			statusString = [NSString stringWithFormat: @"Reachable via WWAN"];
 			break;
 		case kReachableViaWiFi:
-			statusString = [NSString stringWithString: @"Reachable via WiFi"];
+			statusString = [NSString stringWithFormat: @"Reachable via WiFi"];
 			break;
 	}
 	

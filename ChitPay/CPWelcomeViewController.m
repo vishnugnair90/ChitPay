@@ -122,13 +122,10 @@
         CPHomeViewController *homeViewController = [[CPHomeViewController alloc]initWithNibName:@"CPHomeViewController" bundle:nil];
         CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
         UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:homeViewController];
-        
         [self.navigationController presentViewController:appNavigationController
                                                 animated:YES
                                               completion:^{
                                                   appDelegate.window.rootViewController = appNavigationController;
-                                                  
-                                                  
                                               }];
     }
     else
