@@ -13,4 +13,5 @@
 +(CPNotificationHandler *)singleton;
 
 -(void)getNotificaton;
+
 @end

@@ -20,6 +20,8 @@
 
 #import "CPFavouritesViewController.h"
 
+#import "CPSettingsViewController.h"
+
 @interface CPHomeViewController ()<FUIAlertViewDelegate>
 
 @end
@@ -210,6 +212,7 @@
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     cell.textLabel.text = [[[menuListArray objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     //NSLog(@"MENU %@",[[[menuListArray objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];
@@ -299,20 +302,8 @@
 
 - (void)showSettings
 {
-    [SVProgressHUD showErrorWithStatus:@"Under construction"];
-    CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
-    CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
-    UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
-    //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    //self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self.navigationController presentViewController:appNavigationController
-                                            animated:YES
-                                          completion:^{
-                                              
-                                              appDelegate.window.rootViewController = appNavigationController;
-                                              
-                                              
-                                          }];
+    CPSettingsViewController *SettingsViewController = [[CPSettingsViewController alloc]initWithNibName:@"CPSettingsViewController" bundle:nil];
+    [self.navigationController pushViewController:SettingsViewController animated:YES];
 }
 
 - (void)showShareMenu

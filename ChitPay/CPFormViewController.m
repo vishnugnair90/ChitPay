@@ -12,6 +12,12 @@
 
 #import "FlatUIKit.h"
 
+#import "CPSettingsViewController.h"
+
+#import "CPNotificationListViewController.h"
+
+#import "CPFavouritesViewController.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -36,12 +42,63 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        UIBarButtonItem *addFavourite = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFavourite:)];
-        addFavourite.tintColor = [UIColor redColor];
-        UIBarButtonItem *addFavourite2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithColor:[UIColor dullBlueColor] cornerRadius:10.0] style:UIBarButtonItemStylePlain target:self action:@selector(addFavourite:)];
-        addFavourite2.tintColor = [UIColor redColor];
-        [addFavourite2 setTitle:@"123"];
-        self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:addFavourite,addFavourite2, nil];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage = [UIImage imageNamed:@"share.png"];
+        
+        [button setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(showShareMenu) forControlEvents:UIControlEventTouchUpInside];
+        
+        button.frame = CGRectMake(0, 0, 30, 30);
+        //________________________________________________________________________________________________________
+        UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage1 = [UIImage imageNamed:@"fav.png"];
+        
+        [button1 setBackgroundImage:backButtonImage1 forState:UIControlStateNormal];
+        
+        [button1 addTarget:self action:@selector(showFavourites) forControlEvents:UIControlEventTouchUpInside];
+        button1.frame = CGRectMake(0, 0, 30, 30);
+        //________________________________________________________________________________________________________
+        UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage2 = [UIImage imageNamed:@"settings.png"];
+        
+        [button2 setBackgroundImage:backButtonImage2 forState:UIControlStateNormal];
+        
+        [button2 addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+        button2.frame = CGRectMake(0, 0, 30, 30);
+        
+        //________________________________________________________________________________________________________
+        UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage3 = [UIImage imageWithColor:[UIColor orangeColor] cornerRadius:3.0];
+        
+        [button3 setBackgroundImage:backButtonImage3 forState:UIControlStateNormal];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [button3 setTitle:[NSString stringWithFormat:@"%@",[defaults objectForKey:@"notification_count"]] forState:UIControlStateNormal];
+        
+        [button3 addTarget:self action:@selector(showNotifications) forControlEvents:UIControlEventTouchUpInside];
+        
+        [button3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        button3.frame = CGRectMake(0, 0, 30, 30);
+        
+        //________________________________________________________________________________________________________
+        
+        
+        UIBarButtonItem *btnNotifications = [[UIBarButtonItem alloc] initWithCustomView:button3];
+        btnNotifications.tintColor = [UIColor yellowColor];
+        UIBarButtonItem *btnSharing = [[UIBarButtonItem alloc] initWithCustomView:button];
+        btnSharing.tintColor = [UIColor greenColor];
+        UIBarButtonItem *btnFavourites = [[UIBarButtonItem alloc] initWithCustomView:button1];
+        btnFavourites.tintColor = [UIColor redColor];
+        UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc] initWithCustomView:button2];
+        btnSetting.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:btnSetting,btnFavourites,btnSharing,btnNotifications, nil];
+
     }
     return self;
 }
@@ -100,6 +157,14 @@
         [textField setBackgroundColor:[UIColor clearColor]];
         textField.keyboardType = UIKeyboardTypeDefault;
         [self.view addSubview:textField];
+        
+        CGRect buttonFrame = CGRectMake(20.0,textFieldFrame.origin.y +50, 280.0, 30.0);
+        UIButton *addFavourite = [UIButton buttonWithType:UIButtonTypeCustom];
+        addFavourite.frame = buttonFrame;
+        [addFavourite setTitleColor:[UIColor dullBlueColor] forState:UIControlStateNormal];
+        [addFavourite setTitle:@"Add To Favourites" forState:UIControlStateNormal];
+        [addFavourite addTarget:self action:@selector(addFavourite:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:addFavourite];
     }
     else
     {
@@ -110,7 +175,18 @@
         [label setFont:[UIFont boldSystemFontOfSize:20.0]];
         [label setText:[NSString stringWithFormat:@"Cost %@",cost]];
         [self.view addSubview:label];
+        
+        CGRect buttonFrame = CGRectMake(20.0,labelFrame.origin.y +50, 280.0, 30.0);
+        UIButton *addFavourite = [UIButton buttonWithType:UIButtonTypeCustom];
+        addFavourite.frame = buttonFrame;
+        [addFavourite setTitleColor:[UIColor dullBlueColor] forState:UIControlStateNormal];
+        [addFavourite setTitle:@"Add To Favourites" forState:UIControlStateNormal];
+        [addFavourite addTarget:self action:@selector(addFavourite:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:addFavourite];
     }
+    
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -437,6 +513,39 @@
 	[SVProgressHUD dismiss];
     [SVProgressHUD showErrorWithStatus:@"Network error"];
     
+}
+
+- (void)showNotifications
+{
+    CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
+    [self.navigationController pushViewController:NotificationListViewController animated:YES];
+}
+
+- (void)showFavourites
+{
+    CPFavouritesViewController *FavouritesViewController = [[CPFavouritesViewController alloc]initWithNibName:@"CPFavouritesViewController" bundle:nil];
+    [self.navigationController pushViewController:FavouritesViewController animated:YES];
+}
+
+- (void)showSettings
+{
+    CPSettingsViewController *SettingsViewController = [[CPSettingsViewController alloc]initWithNibName:@"CPSettingsViewController" bundle:nil];
+    [self.navigationController pushViewController:SettingsViewController animated:YES];
+}
+
+- (void)showShareMenu
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"Share to" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Facebook",@"Google+",@"LinkedIn",@"Twitter", nil];
+    alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+    alertView.defaultButtonColor = [UIColor midnightBlueColor];
+    alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+    alertView.defaultButtonShadowColor = [UIColor clearColor];
+    alertView.defaultButtonTitleColor = [UIColor whiteColor];
+    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor redColor]];
+    alertView.animationDuration = 0.15;
+    alertView.tag = 888;
+    [alertView show];
 }
 
 @end

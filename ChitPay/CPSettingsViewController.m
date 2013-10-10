@@ -8,6 +8,10 @@
 
 #import "CPSettingsViewController.h"
 
+#import "CPNotificationListViewController.h"
+
+#import "CPNotificationHandler.h"
+
 @interface CPSettingsViewController ()
 
 @end
@@ -33,6 +37,50 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma Custom functions
+
+-(IBAction)HomeAction:(id)sender
+{
+    NSLog(@"HOME");
+}
+
+-(IBAction)ProfileAction:(id)sender
+{
+    NSLog(@"PROFILE");
+}
+
+-(IBAction)BalanceAction:(id)sender
+{
+    NSLog(@"BALANCE");
+}
+
+-(IBAction)TransferAction:(id)sender
+{
+    NSLog(@"TRANSFER");
+}
+
+-(IBAction)NotificationsAction:(id)sender
+{
+    NSLog(@"NOTIFICATIONS");
+    CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
+    [self.navigationController pushViewController:NotificationListViewController animated:YES];
+}
+
+-(IBAction)StatementAction:(id)sender
+{
+    NSLog(@"STATEMENT");
+}
+
+-(IBAction)TransactionsAction:(id)sender
+{
+    NSLog(@"TRANSACTIONS");
+}
+
+-(IBAction)LogoutAction:(id)sender
+{
+    NSLog(@"LOGOUT");
 }
 
 @end
