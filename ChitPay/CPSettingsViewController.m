@@ -12,6 +12,20 @@
 
 #import "CPNotificationHandler.h"
 
+#import "CPTransactionsViewController.h"
+
+#import "CPWelcomeViewController.h"
+
+#import "CPAppDelegate.h"
+
+#import "CPProfileViewController.h"
+
+#import "CPBalanceViewController.h"
+
+#import "CPStatementViewController.h"
+
+#import <QuartzCore/QuartzCore.h>
+
 @interface CPSettingsViewController ()
 
 @end
@@ -23,6 +37,82 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        for(UIButton *btn in self.view.subviews)
+        {
+            if([btn isKindOfClass:[UIButton class]])
+            {
+                //btn.layer.borderWidth = kBorderWidth;
+                btn.layer.cornerRadius = kBorderCurve;
+            }
+        }
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage = [UIImage imageNamed:@"share.png"];
+        
+        [button setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(showShareMenu) forControlEvents:UIControlEventTouchUpInside];
+        
+        button.frame = CGRectMake(0, 0, 30, 30);
+        //________________________________________________________________________________________________________
+        UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage1 = [UIImage imageNamed:@"fav.png"];
+        
+        [button1 setBackgroundImage:backButtonImage1 forState:UIControlStateNormal];
+        
+        [button1 addTarget:self action:@selector(showFavourites) forControlEvents:UIControlEventTouchUpInside];
+        button1.frame = CGRectMake(0, 0, 30, 30);
+        //________________________________________________________________________________________________________
+        UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage2 = [UIImage imageNamed:@"settings.png"];
+        
+        [button2 setBackgroundImage:backButtonImage2 forState:UIControlStateNormal];
+        
+        [button2 addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+        button2.frame = CGRectMake(0, 0, 30, 30);
+        
+        //________________________________________________________________________________________________________
+        UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage3 = [UIImage imageWithColor:[UIColor orangeColor] cornerRadius:3.0];
+        
+        [button3 setBackgroundImage:backButtonImage3 forState:UIControlStateNormal];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [button3 setTitle:[NSString stringWithFormat:@"%@",[defaults objectForKey:@"notification_count"]] forState:UIControlStateNormal];
+        
+        [button3 addTarget:self action:@selector(showNotifications) forControlEvents:UIControlEventTouchUpInside];
+        
+        [button3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        button3.frame = CGRectMake(0, 0, 30, 30);
+        
+        //________________________________________________________________________________________________________
+        
+        
+        UIBarButtonItem *btnNotifications = [[UIBarButtonItem alloc] initWithCustomView:button3];
+        btnNotifications.tintColor = [UIColor yellowColor];
+        UIBarButtonItem *btnSharing = [[UIBarButtonItem alloc] initWithCustomView:button];
+        btnSharing.tintColor = [UIColor greenColor];
+        UIBarButtonItem *btnFavourites = [[UIBarButtonItem alloc] initWithCustomView:button1];
+        btnFavourites.tintColor = [UIColor redColor];
+        UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc] initWithCustomView:button2];
+        btnSetting.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:btnSetting,btnFavourites,btnSharing,btnNotifications, nil];
+        
+        UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
+        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
+        
+        button4.frame = CGRectMake(0, 0, 100, 40);
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button4];
+        
+        self.navigationItem.leftBarButtonItems =[NSArray arrayWithObjects:barButtonItem, nil];
     }
     return self;
 }
@@ -44,21 +134,27 @@
 -(IBAction)HomeAction:(id)sender
 {
     NSLog(@"HOME");
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(IBAction)ProfileAction:(id)sender
 {
     NSLog(@"PROFILE");
+    CPProfileViewController *ProfileViewController = [[CPProfileViewController alloc]initWithNibName:@"CPProfileViewController" bundle:nil];
+    [self.navigationController pushViewController:ProfileViewController animated:YES];
 }
 
 -(IBAction)BalanceAction:(id)sender
 {
     NSLog(@"BALANCE");
+    CPBalanceViewController *BalanceViewController = [[CPBalanceViewController alloc]initWithNibName:@"CPBalanceViewController" bundle:nil];
+    [self.navigationController pushViewController:BalanceViewController animated:YES];
 }
 
 -(IBAction)TransferAction:(id)sender
 {
     NSLog(@"TRANSFER");
+    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
 }
 
 -(IBAction)NotificationsAction:(id)sender
@@ -71,16 +167,38 @@
 -(IBAction)StatementAction:(id)sender
 {
     NSLog(@"STATEMENT");
+    CPStatementViewController *StatementViewController = [[CPStatementViewController alloc]initWithNibName:@"CPStatementViewController" bundle:nil];
+    [self.navigationController pushViewController:StatementViewController animated:YES];
 }
 
 -(IBAction)TransactionsAction:(id)sender
 {
     NSLog(@"TRANSACTIONS");
+    CPTransactionsViewController *TransactionsListViewController = [[CPTransactionsViewController alloc]initWithNibName:@"CPTransactionsViewController" bundle:nil];
+    [self.navigationController pushViewController:TransactionsListViewController animated:YES];
 }
 
 -(IBAction)LogoutAction:(id)sender
 {
     NSLog(@"LOGOUT");
+    CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
+    CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
+    UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
+    //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    //self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.navigationController presentViewController:appNavigationController
+                                            animated:YES
+                                          completion:^{
+                                              
+                                              appDelegate.window.rootViewController = appNavigationController;
+                                              
+                                              
+                                          }];
+}
+
+-(void)pop:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

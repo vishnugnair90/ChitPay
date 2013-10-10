@@ -1,33 +1,20 @@
 //
-//  CPGroupViewController.m
+//  CPBalanceViewController.m
 //  ChitPay
 //
-//  Created by Armia on 17/09/13.
+//  Created by Armia on 10/10/13.
 //  Copyright (c) 2013 Armia. All rights reserved.
 //
 
-#import "CPGroupViewController.h"
+#import "CPBalanceViewController.h"
 
-#import "CPProductsViewController.h"
-
-#import "CPNotificationListViewController.h"
-
-#import "CPFavouritesViewController.h"
-
-#import "CPSettingsViewController.h"
-
-@interface CPGroupViewController ()
-{
-    NSArray *menuList;
-    NSMutableArray *keyList;
-    NSMutableDictionary *dict;
-}
+@interface CPBalanceViewController ()
 
 @end
 
-@implementation CPGroupViewController
+@implementation CPBalanceViewController
 
-@synthesize menuTable,groupId;
+@synthesize lblaccountID,lblName,lblBalance;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -90,6 +77,7 @@
         UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc] initWithCustomView:button2];
         btnSetting.tintColor = [UIColor blackColor];
         self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:btnSetting,btnFavourites,btnSharing,btnNotifications, nil];
+        
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
@@ -101,23 +89,31 @@
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button4];
         
         self.navigationItem.leftBarButtonItems =[NSArray arrayWithObjects:barButtonItem, nil];
-        }
+    }
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
     [SVProgressHUD show];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://chitbox247.com/pos/index.php/apiv2?model=services&group_id=%d&service_id=",groupId]]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
     [request setDelegate:self];
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"account.getDetails\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setPostBody:postBody];
     [request startAsynchronous];
+
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,100 +121,61 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(IBAction)pop:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     [SVProgressHUD dismiss];
+    
 	NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-    menuList = [[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"];
+    NSLog(@"%@",responseDictionary);
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
-        keyList = [[NSMutableArray alloc]init];
-        for(int i = 0; i< [[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"] count];i++)
-        {
-            NSLog(@"INSERTING %@",[[[[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"] objectAtIndex:i]objectForKey:@"provider_name"]objectForKey:@"text"]);
-            if(![keyList containsObject:[[[[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"] objectAtIndex:i]objectForKey:@"provider_name"]objectForKey:@"text"]])
-            {
-                [keyList addObject:[[[[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"] objectAtIndex:i]objectForKey:@"provider_name"]objectForKey:@"text"]];
-                NSLog(@"SUCCESS");
-            }
-            else
-            {
-                NSLog(@"FAILED");
-            }
-        }
-        NSLog(@"LIST %@",keyList);
-        //NSLog(@"COMPLETE %@",[[dict objectForKey:@"AIRTEL"]objectForKey:@"service_name"]);
-        [menuTable reloadData];
+        /*
+         NSLog(@"PASSED");
+         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+         [defaults setObject:txtUsername.text forKey:@"username"];
+         [defaults setObject:txtPassword.text forKey:@"password"];
+         [defaults setObject:responseDictionary forKey:@"account_details"];
+         [defaults synchronize];
+         NSLog(@"%@",responseDictionary);
+         [TestFlight passCheckpoint:@"LOGIN OK"];
+         [SVProgressHUD showSuccessWithStatus:@"Login Success"];
+         CPHomeViewController *homeViewController = [[CPHomeViewController alloc]initWithNibName:@"CPHomeViewController" bundle:nil];
+         CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
+         UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:homeViewController];
+         [self.navigationController presentViewController:appNavigationController
+         animated:YES
+         completion:^{
+         appDelegate.window.rootViewController = appNavigationController;
+         }];
+         */
+        [lblName setText:[[[[responseDictionary objectForKey:@"response"]objectForKey:@"account"]objectForKey:@"account_name"]objectForKey:@"text"]];
+        [lblaccountID setText:[[[[responseDictionary objectForKey:@"response"]objectForKey:@"account"]objectForKey:@"account_no"]objectForKey:@"text"]];
+        [lblBalance setText:[[[[responseDictionary objectForKey:@"response"]objectForKey:@"account"]objectForKey:@"balance"]objectForKey:@"text"]];
     }
     else
     {
+        [TestFlight passCheckpoint:@"LOGIN FAILED"];
         [SVProgressHUD showErrorWithStatus:@"Login Failure"];
     }
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request
+-(IBAction)transactionStatementAction:(id)sender
 {
-	[SVProgressHUD dismiss];
-    [SVProgressHUD showErrorWithStatus:@"Network error"];
+    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(IBAction)transferFundsAction:(id)sender
 {
-    return keyList.count;
+    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(IBAction)rechargeAccountAction:(id)sender
 {
-    static NSString *MyIdentifier = @"MyIdentifier";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-    
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:MyIdentifier];
-    }
-    
-    // Here we use the provided setImageWithURL: method to load the web image
-    // Ensure you use a placeholder image otherwise cells will be initialized with no image
-    //NSLog(@"LOAD %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"]);
-    //cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"];
-    cell.textLabel.text = [keyList objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
-    UIView *selectionColor = [[UIView alloc] init];
-    selectionColor.backgroundColor = [UIColor dullBlueColor];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.selectedBackgroundView = selectionColor;
-    return cell;
+    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"PRODUCTS");
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSMutableArray *productList = [[NSMutableArray alloc]init];
-    for(int i = 0; i<menuList.count; i++)
-    {
-        //NSLog(@"-> %@ %@",[[menuList objectAtIndex:i]objectForKey:@"service_name"],[[menuList objectAtIndex:i]objectForKey:@"provider_name"]);
-        NSString *providerName = [[[menuList objectAtIndex:i]objectForKey:@"provider_name"]objectForKey:@"text"];
-        if([[keyList objectAtIndex:indexPath.row] isEqualToString:providerName])
-        {
-            NSLog(@"-> %@",[[[menuList objectAtIndex:i]objectForKey:@"service_name"]objectForKey:@"text"]);
-            [productList addObject:[menuList objectAtIndex:i]];
-        }
-    }
-    
-    CPProductsViewController *productsViewController = [[CPProductsViewController alloc]initWithNibName:@"CPProductsViewController" bundle:nil];
-    [productsViewController setMenuList:productList];
-    [self.navigationController pushViewController:productsViewController animated:YES];
-}
 
 - (void)showNotifications
 {
@@ -251,6 +208,10 @@
     alertView.animationDuration = 0.15;
     alertView.tag = 888;
     [alertView show];
+}
+-(void)pop:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

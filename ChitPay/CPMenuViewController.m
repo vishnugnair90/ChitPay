@@ -88,6 +88,18 @@
         UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc] initWithCustomView:button2];
         btnSetting.tintColor = [UIColor blackColor];
         self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:btnSetting,btnFavourites,btnSharing,btnNotifications, nil];
+        UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
+        
+        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
+        
+        button4.frame = CGRectMake(0, 0, 100, 40);
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button4];
+        
+        self.navigationItem.leftBarButtonItems =[NSArray arrayWithObjects:barButtonItem, nil];
     }
     return self;
 }
@@ -156,6 +168,7 @@
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];

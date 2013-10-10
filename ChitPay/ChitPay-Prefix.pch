@@ -18,6 +18,9 @@
     #import "TestFlight.h"
     #import "FlatUIKit.h"
     #import "CPNotificationHandler.h"
+    #import "CPSettingsViewController.h"
+    #import "CPNotificationListViewController.h"
+    #import "CPFavouritesViewController.h"
 
     #define kCellColor [UIColor belizeHoleColor]
     #define kTableColor [UIColor belizeHoleColor]

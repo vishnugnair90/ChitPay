@@ -1,28 +1,27 @@
 //
-//  CPNotificationListViewController.m
+//  CPTransactionsViewController.m
 //  ChitPay
 //
-//  Created by Armia on 10/4/13.
+//  Created by Armia on 10/10/13.
 //  Copyright (c) 2013 Armia. All rights reserved.
 //
 
-#import "CPNotificationListViewController.h"
+#import "CPTransactionsViewController.h"
 
 #import "FlatUIKit.h"
 
-@interface CPNotificationListViewController ()<FUIAlertViewDelegate>
+@interface CPTransactionsViewController ()
 
 @end
 
-@implementation CPNotificationListViewController
+@implementation CPTransactionsViewController
 
-@synthesize notificationList,notificationTable;
+@synthesize transactionsList,transactionTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
         // Custom initialization
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         
@@ -99,7 +98,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self LoadNotificationData];
+    [self LoadTransactionData];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -108,9 +107,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return notificationList.count;
+    return transactionsList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,16 +129,38 @@
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     //NSLog(@"LOAD %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"]);
     //cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"];
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
     cell.accessoryView = switchView;
     switchView.tag = indexPath.row;
     [switchView addTarget:self action:@selector(toggleFavoriteSwitch:) forControlEvents:UIControlEventValueChanged];
-    [switchView setOn:YES animated:YES];
-    cell.textLabel.text = [[[notificationList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"];
+    NSString *account_no = [[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"];
+    if([[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"sender_account"]objectForKey:@"text"] isEqualToString:account_no])
+    {
+        if([[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"sender_notification"]objectForKey:@"text"] isEqualToString:@"ON"])
+        {
+            [switchView setOn:YES animated:YES];
+        }
+        else
+        {
+            [switchView setOn:NO animated:YES];
+        }
+    }
+    else
+    {
+        if([[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"receiver_notification"]objectForKey:@"text"] isEqualToString:@"ON"])
+        {
+            [switchView setOn:YES animated:YES];
+        }
+        else
+        {
+            [switchView setOn:NO animated:YES];
+        }
+    }
+    cell.textLabel.text = [[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    cell.detailTextLabel.numberOfLines = 3;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%-20s\n%-20s", [[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"] UTF8String],[[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]UTF8String]];
+    cell.detailTextLabel.numberOfLines = 5;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%-30s\n%-20s", [[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"] UTF8String],[[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]UTF8String]];
     
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
@@ -151,7 +173,7 @@
 {
     //NSArray *array = [[NSArray alloc]init];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"] message:[NSString stringWithFormat:@"Amount:%@\n\nSender:%@\n\nAccount:%@\n\nSender Notification:%@\n\nReceiver Notification:%@\n\nStatus:%@",[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"],[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"sender"]objectForKey:@"text"],[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"sender_account"]objectForKey:@"text"],[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"sender_notification"]objectForKey:@"text"],[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"receiver_notification"]objectForKey:@"text"],[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles:@"", nil];
+    FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"] message:[NSString stringWithFormat:@"Amount:%@\n\nSender:%@\n\nAccount:%@\n\nSender Notification:%@\n\nReceiver Notification:%@\n\nStatus:%@",[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"],[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"sender"]objectForKey:@"text"],[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"sender_account"]objectForKey:@"text"],[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"sender_notification"]objectForKey:@"text"],[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"receiver_notification"]objectForKey:@"text"],[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles:@"", nil];
     alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
     alertView.defaultButtonColor = [UIColor midnightBlueColor];
     alertView.alertContainer.backgroundColor = [UIColor whiteColor];
@@ -163,6 +185,7 @@
     alertView.animationDuration = 0.15;
     alertView.tag = 999;
     [alertView show];
+
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -171,12 +194,12 @@
     [SVProgressHUD dismiss];
     NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-    NSLog(@"%@",responseDictionary);
+    NSLog(@"TRANSACTIONS %@",responseDictionary);
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
         if([[request.userInfo objectForKey:@"ACTION"] isEqualToString:@"CHANGESTATUS"])
         {
-            [self LoadNotificationData];
+            [self LoadTransactionData];
         }
         else
         {
@@ -186,20 +209,20 @@
             if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
             {
                 
-                notificationList = [[[responseDictionary objectForKey:@"response"]objectForKey:@"records"]objectForKey:@"notification"];
-                NSLog(@"ARRAY %@",notificationList);
+                transactionsList = [[[responseDictionary objectForKey:@"response"]objectForKey:@"records"]objectForKey:@"transaction"];
+                NSLog(@"ARRAY %@",transactionsList);
                 [SVProgressHUD dismiss];
-                [notificationTable reloadData];
+                [transactionTable reloadData];
             }
         }
-
+        
     }
     else
         NSLog(@"FAILED");
 }
 - (IBAction)toggleFavoriteSwitch:(UISwitch *)switchView
 {
-    UITableViewCell *cell = [notificationTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:switchView.tag inSection:0]];
+    UITableViewCell *cell = [transactionTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:switchView.tag inSection:0]];
     if(![switchView isOn])
     {
         //cell.textLabel.text = [NSString stringWithFormat:@"OFF"];
@@ -213,7 +236,7 @@
         [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
         [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
         [postBody appendData:[[NSString stringWithFormat:@"<notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
-        [postBody appendData:[[NSString stringWithFormat:@"<unique_id>%@</unique_id>",[[[notificationList objectAtIndex:switchView.tag]objectForKey:@"unique_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<unique_id>%@</unique_id>",[[[transactionsList objectAtIndex:switchView.tag]objectForKey:@"unique_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
         [postBody appendData:[[NSString stringWithFormat:@"<status>OFF</status>"] dataUsingEncoding:NSUTF8StringEncoding]];
         [postBody appendData:[[NSString stringWithFormat:@"</notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
         [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -229,21 +252,28 @@
     }
     //[self updateFavoriteInUserDefaultsFor:cell.textLabel.text withValue:[switchView isOn]];
 }
-- (void)LoadNotificationData
+- (void)LoadTransactionData
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
-    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"transaction.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<transaction>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"<pin>%d</pin>",1234] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"</notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<search>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<trans_id></trans_id>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<trans_status></trans_status>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<from></from>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<to></to>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</search>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<page></page>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<per_page>56</per_page>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</transaction>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setPostBody:postBody];
     [SVProgressHUD show];

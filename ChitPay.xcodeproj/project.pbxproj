@@ -10,6 +10,14 @@
 		160678DE17FD5A7E009D6BB9 /* chit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 160678DC17FD5A7D009D6BB9 /* chit@2x.png */; };
 		160678DF17FD5A7E009D6BB9 /* chit.png in Resources */ = {isa = PBXBuildFile; fileRef = 160678DD17FD5A7E009D6BB9 /* chit.png */; };
 		165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */; };
+		16B2ADF21806AE750095E641 /* CPTransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADF01806AE750095E641 /* CPTransactionsViewController.m */; };
+		16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2ADF11806AE750095E641 /* CPTransactionsViewController.xib */; };
+		16B2ADF71806B9D50095E641 /* CPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADF51806B9D50095E641 /* CPProfileViewController.m */; };
+		16B2ADF81806B9D50095E641 /* CPProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2ADF61806B9D50095E641 /* CPProfileViewController.xib */; };
+		16B2ADFC1806C4970095E641 /* CPBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADFA1806C4970095E641 /* CPBalanceViewController.m */; };
+		16B2ADFD1806C4970095E641 /* CPBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2ADFB1806C4970095E641 /* CPBalanceViewController.xib */; };
+		16B2AE011806C9D50095E641 /* CPStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */; };
+		16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2AE001806C9D50095E641 /* CPStatementViewController.xib */; };
 		16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */; };
 		16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BD17FEAD5600E26B6B /* Home_logo.png */; };
 		16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BE17FEAD5600E26B6B /* Home_logo@2x.png */; };
@@ -103,6 +111,18 @@
 		160678DD17FD5A7E009D6BB9 /* chit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chit.png; sourceTree = "<group>"; };
 		165E04A517FACE7100E9E64B /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
+		16B2ADEF1806AE750095E641 /* CPTransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTransactionsViewController.h; sourceTree = "<group>"; };
+		16B2ADF01806AE750095E641 /* CPTransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTransactionsViewController.m; sourceTree = "<group>"; };
+		16B2ADF11806AE750095E641 /* CPTransactionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPTransactionsViewController.xib; sourceTree = "<group>"; };
+		16B2ADF41806B9D50095E641 /* CPProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPProfileViewController.h; sourceTree = "<group>"; };
+		16B2ADF51806B9D50095E641 /* CPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPProfileViewController.m; sourceTree = "<group>"; };
+		16B2ADF61806B9D50095E641 /* CPProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPProfileViewController.xib; sourceTree = "<group>"; };
+		16B2ADF91806C4970095E641 /* CPBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPBalanceViewController.h; sourceTree = "<group>"; };
+		16B2ADFA1806C4970095E641 /* CPBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPBalanceViewController.m; sourceTree = "<group>"; };
+		16B2ADFB1806C4970095E641 /* CPBalanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPBalanceViewController.xib; sourceTree = "<group>"; };
+		16B2ADFE1806C9D50095E641 /* CPStatementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPStatementViewController.h; sourceTree = "<group>"; };
+		16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPStatementViewController.m; sourceTree = "<group>"; };
+		16B2AE001806C9D50095E641 /* CPStatementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPStatementViewController.xib; sourceTree = "<group>"; };
 		16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationHandler.h; sourceTree = "<group>"; };
 		16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationHandler.m; sourceTree = "<group>"; };
 		16E470BD17FEAD5600E26B6B /* Home_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home_logo.png; sourceTree = "<group>"; };
@@ -339,6 +359,18 @@
 				16E470C717FED83800E26B6B /* CPNotificationListViewController.h */,
 				16E470C817FED83800E26B6B /* CPNotificationListViewController.m */,
 				16E470C917FED83800E26B6B /* CPNotificationListViewController.xib */,
+				16B2ADEF1806AE750095E641 /* CPTransactionsViewController.h */,
+				16B2ADF01806AE750095E641 /* CPTransactionsViewController.m */,
+				16B2ADF11806AE750095E641 /* CPTransactionsViewController.xib */,
+				16B2ADF41806B9D50095E641 /* CPProfileViewController.h */,
+				16B2ADF51806B9D50095E641 /* CPProfileViewController.m */,
+				16B2ADF61806B9D50095E641 /* CPProfileViewController.xib */,
+				16B2ADF91806C4970095E641 /* CPBalanceViewController.h */,
+				16B2ADFA1806C4970095E641 /* CPBalanceViewController.m */,
+				16B2ADFB1806C4970095E641 /* CPBalanceViewController.xib */,
+				16B2ADFE1806C9D50095E641 /* CPStatementViewController.h */,
+				16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */,
+				16B2AE001806C9D50095E641 /* CPStatementViewController.xib */,
 				16E470D117FEEA8600E26B6B /* CPSettingsViewController.h */,
 				16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */,
 				16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */,
@@ -581,6 +613,7 @@
 				16E470C617FEB3A400E26B6B /* share.png in Resources */,
 				2041CA0617D734490091F42C /* Default.png in Resources */,
 				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
+				16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */,
 				16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */,
 				16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */,
 				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
@@ -592,6 +625,7 @@
 				2041CA7817D745B80091F42C /* CPMenuViewController.xib in Resources */,
 				20CEFDE217D87B730042F95F /* CPSignupViewController.xib in Resources */,
 				20CEFDE817D87DED0042F95F /* CPSignupDetailViewController.xib in Resources */,
+				16B2ADFD1806C4970095E641 /* CPBalanceViewController.xib in Resources */,
 				160678DF17FD5A7E009D6BB9 /* chit.png in Resources */,
 				16E470D517FEEA8600E26B6B /* CPSettingsViewController.xib in Resources */,
 				20CEFDEA17D8A90B0042F95F /* logo.png in Resources */,
@@ -604,7 +638,9 @@
 				20E5360B17E84393007B4BAA /* CPServiceViewController.xib in Resources */,
 				20E5361017E87935007B4BAA /* CPProductsViewController.xib in Resources */,
 				16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */,
+				16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */,
 				20C0166217F01B5D00784FE6 /* CPFormViewController.xib in Resources */,
+				16B2ADF81806B9D50095E641 /* CPProfileViewController.xib in Resources */,
 				20C0166F17F0424A00784FE6 /* FlatDatePicker-Icon-Check.png in Resources */,
 				20C0167017F0424A00784FE6 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
 				20C0167117F0424A00784FE6 /* FlatDatePicker-Icon-Close.png in Resources */,
@@ -623,6 +659,7 @@
 				2041CA0417D734490091F42C /* CPAppDelegate.m in Sources */,
 				2041CA1917D735780091F42C /* CPWelcomeViewController.m in Sources */,
 				16E470D417FEEA8600E26B6B /* CPSettingsViewController.m in Sources */,
+				16B2AE011806C9D50095E641 /* CPStatementViewController.m in Sources */,
 				2041CA4F17D739B20091F42C /* ASIAuthenticationDialog.m in Sources */,
 				2041CA5017D739B20091F42C /* ASIDownloadCache.m in Sources */,
 				2041CA5117D739B20091F42C /* ASIFormDataRequest.m in Sources */,
@@ -632,10 +669,12 @@
 				2041CA5417D739B20091F42C /* ASINetworkQueue.m in Sources */,
 				2041CA5517D739B20091F42C /* Reachability.m in Sources */,
 				2041CA5617D739B20091F42C /* XMLReader.m in Sources */,
+				16B2ADF71806B9D50095E641 /* CPProfileViewController.m in Sources */,
 				2041CA6617D7412E0091F42C /* MBProgressHUD.m in Sources */,
 				2041CA6C17D742420091F42C /* SVProgressHUD.m in Sources */,
 				2041CA7217D745980091F42C /* CPHomeViewController.m in Sources */,
 				2041CA7717D745B80091F42C /* CPMenuViewController.m in Sources */,
+				16B2ADFC1806C4970095E641 /* CPBalanceViewController.m in Sources */,
 				20CEFDE117D87B730042F95F /* CPSignupViewController.m in Sources */,
 				20CEFDE717D87DED0042F95F /* CPSignupDetailViewController.m in Sources */,
 				20C4E01617D9C8BF00C71178 /* CPForgotPasswordViewController.m in Sources */,
@@ -655,6 +694,7 @@
 				20E49BC217F1743F00B37822 /* FUITextField.m in Sources */,
 				20E49BC317F1743F00B37822 /* UIBarButtonItem+FlatUI.m in Sources */,
 				20E49BC417F1743F00B37822 /* UIColor+FlatUI.m in Sources */,
+				16B2ADF21806AE750095E641 /* CPTransactionsViewController.m in Sources */,
 				20E49BC517F1743F00B37822 /* UIFont+FlatUI.m in Sources */,
 				20E49BC617F1743F00B37822 /* UIImage+FlatUI.m in Sources */,
 				20E49BC717F1743F00B37822 /* UINavigationBar+FlatUI.m in Sources */,
