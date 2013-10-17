@@ -24,6 +24,8 @@
 
 #import "CPStatementViewController.h"
 
+#import "CPTransferViewController.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @interface CPSettingsViewController ()
@@ -154,7 +156,8 @@
 -(IBAction)TransferAction:(id)sender
 {
     NSLog(@"TRANSFER");
-    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    CPTransferViewController *TransferViewController = [[CPTransferViewController alloc]initWithNibName:@"CPTransferViewController" bundle:nil];
+    [self.navigationController pushViewController:TransferViewController animated:YES];
 }
 
 -(IBAction)NotificationsAction:(id)sender
@@ -194,6 +197,38 @@
                                               
                                               
                                           }];
+}
+- (void)showNotifications
+{
+    CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
+    [self.navigationController pushViewController:NotificationListViewController animated:YES];
+}
+
+- (void)showFavourites
+{
+    CPFavouritesViewController *FavouritesViewController = [[CPFavouritesViewController alloc]initWithNibName:@"CPFavouritesViewController" bundle:nil];
+    [self.navigationController pushViewController:FavouritesViewController animated:YES];
+}
+
+- (void)showSettings
+{
+    CPSettingsViewController *SettingsViewController = [[CPSettingsViewController alloc]initWithNibName:@"CPSettingsViewController" bundle:nil];
+    [self.navigationController pushViewController:SettingsViewController animated:YES];
+}
+
+- (void)showShareMenu
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"Share to" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Facebook",@"Google+",@"LinkedIn",@"Twitter", nil];
+    alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+    alertView.defaultButtonColor = [UIColor midnightBlueColor];
+    alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+    alertView.defaultButtonShadowColor = [UIColor clearColor];
+    alertView.defaultButtonTitleColor = [UIColor whiteColor];
+    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor redColor]];
+    alertView.animationDuration = 0.15;
+    alertView.tag = 888;
+    [alertView show];
 }
 
 -(void)pop:(id)sender
