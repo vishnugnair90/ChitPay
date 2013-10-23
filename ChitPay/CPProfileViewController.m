@@ -7,6 +7,9 @@
 //
 
 #import "CPProfileViewController.h"
+#import "CPProfileEditViewController.h"
+#import "CPPasswordViewController.h"
+#import "CPPINViewController.h"
 
 @interface CPProfileViewController ()
 
@@ -96,6 +99,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [SVProgressHUD show];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
@@ -109,7 +117,6 @@
     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setPostBody:postBody];
     [request startAsynchronous];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -165,17 +172,30 @@
 
 -(IBAction)editAction:(id)sender
 {
-    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    //[SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    CPProfileEditViewController *ProfileEditViewController = [[CPProfileEditViewController alloc]initWithNibName:@"CPProfileEditViewController" bundle:nil];
+    [ProfileEditViewController setStrName:lblName.text];
+    [ProfileEditViewController setStrEmail:lblemail.text];
+    [ProfileEditViewController setStrPhone1:lblphone1.text];
+    [ProfileEditViewController setStrPhone2:lblphone2.text];
+    [ProfileEditViewController setStrCity:lblcity.text];
+    [ProfileEditViewController setStrState:lblstate.text];
+    [ProfileEditViewController setStrAddress:lbladdress.text];
+    [self.navigationController pushViewController:ProfileEditViewController animated:YES];
 }
 
 -(IBAction)pinAction:(id)sender
 {
-    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    //[SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    CPPINViewController *INViewController = [[CPPINViewController alloc]initWithNibName:@"CPPINViewController" bundle:nil];
+    [self.navigationController pushViewController:INViewController animated:YES];
 }
 
 -(IBAction)passwordAction:(id)sender
 {
-    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    //[SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    CPPasswordViewController *PasswordViewController = [[CPPasswordViewController alloc]initWithNibName:@"CPPasswordViewController" bundle:nil];
+    [self.navigationController pushViewController:PasswordViewController animated:YES];
 }
 
 

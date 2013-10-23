@@ -32,6 +32,12 @@
 		16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E470CE17FEE1CA00E26B6B /* CPFavouritesViewController.xib */; };
 		16E470D417FEEA8600E26B6B /* CPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */; };
 		16E470D517FEEA8600E26B6B /* CPSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */; };
+		16F680D018150ABC00930F3A /* CPPINViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680CE18150ABC00930F3A /* CPPINViewController.m */; };
+		16F680D118150ABC00930F3A /* CPPINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F680CF18150ABC00930F3A /* CPPINViewController.xib */; };
+		16F680D518152A8900930F3A /* CPProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680D318152A8900930F3A /* CPProfileEditViewController.m */; };
+		16F680D618152A8900930F3A /* CPProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F680D418152A8900930F3A /* CPProfileEditViewController.xib */; };
+		16F680DA18152AD600930F3A /* CPPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680D818152AD600930F3A /* CPPasswordViewController.m */; };
+		16F680DB18152AD600930F3A /* CPPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F680D918152AD600930F3A /* CPPasswordViewController.xib */; };
 		2041C9F417D734490091F42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F317D734490091F42C /* UIKit.framework */; };
 		2041C9F617D734490091F42C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F517D734490091F42C /* Foundation.framework */; };
 		2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2041C9FC17D734490091F42C /* InfoPlist.strings */; };
@@ -144,6 +150,15 @@
 		16E470D117FEEA8600E26B6B /* CPSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSettingsViewController.h; sourceTree = "<group>"; };
 		16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSettingsViewController.m; sourceTree = "<group>"; };
 		16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPSettingsViewController.xib; sourceTree = "<group>"; };
+		16F680CD18150ABC00930F3A /* CPPINViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPINViewController.h; sourceTree = "<group>"; };
+		16F680CE18150ABC00930F3A /* CPPINViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPINViewController.m; sourceTree = "<group>"; };
+		16F680CF18150ABC00930F3A /* CPPINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPPINViewController.xib; sourceTree = "<group>"; };
+		16F680D218152A8900930F3A /* CPProfileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPProfileEditViewController.h; sourceTree = "<group>"; };
+		16F680D318152A8900930F3A /* CPProfileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPProfileEditViewController.m; sourceTree = "<group>"; };
+		16F680D418152A8900930F3A /* CPProfileEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPProfileEditViewController.xib; sourceTree = "<group>"; };
+		16F680D718152AD600930F3A /* CPPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPasswordViewController.h; sourceTree = "<group>"; };
+		16F680D818152AD600930F3A /* CPPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPasswordViewController.m; sourceTree = "<group>"; };
+		16F680D918152AD600930F3A /* CPPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPPasswordViewController.xib; sourceTree = "<group>"; };
 		2041C9EF17D734490091F42C /* ChitPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2041C9F317D734490091F42C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2041C9F517D734490091F42C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -370,6 +385,15 @@
 				16B2ADF41806B9D50095E641 /* CPProfileViewController.h */,
 				16B2ADF51806B9D50095E641 /* CPProfileViewController.m */,
 				16B2ADF61806B9D50095E641 /* CPProfileViewController.xib */,
+				16F680D218152A8900930F3A /* CPProfileEditViewController.h */,
+				16F680D318152A8900930F3A /* CPProfileEditViewController.m */,
+				16F680D418152A8900930F3A /* CPProfileEditViewController.xib */,
+				16F680D718152AD600930F3A /* CPPasswordViewController.h */,
+				16F680D818152AD600930F3A /* CPPasswordViewController.m */,
+				16F680D918152AD600930F3A /* CPPasswordViewController.xib */,
+				16F680CD18150ABC00930F3A /* CPPINViewController.h */,
+				16F680CE18150ABC00930F3A /* CPPINViewController.m */,
+				16F680CF18150ABC00930F3A /* CPPINViewController.xib */,
 				16B2ADF91806C4970095E641 /* CPBalanceViewController.h */,
 				16B2ADFA1806C4970095E641 /* CPBalanceViewController.m */,
 				16B2ADFB1806C4970095E641 /* CPBalanceViewController.xib */,
@@ -620,17 +644,20 @@
 				2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */,
 				16E470C617FEB3A400E26B6B /* share.png in Resources */,
 				2041CA0617D734490091F42C /* Default.png in Resources */,
+				16F680D118150ABC00930F3A /* CPPINViewController.xib in Resources */,
 				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
 				16894662180FD49400BC64BA /* CPTransferViewController.xib in Resources */,
 				16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */,
 				16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */,
 				16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */,
 				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
+				16F680DB18152AD600930F3A /* CPPasswordViewController.xib in Resources */,
 				2041CA1A17D735780091F42C /* CPWelcomeViewController.xib in Resources */,
 				160678DE17FD5A7E009D6BB9 /* chit@2x.png in Resources */,
 				2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */,
 				16E470CB17FED83800E26B6B /* CPNotificationListViewController.xib in Resources */,
 				2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */,
+				16F680D618152A8900930F3A /* CPProfileEditViewController.xib in Resources */,
 				2041CA7817D745B80091F42C /* CPMenuViewController.xib in Resources */,
 				20CEFDE217D87B730042F95F /* CPSignupViewController.xib in Resources */,
 				20CEFDE817D87DED0042F95F /* CPSignupDetailViewController.xib in Resources */,
@@ -673,6 +700,7 @@
 				2041CA5017D739B20091F42C /* ASIDownloadCache.m in Sources */,
 				2041CA5117D739B20091F42C /* ASIFormDataRequest.m in Sources */,
 				2041CA5217D739B20091F42C /* ASIHTTPRequest.m in Sources */,
+				16F680D018150ABC00930F3A /* CPPINViewController.m in Sources */,
 				16E470CA17FED83800E26B6B /* CPNotificationListViewController.m in Sources */,
 				2041CA5317D739B20091F42C /* ASIInputStream.m in Sources */,
 				2041CA5417D739B20091F42C /* ASINetworkQueue.m in Sources */,
@@ -694,6 +722,7 @@
 				20E5360F17E87935007B4BAA /* CPProductsViewController.m in Sources */,
 				16E470CF17FEE1CA00E26B6B /* CPFavouritesViewController.m in Sources */,
 				20C0166117F01B5D00784FE6 /* CPFormViewController.m in Sources */,
+				16F680D518152A8900930F3A /* CPProfileEditViewController.m in Sources */,
 				20C0167317F0424A00784FE6 /* FlatDatePicker.m in Sources */,
 				20E49BBC17F1743F00B37822 /* FUIAlertView.m in Sources */,
 				20E49BBD17F1743F00B37822 /* FUIButton.m in Sources */,
@@ -716,6 +745,7 @@
 				20E49BCD17F1743F00B37822 /* UITableViewCell+FlatUI.m in Sources */,
 				20E49BCE17F1743F00B37822 /* UIToolbar+FlatUI.m in Sources */,
 				16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */,
+				16F680DA18152AD600930F3A /* CPPasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

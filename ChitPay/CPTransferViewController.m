@@ -115,6 +115,7 @@
     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setUserInfo:[NSDictionary dictionaryWithObject:@"ACCOUNTAUTHENTICATION" forKey:@"TYPE"]];
     [request setPostBody:postBody];
+    [SVProgressHUD show];
     [request startAsynchronous];
 }
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -197,6 +198,7 @@
     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setUserInfo:[NSDictionary dictionaryWithObject:@"ACCOUNTTRANSFER" forKey:@"TYPE"]];
     [request setPostBody:postBody];
+    [SVProgressHUD show];
     [request startAsynchronous];
 }
 
