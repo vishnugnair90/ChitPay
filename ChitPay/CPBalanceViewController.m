@@ -8,6 +8,12 @@
 
 #import "CPBalanceViewController.h"
 
+#import "CPTransferViewController.h"
+
+#import "CPRechargeViewController.h"
+
+#import "CPStatementViewController.h"
+
 @interface CPBalanceViewController ()
 
 @end
@@ -156,24 +162,26 @@
     }
     else
     {
-        [TestFlight passCheckpoint:@"LOGIN FAILED"];
         [SVProgressHUD showErrorWithStatus:@"Login Failure"];
     }
 }
 
 -(IBAction)transactionStatementAction:(id)sender
 {
-    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    CPStatementViewController *StatementViewController = [[CPStatementViewController alloc]initWithNibName:@"CPStatementViewController" bundle:nil];
+    [self.navigationController pushViewController:StatementViewController animated:YES];
 }
 
 -(IBAction)transferFundsAction:(id)sender
 {
-    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    CPTransferViewController *TransferViewController = [[CPTransferViewController alloc]initWithNibName:@"CPTransferViewController" bundle:nil];
+    [self.navigationController pushViewController:TransferViewController animated:YES];
 }
 
 -(IBAction)rechargeAccountAction:(id)sender
 {
-    [SVProgressHUD showErrorWithStatus:@"Feature Not Yet Available!"];
+    CPRechargeViewController *RechargeViewController = [[CPRechargeViewController alloc]initWithNibName:@"CPRechargeViewController" bundle:nil];
+    [self.navigationController pushViewController:RechargeViewController animated:YES];
 }
 
 

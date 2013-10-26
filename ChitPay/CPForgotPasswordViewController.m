@@ -38,7 +38,6 @@
         }
     }
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
-    [TestFlight passCheckpoint:@"FORGOT PASSWORD START"];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -86,12 +85,10 @@
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
         [SVProgressHUD showSuccessWithStatus:@"Check Inbox for new password"];
-        [TestFlight passCheckpoint:@"FORGOT PASSWORD OK"];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else
     {
-        [TestFlight passCheckpoint:@"FORGOT PASSWORD OK"];
         [SVProgressHUD showErrorWithStatus:@"Unknown Username/Email"];
     }
 }

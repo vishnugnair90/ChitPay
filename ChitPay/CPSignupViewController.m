@@ -42,7 +42,6 @@
         }
     }
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
-     [TestFlight passCheckpoint:@"SIGNUP START"];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -96,7 +95,6 @@
     }
     if([self checkFields])
     {
-        [TestFlight passCheckpoint:@"SIGNUP STAGE 1 OK"];
         CPSignupDetailViewController *signupDetailViewController = [[CPSignupDetailViewController alloc]initWithNibName:@"CPSignupDetailViewController" bundle:nil];
         [signupDetailViewController setStrEmail:txtEmail.text];
         [signupDetailViewController setStrUsername:txtUsername.text];

@@ -10,8 +10,6 @@
 
 #import "CPWelcomeViewController.h"
 
-#import "TestFlight.h"
-
 #import "CPNotificationHandler.h"
 
 @implementation CPAppDelegate
@@ -21,7 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
-    [TestFlight takeOff:@"12df1410-97cc-4593-be6b-de311af5580b"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc] initWithNibName:@"CPWelcomeViewController" bundle:nil];
@@ -81,7 +78,6 @@
 }
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-    [TestFlight passCheckpoint:@"NOTIFICATIONS OK"];
     NSLog(@"My token is: %@", deviceToken);
     [[CPNotificationHandler singleton]getNotificaton];    
 }

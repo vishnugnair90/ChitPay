@@ -15,7 +15,6 @@
     #import "XMLReader.h"
     #import "MBProgressHUD.h"
     #import "SVProgressHUD.h"
-    #import "TestFlight.h"
     #import "FlatUIKit.h"
     #import "CPNotificationHandler.h"
     #import "CPSettingsViewController.h"

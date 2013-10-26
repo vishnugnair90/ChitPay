@@ -20,6 +20,19 @@
 		16B2ADFD1806C4970095E641 /* CPBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2ADFB1806C4970095E641 /* CPBalanceViewController.xib */; };
 		16B2AE011806C9D50095E641 /* CPStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */; };
 		16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2AE001806C9D50095E641 /* CPStatementViewController.xib */; };
+		16BA70BA181A46C10093F1BD /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70B6181A46C10093F1BD /* libPayPalMobile.a */; };
+		16BA70BC181A47AF0093F1BD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70BB181A47AF0093F1BD /* AVFoundation.framework */; };
+		16BA70BE181A47B70093F1BD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70BD181A47B70093F1BD /* AudioToolbox.framework */; };
+		16BA70C0181A47BE0093F1BD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70BF181A47BE0093F1BD /* CoreMedia.framework */; };
+		16BA70C2181A47C60093F1BD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70C1181A47C60093F1BD /* CoreVideo.framework */; };
+		16BA70C4181A47D50093F1BD /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70C3181A47D50093F1BD /* libxml2.dylib */; };
+		16BA70C6181A47DC0093F1BD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70C5181A47DC0093F1BD /* MessageUI.framework */; };
+		16BA70C8181A47EE0093F1BD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70C7181A47EE0093F1BD /* OpenGLES.framework */; };
+		16BA70CA181A47FE0093F1BD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70C9181A47FE0093F1BD /* Security.framework */; };
+		16BCE5BE1819041800ADA950 /* CPRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCE5BC1819041800ADA950 /* CPRechargeViewController.m */; };
+		16BCE5BF1819041800ADA950 /* CPRechargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16BCE5BD1819041800ADA950 /* CPRechargeViewController.xib */; };
+		16BCE5C31819243D00ADA950 /* CPInterswitchPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCE5C11819243D00ADA950 /* CPInterswitchPaymentViewController.m */; };
+		16BCE5C41819243D00ADA950 /* CPInterswitchPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16BCE5C21819243D00ADA950 /* CPInterswitchPaymentViewController.xib */; };
 		16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */; };
 		16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BD17FEAD5600E26B6B /* Home_logo.png */; };
 		16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BE17FEAD5600E26B6B /* Home_logo@2x.png */; };
@@ -32,6 +45,9 @@
 		16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E470CE17FEE1CA00E26B6B /* CPFavouritesViewController.xib */; };
 		16E470D417FEEA8600E26B6B /* CPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */; };
 		16E470D517FEEA8600E26B6B /* CPSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */; };
+		16EE2CCB181A4A2500503249 /* cal.license in Resources */ = {isa = PBXBuildFile; fileRef = 16EE2CC8181A4A2500503249 /* cal.license */; };
+		16EE2CCC181A4A2500503249 /* genLicense.pl in Resources */ = {isa = PBXBuildFile; fileRef = 16EE2CC9181A4A2500503249 /* genLicense.pl */; };
+		16EE2CCD181A4A2500503249 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 16EE2CCA181A4A2500503249 /* Settings.bundle */; };
 		16F680D018150ABC00930F3A /* CPPINViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680CE18150ABC00930F3A /* CPPINViewController.m */; };
 		16F680D118150ABC00930F3A /* CPPINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F680CF18150ABC00930F3A /* CPPINViewController.xib */; };
 		16F680D518152A8900930F3A /* CPProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680D318152A8900930F3A /* CPProfileEditViewController.m */; };
@@ -69,9 +85,6 @@
 		2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA7117D745980091F42C /* CPHomeViewController.xib */; };
 		2041CA7717D745B80091F42C /* CPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2041CA7517D745B80091F42C /* CPMenuViewController.m */; };
 		2041CA7817D745B80091F42C /* CPMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2041CA7617D745B80091F42C /* CPMenuViewController.xib */; };
-		2085980B17DDD1D500882F4B /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2085980517DDD1D500882F4B /* libTestFlight.a */; };
-		2085980C17DDD1D500882F4B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2085980617DDD1D500882F4B /* README.md */; };
-		2085980D17DDD1D500882F4B /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 2085980717DDD1D500882F4B /* release_notes.md */; };
 		20C0166117F01B5D00784FE6 /* CPFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C0165F17F01B5D00784FE6 /* CPFormViewController.m */; };
 		20C0166217F01B5D00784FE6 /* CPFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20C0166017F01B5D00784FE6 /* CPFormViewController.xib */; };
 		20C0166F17F0424A00784FE6 /* FlatDatePicker-Icon-Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C0166917F0424A00784FE6 /* FlatDatePicker-Icon-Check.png */; };
@@ -134,6 +147,24 @@
 		16B2ADFE1806C9D50095E641 /* CPStatementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPStatementViewController.h; sourceTree = "<group>"; };
 		16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPStatementViewController.m; sourceTree = "<group>"; };
 		16B2AE001806C9D50095E641 /* CPStatementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPStatementViewController.xib; sourceTree = "<group>"; };
+		16BA70B6181A46C10093F1BD /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
+		16BA70B7181A46C10093F1BD /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
+		16BA70B8181A46C10093F1BD /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
+		16BA70B9181A46C10093F1BD /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
+		16BA70BB181A47AF0093F1BD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		16BA70BD181A47B70093F1BD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		16BA70BF181A47BE0093F1BD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		16BA70C1181A47C60093F1BD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		16BA70C3181A47D50093F1BD /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		16BA70C5181A47DC0093F1BD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		16BA70C7181A47EE0093F1BD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		16BA70C9181A47FE0093F1BD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		16BCE5BB1819041800ADA950 /* CPRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRechargeViewController.h; sourceTree = "<group>"; };
+		16BCE5BC1819041800ADA950 /* CPRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRechargeViewController.m; sourceTree = "<group>"; };
+		16BCE5BD1819041800ADA950 /* CPRechargeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPRechargeViewController.xib; sourceTree = "<group>"; };
+		16BCE5C01819243D00ADA950 /* CPInterswitchPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPInterswitchPaymentViewController.h; sourceTree = "<group>"; };
+		16BCE5C11819243D00ADA950 /* CPInterswitchPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPInterswitchPaymentViewController.m; sourceTree = "<group>"; };
+		16BCE5C21819243D00ADA950 /* CPInterswitchPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPInterswitchPaymentViewController.xib; sourceTree = "<group>"; };
 		16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationHandler.h; sourceTree = "<group>"; };
 		16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationHandler.m; sourceTree = "<group>"; };
 		16E470BD17FEAD5600E26B6B /* Home_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home_logo.png; sourceTree = "<group>"; };
@@ -150,6 +181,9 @@
 		16E470D117FEEA8600E26B6B /* CPSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSettingsViewController.h; sourceTree = "<group>"; };
 		16E470D217FEEA8600E26B6B /* CPSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSettingsViewController.m; sourceTree = "<group>"; };
 		16E470D317FEEA8600E26B6B /* CPSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPSettingsViewController.xib; sourceTree = "<group>"; };
+		16EE2CC8181A4A2500503249 /* cal.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cal.license; sourceTree = "<group>"; };
+		16EE2CC9181A4A2500503249 /* genLicense.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = genLicense.pl; sourceTree = "<group>"; };
+		16EE2CCA181A4A2500503249 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		16F680CD18150ABC00930F3A /* CPPINViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPINViewController.h; sourceTree = "<group>"; };
 		16F680CE18150ABC00930F3A /* CPPINViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPINViewController.m; sourceTree = "<group>"; };
 		16F680CF18150ABC00930F3A /* CPPINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPPINViewController.xib; sourceTree = "<group>"; };
@@ -211,12 +245,6 @@
 		2041CA7417D745B80091F42C /* CPMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMenuViewController.h; sourceTree = "<group>"; };
 		2041CA7517D745B80091F42C /* CPMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMenuViewController.m; sourceTree = "<group>"; };
 		2041CA7617D745B80091F42C /* CPMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPMenuViewController.xib; sourceTree = "<group>"; };
-		2085980517DDD1D500882F4B /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		2085980617DDD1D500882F4B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		2085980717DDD1D500882F4B /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		2085980817DDD1D500882F4B /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		2085980917DDD1D500882F4B /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		2085980A17DDD1D500882F4B /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		20C0165E17F01B5D00784FE6 /* CPFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFormViewController.h; sourceTree = "<group>"; };
 		20C0165F17F01B5D00784FE6 /* CPFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFormViewController.m; sourceTree = "<group>"; };
 		20C0166017F01B5D00784FE6 /* CPFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPFormViewController.xib; sourceTree = "<group>"; };
@@ -292,22 +320,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E49BD117F175B600B37822 /* CoreText.framework in Frameworks */,
+				2041C9F417D734490091F42C /* UIKit.framework in Frameworks */,
+				2041CA5D17D73FB40091F42C /* SystemConfiguration.framework in Frameworks */,
+				16BA70CA181A47FE0093F1BD /* Security.framework in Frameworks */,
 				2041CA6E17D742B30091F42C /* QuartzCore.framework in Frameworks */,
+				16BA70C8181A47EE0093F1BD /* OpenGLES.framework in Frameworks */,
+				2041CA5B17D73F9F0091F42C /* MobileCoreServices.framework in Frameworks */,
+				16BA70C6181A47DC0093F1BD /* MessageUI.framework in Frameworks */,
+				16BA70C4181A47D50093F1BD /* libxml2.dylib in Frameworks */,
+				16BA70C2181A47C60093F1BD /* CoreVideo.framework in Frameworks */,
+				16BA70C0181A47BE0093F1BD /* CoreMedia.framework in Frameworks */,
+				16BA70BE181A47B70093F1BD /* AudioToolbox.framework in Frameworks */,
+				16BA70BC181A47AF0093F1BD /* AVFoundation.framework in Frameworks */,
+				20E49BD117F175B600B37822 /* CoreText.framework in Frameworks */,
 				2041CA6217D73FE10091F42C /* CoreGraphics.framework in Frameworks */,
 				2041CA6117D73FC30091F42C /* libz.dylib in Frameworks */,
 				2041CA5F17D73FBC0091F42C /* CFNetwork.framework in Frameworks */,
-				2041CA5D17D73FB40091F42C /* SystemConfiguration.framework in Frameworks */,
-				2041CA5B17D73F9F0091F42C /* MobileCoreServices.framework in Frameworks */,
-				2041C9F417D734490091F42C /* UIKit.framework in Frameworks */,
+				16BA70BA181A46C10093F1BD /* libPayPalMobile.a in Frameworks */,
 				2041C9F617D734490091F42C /* Foundation.framework in Frameworks */,
-				2085980B17DDD1D500882F4B /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16BA70B5181A46C10093F1BD /* PayPalMobile */ = {
+			isa = PBXGroup;
+			children = (
+				16BA70B6181A46C10093F1BD /* libPayPalMobile.a */,
+				16BA70B7181A46C10093F1BD /* PayPalMobile.h */,
+				16BA70B8181A46C10093F1BD /* PayPalPayment.h */,
+				16BA70B9181A46C10093F1BD /* PayPalPaymentViewController.h */,
+			);
+			path = PayPalMobile;
+			sourceTree = "<group>";
+		};
+		16EE2CC7181A4A2500503249 /* licenses */ = {
+			isa = PBXGroup;
+			children = (
+				16EE2CC8181A4A2500503249 /* cal.license */,
+				16EE2CC9181A4A2500503249 /* genLicense.pl */,
+			);
+			path = licenses;
+			sourceTree = "<group>";
+		};
 		2041C9E417D734490091F42C = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +384,14 @@
 		2041C9F217D734490091F42C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16BA70C9181A47FE0093F1BD /* Security.framework */,
+				16BA70C7181A47EE0093F1BD /* OpenGLES.framework */,
+				16BA70C5181A47DC0093F1BD /* MessageUI.framework */,
+				16BA70C3181A47D50093F1BD /* libxml2.dylib */,
+				16BA70C1181A47C60093F1BD /* CoreVideo.framework */,
+				16BA70BF181A47BE0093F1BD /* CoreMedia.framework */,
+				16BA70BD181A47B70093F1BD /* AudioToolbox.framework */,
+				16BA70BB181A47AF0093F1BD /* AVFoundation.framework */,
 				20E49BD017F175B600B37822 /* CoreText.framework */,
 				2041CA6D17D742B30091F42C /* QuartzCore.framework */,
 				2041CA6017D73FC30091F42C /* libz.dylib */,
@@ -397,6 +461,12 @@
 				16B2ADF91806C4970095E641 /* CPBalanceViewController.h */,
 				16B2ADFA1806C4970095E641 /* CPBalanceViewController.m */,
 				16B2ADFB1806C4970095E641 /* CPBalanceViewController.xib */,
+				16BCE5BB1819041800ADA950 /* CPRechargeViewController.h */,
+				16BCE5BC1819041800ADA950 /* CPRechargeViewController.m */,
+				16BCE5BD1819041800ADA950 /* CPRechargeViewController.xib */,
+				16BCE5C01819243D00ADA950 /* CPInterswitchPaymentViewController.h */,
+				16BCE5C11819243D00ADA950 /* CPInterswitchPaymentViewController.m */,
+				16BCE5C21819243D00ADA950 /* CPInterswitchPaymentViewController.xib */,
 				16B2ADFE1806C9D50095E641 /* CPStatementViewController.h */,
 				16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */,
 				16B2AE001806C9D50095E641 /* CPStatementViewController.xib */,
@@ -421,6 +491,8 @@
 		2041C9FA17D734490091F42C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				16EE2CC7181A4A2500503249 /* licenses */,
+				16EE2CCA181A4A2500503249 /* Settings.bundle */,
 				2041C9FB17D734490091F42C /* ChitPay-Info.plist */,
 				2041C9FC17D734490091F42C /* InfoPlist.strings */,
 				2041C9FF17D734490091F42C /* main.m */,
@@ -437,9 +509,9 @@
 			children = (
 				165E04A517FACE7100E9E64B /* MTStatusBarOverlay.h */,
 				165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */,
+				16BA70B5181A46C10093F1BD /* PayPalMobile */,
 				20E49B9417F1743F00B37822 /* FlatUI */,
 				20C0166817F0424A00784FE6 /* FlatDatePicker */,
-				2085980417DDD1D500882F4B /* TestFlightSDK2.0.0 */,
 				2041CA6717D742310091F42C /* SVProgressHUD */,
 				2041CA6317D7411B0091F42C /* MBProgressHUD */,
 				2041CA1E17D739620091F42C /* ASIHTTPRequest */,
@@ -515,19 +587,6 @@
 				2041CA6A17D742420091F42C /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
-			sourceTree = "<group>";
-		};
-		2085980417DDD1D500882F4B /* TestFlightSDK2.0.0 */ = {
-			isa = PBXGroup;
-			children = (
-				2085980517DDD1D500882F4B /* libTestFlight.a */,
-				2085980617DDD1D500882F4B /* README.md */,
-				2085980717DDD1D500882F4B /* release_notes.md */,
-				2085980817DDD1D500882F4B /* TestFlight+AsyncLogging.h */,
-				2085980917DDD1D500882F4B /* TestFlight+ManualSessions.h */,
-				2085980A17DDD1D500882F4B /* TestFlight.h */,
-			);
-			path = TestFlightSDK2.0.0;
 			sourceTree = "<group>";
 		};
 		20C0166817F0424A00784FE6 /* FlatDatePicker */ = {
@@ -648,6 +707,7 @@
 				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
 				16894662180FD49400BC64BA /* CPTransferViewController.xib in Resources */,
 				16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */,
+				16EE2CCD181A4A2500503249 /* Settings.bundle in Resources */,
 				16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */,
 				16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */,
 				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
@@ -655,6 +715,7 @@
 				2041CA1A17D735780091F42C /* CPWelcomeViewController.xib in Resources */,
 				160678DE17FD5A7E009D6BB9 /* chit@2x.png in Resources */,
 				2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */,
+				16EE2CCB181A4A2500503249 /* cal.license in Resources */,
 				16E470CB17FED83800E26B6B /* CPNotificationListViewController.xib in Resources */,
 				2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */,
 				16F680D618152A8900930F3A /* CPProfileEditViewController.xib in Resources */,
@@ -667,18 +728,19 @@
 				20CEFDEA17D8A90B0042F95F /* logo.png in Resources */,
 				16E470C417FEB3A400E26B6B /* settings.png in Resources */,
 				20C4E01717D9C8BF00C71178 /* CPForgotPasswordViewController.xib in Resources */,
-				2085980C17DDD1D500882F4B /* README.md in Resources */,
-				2085980D17DDD1D500882F4B /* release_notes.md in Resources */,
 				16E470C517FEB3A400E26B6B /* fav.png in Resources */,
 				20E5360517E8437D007B4BAA /* CPGroupViewController.xib in Resources */,
 				20E5360B17E84393007B4BAA /* CPServiceViewController.xib in Resources */,
 				20E5361017E87935007B4BAA /* CPProductsViewController.xib in Resources */,
 				16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */,
+				16BCE5BF1819041800ADA950 /* CPRechargeViewController.xib in Resources */,
 				16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */,
+				16EE2CCC181A4A2500503249 /* genLicense.pl in Resources */,
 				20C0166217F01B5D00784FE6 /* CPFormViewController.xib in Resources */,
 				16B2ADF81806B9D50095E641 /* CPProfileViewController.xib in Resources */,
 				20C0166F17F0424A00784FE6 /* FlatDatePicker-Icon-Check.png in Resources */,
 				20C0167017F0424A00784FE6 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
+				16BCE5C41819243D00ADA950 /* CPInterswitchPaymentViewController.xib in Resources */,
 				20C0167117F0424A00784FE6 /* FlatDatePicker-Icon-Close.png in Resources */,
 				20C0167217F0424A00784FE6 /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 			);
@@ -706,6 +768,7 @@
 				2041CA5417D739B20091F42C /* ASINetworkQueue.m in Sources */,
 				2041CA5517D739B20091F42C /* Reachability.m in Sources */,
 				2041CA5617D739B20091F42C /* XMLReader.m in Sources */,
+				16BCE5C31819243D00ADA950 /* CPInterswitchPaymentViewController.m in Sources */,
 				16B2ADF71806B9D50095E641 /* CPProfileViewController.m in Sources */,
 				2041CA6617D7412E0091F42C /* MBProgressHUD.m in Sources */,
 				2041CA6C17D742420091F42C /* SVProgressHUD.m in Sources */,
@@ -731,6 +794,7 @@
 				20E49BC017F1743F00B37822 /* FUISegmentedControl.m in Sources */,
 				20E49BC117F1743F00B37822 /* FUISwitch.m in Sources */,
 				20E49BC217F1743F00B37822 /* FUITextField.m in Sources */,
+				16BCE5BE1819041800ADA950 /* CPRechargeViewController.m in Sources */,
 				20E49BC317F1743F00B37822 /* UIBarButtonItem+FlatUI.m in Sources */,
 				20E49BC417F1743F00B37822 /* UIColor+FlatUI.m in Sources */,
 				16B2ADF21806AE750095E641 /* CPTransactionsViewController.m in Sources */,
@@ -828,7 +892,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ChitPay/External Classes/TestFlightSDK2.0.0\"",
+					"\\\"$(SRCROOT)/ChitPay/External\\ Classes/TestFlightSDK2.0.0\\\"",
+					"/Users/armia/Desktop/Vishnu\\ Workspace/ChitPay/ChitPay/ChitPay/External\\ Classes/PayPalMobile",
+				);
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -844,7 +913,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ChitPay/External Classes/TestFlightSDK2.0.0\"",
+					"\\\"$(SRCROOT)/ChitPay/External\\ Classes/TestFlightSDK2.0.0\\\"",
+					"/Users/armia/Desktop/Vishnu\\ Workspace/ChitPay/ChitPay/ChitPay/External\\ Classes/PayPalMobile",
+				);
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

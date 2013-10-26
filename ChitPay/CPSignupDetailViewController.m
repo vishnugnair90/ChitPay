@@ -220,7 +220,6 @@
     NSLog(@"\n\nRESPONSE\n%@",responseDictionary);
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
-        [TestFlight passCheckpoint:@"SIGN UP OK"];
         [SVProgressHUD showSuccessWithStatus:@"Signup Success"];
         
         NSUserDefaults *defaults = [NSUserDefaults alloc];

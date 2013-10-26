@@ -115,7 +115,6 @@
     [super viewDidLoad];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
-    [TestFlight passCheckpoint:@"HOME START"];
     //[self.navigationController.navigationBar setHidden:YES];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [welcomeLabel setText:[NSString stringWithFormat:@"Welcome %@",[[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"contacts"]objectForKey:@"contact_name"]objectForKey:@"text"]]];

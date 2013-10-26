@@ -1,0 +1,6 @@
+"cal" = "\n\nSummary The PayPal iOS SDK uses code from the following libraries:\n\n* Willow Garage's [OpenCV](http://opencv.willowgarage.com/wiki/)\n\n* [Eigen](http://eigen.tuxfamily.org)\n\n* Erica Sadun's [iPhone Developer's Cookbook Code Samples and uidevice-extension categories](https://github.com/erica/)\n\n* Georg Kitz's [UIDevice-with-UniqueIdentifier-for-iOS-5](https://github.com/gekitz/UIDevice-with-UniqueIdentifier-for-iOS-5)\n\n* Base64 [en|de]coding methods by Dave Winer, via Colloquy's [Chat Core](http://colloquy.info/project/wiki/Source%20Code)\n\n* Tomáš Znamenáček's [Lambda Alert](https://github.com/zoul/Lambda-Alert)\n\n* Josh Bleecher Snyder's [TLCommon](https://github.com/treelinelabs/TLCommon)\n\n* Facebook's [Three20](https://github.com/facebook/three20)\n\n* [Openstack](http://openstack.org/)\n\n* [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html)";
+"cal2" = "Week Calendar";
+"cal3" = "Copyright (c) 2009 Rob Monie Dual licensed under the MIT and GPL licenses:";
+"cal4" = "http://www.opensource.org/licenses/mit-license.php";
+"cal5" = "http://www.gnu.org/licenses/gpl.html";
+"cal6" = "Amendments Copyright (c) 2011 Iconic Mobile Ltd.";

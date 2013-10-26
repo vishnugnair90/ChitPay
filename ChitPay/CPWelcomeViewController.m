@@ -117,7 +117,6 @@
         [defaults setObject:responseDictionary forKey:@"account_details"];
         [defaults synchronize];
         NSLog(@"%@",responseDictionary);
-        [TestFlight passCheckpoint:@"LOGIN OK"];
         [SVProgressHUD showSuccessWithStatus:@"Login Success"];
         CPHomeViewController *homeViewController = [[CPHomeViewController alloc]initWithNibName:@"CPHomeViewController" bundle:nil];
         CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -130,7 +129,6 @@
     }
     else
     {
-        [TestFlight passCheckpoint:@"LOGIN FAILED"];
         [SVProgressHUD showErrorWithStatus:@"Login Failure"];
     }
 }

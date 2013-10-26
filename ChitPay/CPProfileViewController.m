@@ -165,7 +165,6 @@
     }
     else
     {
-        [TestFlight passCheckpoint:@"LOGIN FAILED"];
         [SVProgressHUD showErrorWithStatus:@"Login Failure"];
     }
 }
