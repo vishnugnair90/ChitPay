@@ -17,7 +17,7 @@
 #import "CPForgotPasswordViewController.h"
 
 
-@interface CPWelcomeViewController ()
+@interface CPWelcomeViewController ()<FUIAlertViewDelegate>
 @end
 
 @implementation CPWelcomeViewController
@@ -137,5 +137,21 @@
 	[SVProgressHUD dismiss];
     [SVProgressHUD showErrorWithStatus:@"Network error"];
 }
-
+-(IBAction)chooseCountry:(id)sender
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"Choose Country" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Nigeria",@"South Africa", nil];
+    alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+    alertView.defaultButtonColor = [UIColor midnightBlueColor];
+    alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+    alertView.defaultButtonShadowColor = [UIColor clearColor];
+    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor dullBlueColor]];
+    alertView.animationDuration = 0.15;
+    alertView.tag = 999;
+    [alertView show];
+}
+-(void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"CLicked %d",buttonIndex);
+}
 @end

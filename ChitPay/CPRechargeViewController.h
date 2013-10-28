@@ -10,6 +10,9 @@
 
 #import "PayPalMobile.h"
 
+#import <StoreKit/StoreKit.h>
+#import "CPInterswitchPaymentViewController.h"
+
 @interface CPRechargeViewController : UIViewController<PayPalPaymentDelegate>
 {
     
@@ -17,4 +20,8 @@
 
 - (IBAction)payInterswitch:(id)sender;
 - (IBAction)payBank:(id)sender;
+- (IBAction)payInapp:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *level2Button;
+@property (strong, nonatomic) CPInterswitchPaymentViewController *purchaseController;
+-(void)enableLevel2;
 @end

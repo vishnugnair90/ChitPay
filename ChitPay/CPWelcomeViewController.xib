@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPWelcomeViewController">
             <connections>
+                <outlet property="btnChooseCountry" destination="YNH-Dq-d4e" id="Vwn-Do-rQ9"/>
                 <outlet property="btnForgotpass" destination="9" id="15"/>
                 <outlet property="btnLogin" destination="4" id="16"/>
                 <outlet property="btnSignup" destination="8" id="17"/>
@@ -34,6 +35,22 @@
                     </state>
                     <connections>
                         <action selector="login:" destination="-1" eventType="touchUpInside" id="10"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YNH-Dq-d4e">
+                    <rect key="frame" x="0.0" y="136" width="320" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="0.011764707040000001" green="0.36470589040000001" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Choose Country">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseCountry:" destination="-1" eventType="touchUpInside" id="ctw-hn-TSE"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="8">

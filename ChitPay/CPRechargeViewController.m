@@ -10,6 +10,8 @@
 
 #import "CPInterswitchPaymentViewController.h"
 
+#import "CPInAppViewController.h"
+
 @interface CPRechargeViewController ()
 
 @end
@@ -28,6 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _purchaseController = [[CPInterswitchPaymentViewController alloc]init];
+    
+    [[SKPaymentQueue defaultQueue]
+     addTransactionObserver:_purchaseController];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -136,5 +142,11 @@
     // Start out working with the test environment! When you are ready, remove this line to switch to live.
     [PayPalPaymentViewController setEnvironment:PayPalEnvironmentNoNetwork];
     [PayPalPaymentViewController prepareForPaymentUsingClientId:@"AcaYzRBlZqFT10QS7a-Iy0AD3XsJ3qu4WgevsyW0TIunU-wwdTw8xPvD7MZI"];
+}
+
+- (IBAction)payInapp:(id)sender
+{
+    CPInAppViewController *InAppViewController = [[CPInAppViewController alloc]initWithNibName:@"CPInAppViewController" bundle:Nil];
+    [self.navigationController pushViewController:InAppViewController animated:YES];
 }
 @end

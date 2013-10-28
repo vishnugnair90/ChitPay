@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PayPalMobile.h"
+#import <StoreKit/StoreKit.h>
 
-@interface CPInterswitchPaymentViewController : UIViewController<UIWebViewDelegate,PayPalPaymentDelegate>
+
+
+@interface CPInterswitchPaymentViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 {
     
 }
 @property IBOutlet UIWebView *paymentWebView;
+
+- (IBAction)buyProduct:(id)sender;
+
 @end

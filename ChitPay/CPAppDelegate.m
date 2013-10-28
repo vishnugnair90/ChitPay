@@ -12,12 +12,15 @@
 
 #import "CPNotificationHandler.h"
 
+#import "CPAPHelper.h"
+
 @implementation CPAppDelegate
 
 @synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [CPAPHelper sharedInstance];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

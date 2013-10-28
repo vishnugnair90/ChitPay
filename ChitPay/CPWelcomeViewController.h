@@ -15,10 +15,12 @@
 @property (nonatomic, strong) IBOutlet UIButton *btnLogin;
 @property (nonatomic, strong) IBOutlet UIButton *btnSignup;
 @property (nonatomic, strong) IBOutlet UIButton *btnForgotpass;
+@property (nonatomic, strong) IBOutlet UIButton *btnChooseCountry;
 @property (nonatomic, strong) IBOutlet UITextField *txtUsername;
 @property (nonatomic, strong) IBOutlet UITextField *txtPassword;
 
 -(IBAction)login:(id)sender;
 -(IBAction)signup:(id)sender;
 -(IBAction)forgot:(id)sender;
+-(IBAction)chooseCountry:(id)sender;
 @end

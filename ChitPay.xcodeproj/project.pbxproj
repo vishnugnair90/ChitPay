@@ -54,6 +54,11 @@
 		16F680D618152A8900930F3A /* CPProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F680D418152A8900930F3A /* CPProfileEditViewController.xib */; };
 		16F680DA18152AD600930F3A /* CPPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680D818152AD600930F3A /* CPPasswordViewController.m */; };
 		16F680DB18152AD600930F3A /* CPPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F680D918152AD600930F3A /* CPPasswordViewController.xib */; };
+		16FC2A91181E33200084CE10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FC2A90181E33200084CE10 /* StoreKit.framework */; };
+		16FC2A94181E3D050084CE10 /* CPIAHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FC2A93181E3D050084CE10 /* CPIAHelper.m */; };
+		16FC2A97181E3DF10084CE10 /* CPAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FC2A96181E3DF10084CE10 /* CPAPHelper.m */; };
+		16FC2A9B181E45530084CE10 /* CPInAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FC2A99181E45530084CE10 /* CPInAppViewController.m */; };
+		16FC2A9C181E45530084CE10 /* CPInAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FC2A9A181E45530084CE10 /* CPInAppViewController.xib */; };
 		2041C9F417D734490091F42C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F317D734490091F42C /* UIKit.framework */; };
 		2041C9F617D734490091F42C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2041C9F517D734490091F42C /* Foundation.framework */; };
 		2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2041C9FC17D734490091F42C /* InfoPlist.strings */; };
@@ -193,6 +198,14 @@
 		16F680D718152AD600930F3A /* CPPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPasswordViewController.h; sourceTree = "<group>"; };
 		16F680D818152AD600930F3A /* CPPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPasswordViewController.m; sourceTree = "<group>"; };
 		16F680D918152AD600930F3A /* CPPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPPasswordViewController.xib; sourceTree = "<group>"; };
+		16FC2A90181E33200084CE10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		16FC2A92181E3D050084CE10 /* CPIAHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPIAHelper.h; sourceTree = "<group>"; };
+		16FC2A93181E3D050084CE10 /* CPIAHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPIAHelper.m; sourceTree = "<group>"; };
+		16FC2A95181E3DF10084CE10 /* CPAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAPHelper.h; sourceTree = "<group>"; };
+		16FC2A96181E3DF10084CE10 /* CPAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAPHelper.m; sourceTree = "<group>"; };
+		16FC2A98181E45530084CE10 /* CPInAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPInAppViewController.h; sourceTree = "<group>"; };
+		16FC2A99181E45530084CE10 /* CPInAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPInAppViewController.m; sourceTree = "<group>"; };
+		16FC2A9A181E45530084CE10 /* CPInAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPInAppViewController.xib; sourceTree = "<group>"; };
 		2041C9EF17D734490091F42C /* ChitPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2041C9F317D734490091F42C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2041C9F517D734490091F42C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -323,6 +336,7 @@
 				2041C9F417D734490091F42C /* UIKit.framework in Frameworks */,
 				2041CA5D17D73FB40091F42C /* SystemConfiguration.framework in Frameworks */,
 				16BA70CA181A47FE0093F1BD /* Security.framework in Frameworks */,
+				16FC2A91181E33200084CE10 /* StoreKit.framework in Frameworks */,
 				2041CA6E17D742B30091F42C /* QuartzCore.framework in Frameworks */,
 				16BA70C8181A47EE0093F1BD /* OpenGLES.framework in Frameworks */,
 				2041CA5B17D73F9F0091F42C /* MobileCoreServices.framework in Frameworks */,
@@ -384,6 +398,7 @@
 		2041C9F217D734490091F42C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16FC2A90181E33200084CE10 /* StoreKit.framework */,
 				16BA70C9181A47FE0093F1BD /* Security.framework */,
 				16BA70C7181A47EE0093F1BD /* OpenGLES.framework */,
 				16BA70C5181A47DC0093F1BD /* MessageUI.framework */,
@@ -464,6 +479,9 @@
 				16BCE5BB1819041800ADA950 /* CPRechargeViewController.h */,
 				16BCE5BC1819041800ADA950 /* CPRechargeViewController.m */,
 				16BCE5BD1819041800ADA950 /* CPRechargeViewController.xib */,
+				16FC2A98181E45530084CE10 /* CPInAppViewController.h */,
+				16FC2A99181E45530084CE10 /* CPInAppViewController.m */,
+				16FC2A9A181E45530084CE10 /* CPInAppViewController.xib */,
 				16BCE5C01819243D00ADA950 /* CPInterswitchPaymentViewController.h */,
 				16BCE5C11819243D00ADA950 /* CPInterswitchPaymentViewController.m */,
 				16BCE5C21819243D00ADA950 /* CPInterswitchPaymentViewController.xib */,
@@ -481,6 +499,10 @@
 				20E5360717E84393007B4BAA /* CPServiceViewController.h */,
 				20E5360817E84393007B4BAA /* CPServiceViewController.m */,
 				20E5360917E84393007B4BAA /* CPServiceViewController.xib */,
+				16FC2A92181E3D050084CE10 /* CPIAHelper.h */,
+				16FC2A93181E3D050084CE10 /* CPIAHelper.m */,
+				16FC2A95181E3DF10084CE10 /* CPAPHelper.h */,
+				16FC2A96181E3DF10084CE10 /* CPAPHelper.m */,
 				2041CA1C17D739280091F42C /* Resources */,
 				2041CA1B17D739140091F42C /* External Classes */,
 				2041C9FA17D734490091F42C /* Supporting Files */,
@@ -677,6 +699,16 @@
 				CLASSPREFIX = CP;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Armia;
+				TargetAttributes = {
+					2041C9EE17D734490091F42C = {
+						DevelopmentTeam = SG2MWBFFNE;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 2041C9E917D734490091F42C /* Build configuration list for PBXProject "ChitPay" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -736,6 +768,7 @@
 				16BCE5BF1819041800ADA950 /* CPRechargeViewController.xib in Resources */,
 				16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */,
 				16EE2CCC181A4A2500503249 /* genLicense.pl in Resources */,
+				16FC2A9C181E45530084CE10 /* CPInAppViewController.xib in Resources */,
 				20C0166217F01B5D00784FE6 /* CPFormViewController.xib in Resources */,
 				16B2ADF81806B9D50095E641 /* CPProfileViewController.xib in Resources */,
 				20C0166F17F0424A00784FE6 /* FlatDatePicker-Icon-Check.png in Resources */,
@@ -789,6 +822,7 @@
 				20C0167317F0424A00784FE6 /* FlatDatePicker.m in Sources */,
 				20E49BBC17F1743F00B37822 /* FUIAlertView.m in Sources */,
 				20E49BBD17F1743F00B37822 /* FUIButton.m in Sources */,
+				16FC2A9B181E45530084CE10 /* CPInAppViewController.m in Sources */,
 				20E49BBE17F1743F00B37822 /* FUICellBackgroundView.m in Sources */,
 				20E49BBF17F1743F00B37822 /* FUIPopoverBackgroundView.m in Sources */,
 				20E49BC017F1743F00B37822 /* FUISegmentedControl.m in Sources */,
@@ -800,7 +834,9 @@
 				16B2ADF21806AE750095E641 /* CPTransactionsViewController.m in Sources */,
 				20E49BC517F1743F00B37822 /* UIFont+FlatUI.m in Sources */,
 				20E49BC617F1743F00B37822 /* UIImage+FlatUI.m in Sources */,
+				16FC2A97181E3DF10084CE10 /* CPAPHelper.m in Sources */,
 				20E49BC717F1743F00B37822 /* UINavigationBar+FlatUI.m in Sources */,
+				16FC2A94181E3D050084CE10 /* CPIAHelper.m in Sources */,
 				20E49BC817F1743F00B37822 /* UIPopoverController+FlatUI.m in Sources */,
 				20E49BC917F1743F00B37822 /* UIProgressView+FlatUI.m in Sources */,
 				20E49BCA17F1743F00B37822 /* UISlider+FlatUI.m in Sources */,
@@ -886,6 +922,8 @@
 		2041CA1417D734490091F42C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChitPay/ChitPay-Prefix.pch";
 				INFOPLIST_FILE = "ChitPay/ChitPay-Info.plist";
@@ -900,6 +938,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -907,6 +946,8 @@
 		2041CA1517D734490091F42C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChitPay/ChitPay-Prefix.pch";
 				INFOPLIST_FILE = "ChitPay/ChitPay-Info.plist";
@@ -921,6 +962,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
