@@ -100,6 +100,34 @@
 {
     [super viewDidLoad];
     [self LoadNotificationData];
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
+        }
+    }
+    for(UILabel *label in [self.view subviews])
+    {
+        if([label isKindOfClass:[UILabel class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+        }
+    }
+    for(UIButton *button in [self.view subviews])
+    {
+        if([button isKindOfClass:[UIButton class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
+        }
+    }
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -136,7 +164,7 @@
     [switchView addTarget:self action:@selector(toggleFavoriteSwitch:) forControlEvents:UIControlEventValueChanged];
     [switchView setOn:YES animated:YES];
     cell.textLabel.text = [[[notificationList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
+    cell.textLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:15.0];
     cell.detailTextLabel.numberOfLines = 3;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%-20s\n%-20s", [[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"] UTF8String],[[[[notificationList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]UTF8String]];
     
@@ -158,7 +186,7 @@
     alertView.defaultButtonShadowColor = [UIColor clearColor];
     alertView.defaultButtonColor = [UIColor clearColor];
     alertView.defaultButtonTitleColor = [UIColor whiteColor];
-    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [alertView.titleLabel setFont:[UIFont fontWithName:@"LaoUI.ttf" size:20.0]];
     [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor dullBlueColor]];
     alertView.animationDuration = 0.15;
     alertView.tag = 999;
@@ -276,7 +304,7 @@
     alertView.alertContainer.backgroundColor = [UIColor whiteColor];
     alertView.defaultButtonShadowColor = [UIColor clearColor];
     alertView.defaultButtonTitleColor = [UIColor whiteColor];
-    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [alertView.titleLabel setFont:[UIFont fontWithName:@"LaoUI.ttf" size:20.0]];
     [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor redColor]];
     alertView.animationDuration = 0.15;
     alertView.tag = 888;

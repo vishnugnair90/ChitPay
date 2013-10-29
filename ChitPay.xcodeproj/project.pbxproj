@@ -48,6 +48,27 @@
 		16EE2CCB181A4A2500503249 /* cal.license in Resources */ = {isa = PBXBuildFile; fileRef = 16EE2CC8181A4A2500503249 /* cal.license */; };
 		16EE2CCC181A4A2500503249 /* genLicense.pl in Resources */ = {isa = PBXBuildFile; fileRef = 16EE2CC9181A4A2500503249 /* genLicense.pl */; };
 		16EE2CCD181A4A2500503249 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 16EE2CCA181A4A2500503249 /* Settings.bundle */; };
+		16F4CFE2181FAB3900E4180E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F4CFE1181FAB3900E4180E /* Accelerate.framework */; };
+		16F4CFE7181FB3B500E4180E /* LaoUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFE6181FB3B500E4180E /* LaoUI.ttf */; };
+		16F4CFED181FCA3800E4180E /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F4CFEC181FCA3800E4180E /* RNFrostedSidebar.m */; };
+		16F4CFF8181FCADA00E4180E /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFEE181FCADA00E4180E /* gear.png */; };
+		16F4CFF9181FCADA00E4180E /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFEF181FCADA00E4180E /* gear@2x.png */; };
+		16F4CFFA181FCADA00E4180E /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF0181FCADA00E4180E /* globe.png */; };
+		16F4CFFB181FCADA00E4180E /* globe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF1181FCADA00E4180E /* globe@2x.png */; };
+		16F4CFFC181FCADA00E4180E /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF2181FCADA00E4180E /* profile.png */; };
+		16F4CFFD181FCADA00E4180E /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF3181FCADA00E4180E /* profile@2x.png */; };
+		16F4CFFE181FCADA00E4180E /* Profile_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF4181FCADA00E4180E /* Profile_image.png */; };
+		16F4CFFF181FCADA00E4180E /* Profile_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF5181FCADA00E4180E /* Profile_image@2x.png */; };
+		16F4D000181FCADA00E4180E /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF6181FCADA00E4180E /* star.png */; };
+		16F4D001181FCADA00E4180E /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4CFF7181FCADA00E4180E /* star@2x.png */; };
+		16F4D00A181FD99100E4180E /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D002181FD99000E4180E /* cog.png */; };
+		16F4D00B181FD99100E4180E /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D003181FD99100E4180E /* documents.png */; };
+		16F4D00C181FD99100E4180E /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D004181FD99100E4180E /* home.png */; };
+		16F4D00D181FD99100E4180E /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D005181FD99100E4180E /* info.png */; };
+		16F4D00E181FD99100E4180E /* logoout.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D006181FD99100E4180E /* logoout.png */; };
+		16F4D00F181FD99100E4180E /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D007181FD99100E4180E /* money.png */; };
+		16F4D010181FD99100E4180E /* shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D008181FD99100E4180E /* shuffle.png */; };
+		16F4D011181FD99100E4180E /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F4D009181FD99100E4180E /* user.png */; };
 		16F680D018150ABC00930F3A /* CPPINViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680CE18150ABC00930F3A /* CPPINViewController.m */; };
 		16F680D118150ABC00930F3A /* CPPINViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F680CF18150ABC00930F3A /* CPPINViewController.xib */; };
 		16F680D518152A8900930F3A /* CPProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F680D318152A8900930F3A /* CPProfileEditViewController.m */; };
@@ -189,6 +210,28 @@
 		16EE2CC8181A4A2500503249 /* cal.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cal.license; sourceTree = "<group>"; };
 		16EE2CC9181A4A2500503249 /* genLicense.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = genLicense.pl; sourceTree = "<group>"; };
 		16EE2CCA181A4A2500503249 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		16F4CFE1181FAB3900E4180E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		16F4CFE6181FB3B500E4180E /* LaoUI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LaoUI.ttf; sourceTree = "<group>"; };
+		16F4CFEB181FCA3800E4180E /* RNFrostedSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
+		16F4CFEC181FCA3800E4180E /* RNFrostedSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFrostedSidebar.m; sourceTree = "<group>"; };
+		16F4CFEE181FCADA00E4180E /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		16F4CFEF181FCADA00E4180E /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		16F4CFF0181FCADA00E4180E /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe.png; sourceTree = "<group>"; };
+		16F4CFF1181FCADA00E4180E /* globe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globe@2x.png"; sourceTree = "<group>"; };
+		16F4CFF2181FCADA00E4180E /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		16F4CFF3181FCADA00E4180E /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
+		16F4CFF4181FCADA00E4180E /* Profile_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Profile_image.png; sourceTree = "<group>"; };
+		16F4CFF5181FCADA00E4180E /* Profile_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile_image@2x.png"; sourceTree = "<group>"; };
+		16F4CFF6181FCADA00E4180E /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		16F4CFF7181FCADA00E4180E /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		16F4D002181FD99000E4180E /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cog.png; sourceTree = "<group>"; };
+		16F4D003181FD99100E4180E /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
+		16F4D004181FD99100E4180E /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		16F4D005181FD99100E4180E /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		16F4D006181FD99100E4180E /* logoout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoout.png; sourceTree = "<group>"; };
+		16F4D007181FD99100E4180E /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
+		16F4D008181FD99100E4180E /* shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuffle.png; sourceTree = "<group>"; };
+		16F4D009181FD99100E4180E /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		16F680CD18150ABC00930F3A /* CPPINViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPINViewController.h; sourceTree = "<group>"; };
 		16F680CE18150ABC00930F3A /* CPPINViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPINViewController.m; sourceTree = "<group>"; };
 		16F680CF18150ABC00930F3A /* CPPINViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPPINViewController.xib; sourceTree = "<group>"; };
@@ -333,6 +376,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16F4CFE2181FAB3900E4180E /* Accelerate.framework in Frameworks */,
 				2041C9F417D734490091F42C /* UIKit.framework in Frameworks */,
 				2041CA5D17D73FB40091F42C /* SystemConfiguration.framework in Frameworks */,
 				16BA70CA181A47FE0093F1BD /* Security.framework in Frameworks */,
@@ -398,6 +442,7 @@
 		2041C9F217D734490091F42C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16F4CFE1181FAB3900E4180E /* Accelerate.framework */,
 				16FC2A90181E33200084CE10 /* StoreKit.framework */,
 				16BA70C9181A47FE0093F1BD /* Security.framework */,
 				16BA70C7181A47EE0093F1BD /* OpenGLES.framework */,
@@ -529,6 +574,8 @@
 		2041CA1B17D739140091F42C /* External Classes */ = {
 			isa = PBXGroup;
 			children = (
+				16F4CFEB181FCA3800E4180E /* RNFrostedSidebar.h */,
+				16F4CFEC181FCA3800E4180E /* RNFrostedSidebar.m */,
 				165E04A517FACE7100E9E64B /* MTStatusBarOverlay.h */,
 				165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */,
 				16BA70B5181A46C10093F1BD /* PayPalMobile */,
@@ -544,6 +591,7 @@
 		2041CA1C17D739280091F42C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				16F4CFE6181FB3B500E4180E /* LaoUI.ttf */,
 				2041CA1D17D739380091F42C /* Images */,
 			);
 			path = Resources;
@@ -552,6 +600,24 @@
 		2041CA1D17D739380091F42C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				16F4D002181FD99000E4180E /* cog.png */,
+				16F4D003181FD99100E4180E /* documents.png */,
+				16F4D004181FD99100E4180E /* home.png */,
+				16F4D005181FD99100E4180E /* info.png */,
+				16F4D006181FD99100E4180E /* logoout.png */,
+				16F4D007181FD99100E4180E /* money.png */,
+				16F4D008181FD99100E4180E /* shuffle.png */,
+				16F4D009181FD99100E4180E /* user.png */,
+				16F4CFEE181FCADA00E4180E /* gear.png */,
+				16F4CFEF181FCADA00E4180E /* gear@2x.png */,
+				16F4CFF0181FCADA00E4180E /* globe.png */,
+				16F4CFF1181FCADA00E4180E /* globe@2x.png */,
+				16F4CFF2181FCADA00E4180E /* profile.png */,
+				16F4CFF3181FCADA00E4180E /* profile@2x.png */,
+				16F4CFF4181FCADA00E4180E /* Profile_image.png */,
+				16F4CFF5181FCADA00E4180E /* Profile_image@2x.png */,
+				16F4CFF6181FCADA00E4180E /* star.png */,
+				16F4CFF7181FCADA00E4180E /* star@2x.png */,
 				16E470C117FEB3A400E26B6B /* settings.png */,
 				16E470C217FEB3A400E26B6B /* fav.png */,
 				16E470C317FEB3A400E26B6B /* share.png */,
@@ -739,26 +805,40 @@
 				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
 				16894662180FD49400BC64BA /* CPTransferViewController.xib in Resources */,
 				16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */,
+				16F4CFFE181FCADA00E4180E /* Profile_image.png in Resources */,
 				16EE2CCD181A4A2500503249 /* Settings.bundle in Resources */,
 				16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */,
+				16F4CFE7181FB3B500E4180E /* LaoUI.ttf in Resources */,
+				16F4D011181FD99100E4180E /* user.png in Resources */,
+				16F4D00A181FD99100E4180E /* cog.png in Resources */,
+				16F4D001181FCADA00E4180E /* star@2x.png in Resources */,
 				16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */,
 				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
 				16F680DB18152AD600930F3A /* CPPasswordViewController.xib in Resources */,
+				16F4CFFF181FCADA00E4180E /* Profile_image@2x.png in Resources */,
 				2041CA1A17D735780091F42C /* CPWelcomeViewController.xib in Resources */,
+				16F4CFFD181FCADA00E4180E /* profile@2x.png in Resources */,
 				160678DE17FD5A7E009D6BB9 /* chit@2x.png in Resources */,
 				2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */,
 				16EE2CCB181A4A2500503249 /* cal.license in Resources */,
 				16E470CB17FED83800E26B6B /* CPNotificationListViewController.xib in Resources */,
+				16F4D00B181FD99100E4180E /* documents.png in Resources */,
 				2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */,
 				16F680D618152A8900930F3A /* CPProfileEditViewController.xib in Resources */,
 				2041CA7817D745B80091F42C /* CPMenuViewController.xib in Resources */,
+				16F4D00F181FD99100E4180E /* money.png in Resources */,
+				16F4CFFA181FCADA00E4180E /* globe.png in Resources */,
 				20CEFDE217D87B730042F95F /* CPSignupViewController.xib in Resources */,
 				20CEFDE817D87DED0042F95F /* CPSignupDetailViewController.xib in Resources */,
 				16B2ADFD1806C4970095E641 /* CPBalanceViewController.xib in Resources */,
 				160678DF17FD5A7E009D6BB9 /* chit.png in Resources */,
+				16F4D000181FCADA00E4180E /* star.png in Resources */,
 				16E470D517FEEA8600E26B6B /* CPSettingsViewController.xib in Resources */,
+				16F4D010181FD99100E4180E /* shuffle.png in Resources */,
+				16F4CFF9181FCADA00E4180E /* gear@2x.png in Resources */,
 				20CEFDEA17D8A90B0042F95F /* logo.png in Resources */,
 				16E470C417FEB3A400E26B6B /* settings.png in Resources */,
+				16F4CFF8181FCADA00E4180E /* gear.png in Resources */,
 				20C4E01717D9C8BF00C71178 /* CPForgotPasswordViewController.xib in Resources */,
 				16E470C517FEB3A400E26B6B /* fav.png in Resources */,
 				20E5360517E8437D007B4BAA /* CPGroupViewController.xib in Resources */,
@@ -767,15 +847,20 @@
 				16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */,
 				16BCE5BF1819041800ADA950 /* CPRechargeViewController.xib in Resources */,
 				16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */,
+				16F4D00C181FD99100E4180E /* home.png in Resources */,
 				16EE2CCC181A4A2500503249 /* genLicense.pl in Resources */,
 				16FC2A9C181E45530084CE10 /* CPInAppViewController.xib in Resources */,
+				16F4D00D181FD99100E4180E /* info.png in Resources */,
 				20C0166217F01B5D00784FE6 /* CPFormViewController.xib in Resources */,
+				16F4D00E181FD99100E4180E /* logoout.png in Resources */,
 				16B2ADF81806B9D50095E641 /* CPProfileViewController.xib in Resources */,
+				16F4CFFC181FCADA00E4180E /* profile.png in Resources */,
 				20C0166F17F0424A00784FE6 /* FlatDatePicker-Icon-Check.png in Resources */,
 				20C0167017F0424A00784FE6 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
 				16BCE5C41819243D00ADA950 /* CPInterswitchPaymentViewController.xib in Resources */,
 				20C0167117F0424A00784FE6 /* FlatDatePicker-Icon-Close.png in Resources */,
 				20C0167217F0424A00784FE6 /* FlatDatePicker-Icon-Close@2x.png in Resources */,
+				16F4CFFB181FCADA00E4180E /* globe@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +916,7 @@
 				16BCE5BE1819041800ADA950 /* CPRechargeViewController.m in Sources */,
 				20E49BC317F1743F00B37822 /* UIBarButtonItem+FlatUI.m in Sources */,
 				20E49BC417F1743F00B37822 /* UIColor+FlatUI.m in Sources */,
+				16F4CFED181FCA3800E4180E /* RNFrostedSidebar.m in Sources */,
 				16B2ADF21806AE750095E641 /* CPTransactionsViewController.m in Sources */,
 				20E49BC517F1743F00B37822 /* UIFont+FlatUI.m in Sources */,
 				20E49BC617F1743F00B37822 /* UIImage+FlatUI.m in Sources */,

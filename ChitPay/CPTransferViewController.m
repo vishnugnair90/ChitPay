@@ -33,6 +33,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
+        }
+    }
+    for(UILabel *label in [self.view subviews])
+    {
+        if([label isKindOfClass:[UILabel class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+        }
+    }
+    for(UIButton *button in [self.view subviews])
+    {
+        if([button isKindOfClass:[UIButton class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
+        }
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -51,7 +78,7 @@
     alertView.defaultButtonShadowColor = [UIColor clearColor];
     alertView.defaultButtonColor = [UIColor clearColor];
     alertView.defaultButtonTitleColor = [UIColor whiteColor];
-    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [alertView.titleLabel setFont:[UIFont fontWithName:@"LaoUI" size:20.0]];
     [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor dullBlueColor]];
     alertView.animationDuration = 0.15;
     alertView.tag = 999;
@@ -155,7 +182,7 @@
                 alertView.alertContainer.backgroundColor = [UIColor whiteColor];
                 alertView.defaultButtonShadowColor = [UIColor clearColor];
                 alertView.defaultButtonTitleColor = [UIColor whiteColor];
-                [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+                [alertView.titleLabel setFont:[UIFont fontWithName:@"LaoUI.ttf" size:20.0]];
                 [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
                 alertView.animationDuration = 0.15;
                 alertView.tag = 888;

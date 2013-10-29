@@ -20,7 +20,17 @@
     #import "CPSettingsViewController.h"
     #import "CPNotificationListViewController.h"
     #import "CPFavouritesViewController.h"
-
+    #import "CPNotificationListViewController.h"
+    #import "CPFavouritesViewController.h"
+    #import "CPSettingsViewController.h"
+    #import "CPProfileViewController.h"
+    #import "CPBalanceViewController.h"
+    #import "CPTransferViewController.h"
+    #import "CPStatementViewController.h"
+    #import "CPTransactionsViewController.h"
+    #import "CPWelcomeViewController.h"
+    #import "RNFrostedSidebar.h"
+    #import "CPAppDelegate.h"
     #define kCellColor [UIColor belizeHoleColor]
     #define kTableColor [UIColor belizeHoleColor]
     #define kBorderWidth 2.0;

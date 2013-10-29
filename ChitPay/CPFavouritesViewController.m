@@ -45,6 +45,34 @@
     [SVProgressHUD show];
     [request startAsynchronous];
 
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
+        }
+    }
+    for(UILabel *label in [self.view subviews])
+    {
+        if([label isKindOfClass:[UILabel class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+        }
+    }
+    for(UIButton *button in [self.view subviews])
+    {
+        if([button isKindOfClass:[UIButton class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
+        }
+    }
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -75,7 +103,8 @@
     //NSLog(@"LOAD %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"]);
     //cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"provider_name"]objectForKey:@"text"];
     cell.textLabel.text = [[[favouritesList objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    cell.textLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:20.0];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];

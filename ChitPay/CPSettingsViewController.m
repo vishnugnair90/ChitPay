@@ -116,6 +116,25 @@
         
         self.navigationItem.leftBarButtonItems =[NSArray arrayWithObjects:barButtonItem, nil];
     }
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
+        }
+    }
+    for(UILabel *label in [self.view subviews])
+    {
+        if([label isKindOfClass:[UILabel class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+        }
+    }
+
     return self;
 }
 

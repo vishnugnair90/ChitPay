@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNFrostedSidebar.h"
 
-@interface CPHomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CPHomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,RNFrostedSidebarDelegate>
 {
     NSArray *menuListArray;
 }

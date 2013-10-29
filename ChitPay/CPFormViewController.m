@@ -198,7 +198,34 @@
     }
     
     
-    
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
+        }
+    }
+    for(UILabel *label in [self.view subviews])
+    {
+        if([label isKindOfClass:[UILabel class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+        }
+    }
+    for(UIButton *button in [self.view subviews])
+    {
+        if([button isKindOfClass:[UIButton class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
+        }
+    }
+
     // Do any additional setup after loading the view from its nib.
 }
 

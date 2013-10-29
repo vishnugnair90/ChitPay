@@ -18,7 +18,7 @@
 @property IBOutlet UILabel *lbladdress;
 @property IBOutlet UILabel *lblphone1;
 @property IBOutlet UILabel *lblphone2;
-@property IBOutlet UILabel *lblcity;
+@property IBOutlet UILabel*lblcity;
 @property IBOutlet UILabel *lblstate;
 
 -(IBAction)editAction:(id)sender;

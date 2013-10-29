@@ -99,6 +99,33 @@
 {
     [super viewDidLoad];
     [self LoadTransactionData];
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
+        }
+    }
+    for(UILabel *label in [self.view subviews])
+    {
+        if([label isKindOfClass:[UILabel class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+        }
+    }
+    for(UIButton *button in [self.view subviews])
+    {
+        if([button isKindOfClass:[UIButton class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
+        }
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -157,10 +184,17 @@
             [switchView setOn:NO animated:YES];
         }
     }
+    /*
     cell.textLabel.text = [[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
     cell.detailTextLabel.numberOfLines = 5;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%-30s\n%-20s", [[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"] UTF8String],[[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]UTF8String]];
+    */
+    
+    cell.textLabel.text = [[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"];
+    cell.textLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:15.0];
+    cell.detailTextLabel.numberOfLines =3;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"\t\t\t\t\AMOUNT %-20s\n\t\t\t\t\STATUS %-20s", [[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"] UTF8String],[[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]UTF8String]];
     
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
@@ -180,7 +214,7 @@
     alertView.defaultButtonShadowColor = [UIColor clearColor];
     alertView.defaultButtonColor = [UIColor clearColor];
     alertView.defaultButtonTitleColor = [UIColor whiteColor];
-    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [alertView.titleLabel setFont:[UIFont fontWithName:@"LaoUI.ttf" size:20.0]];
     [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor dullBlueColor]];
     alertView.animationDuration = 0.15;
     alertView.tag = 999;
@@ -249,6 +283,26 @@
     else
     {
         //cell.textLabel.text = [NSString stringWithFormat:@"ON"];
+        //cell.textLabel.text = [NSString stringWithFormat:@"OFF"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+        [request setDelegate:self];
+        NSMutableData *postBody = [NSMutableData data];
+        [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.update\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<unique_id>%@</unique_id>",[[[transactionsList objectAtIndex:switchView.tag]objectForKey:@"unique_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<status>ON</status>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</notification>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setPostBody:postBody];
+        [request setUserInfo:[NSDictionary dictionaryWithObject:@"CHANGESTATUS" forKey:@"ACTION"]];
+        [SVProgressHUD show];
+        NSLog(@"%@",request.requestHeaders);
+        [request startAsynchronous];
     }
     //[self updateFavoriteInUserDefaultsFor:cell.textLabel.text withValue:[switchView isOn]];
 }
@@ -306,7 +360,7 @@
     alertView.alertContainer.backgroundColor = [UIColor whiteColor];
     alertView.defaultButtonShadowColor = [UIColor clearColor];
     alertView.defaultButtonTitleColor = [UIColor whiteColor];
-    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [alertView.titleLabel setFont:[UIFont fontWithName:@"LaoUI.ttf" size:20.0]];
     [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor redColor]];
     alertView.animationDuration = 0.15;
     alertView.tag = 888;

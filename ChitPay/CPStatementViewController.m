@@ -171,6 +171,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //NSArray *array = [[NSArray alloc]init];
+    NSLog(@"%@",[statementList objectAtIndex:indexPath.row]);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:[[[statementList objectAtIndex:indexPath.row]objectForKey:@"transaction_id"]objectForKey:@"text"] message:[NSString stringWithFormat:@"Amount:%@\n\nSender:%@\n\nAccount:%@\n\nSender Notification:%@\n\nReceiver Notification:%@\n\nStatus:%@",[[[statementList objectAtIndex:indexPath.row]objectForKey:@"amount"]objectForKey:@"text"],[[[statementList objectAtIndex:indexPath.row]objectForKey:@"sender"]objectForKey:@"text"],[[[statementList objectAtIndex:indexPath.row]objectForKey:@"sender_account"]objectForKey:@"text"],[[[statementList objectAtIndex:indexPath.row]objectForKey:@"sender_notification"]objectForKey:@"text"],[[[statementList objectAtIndex:indexPath.row]objectForKey:@"receiver_notification"]objectForKey:@"text"],[[[statementList objectAtIndex:indexPath.row]objectForKey:@"status"]objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles:@"", nil];
     alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];

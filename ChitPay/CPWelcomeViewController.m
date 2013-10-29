@@ -31,6 +31,7 @@
     if (self)
     {
         // Custom initialization
+        
     }
     return self;
 }
@@ -43,11 +44,40 @@
     txtPassword.layer.borderWidth = kBorderWidth;
     txtPassword.layer.cornerRadius = kBorderCurve;
     self.navigationController.navigationBar.translucent = NO;
+    
+    txtUsername.font = [UIFont fontWithName:@"LaoUI" size:20.0];
     // set the text view to the image view
     //self.navigationItem.titleView = imageview;
     //[[UINavigationBar appearance] setItems:[NSArray arrayWithObject:item]];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
+    for(UITextField *field in [self.view subviews])
+    {
+        if([field isKindOfClass:[UITextField class]])
+        {
+            field.layer.borderWidth = kBorderWidth;
+            field.layer.cornerRadius = kBorderCurve;
+            field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
+        }
+    }
+    for(UILabel *label in [self.view subviews])
+    {
+        if([label isKindOfClass:[UILabel class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+        }
+    }
+    for(UIButton *button in [self.view subviews])
+    {
+        if([button isKindOfClass:[UIButton class]])
+        {
+            //label.layer.borderWidth = kBorderWidth;
+            //label.layer.cornerRadius = kBorderCurve;
+            button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

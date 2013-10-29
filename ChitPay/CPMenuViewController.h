@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNFrostedSidebar.h"
 
-@interface CPMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CPMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,RNFrostedSidebarDelegate>
 {
     
 }
