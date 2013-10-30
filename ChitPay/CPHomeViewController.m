@@ -118,6 +118,8 @@
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button4];
         
         self.navigationItem.leftBarButtonItems =[NSArray arrayWithObjects:barButtonItem, nil];
+
+        
     }
     return self;
 }
@@ -125,6 +127,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //menuTable.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tile"]];
+    menuTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
@@ -140,9 +144,9 @@
                                                options:NSKeyValueObservingOptionNew
                                                context:NULL];
     welcomeLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:welcomeLabel.font.pointSize];
-    UISwipeGestureRecognizer * Swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
-    Swiperight.direction=UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:Swiperight];
+    UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
+    Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:Swipeleft];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -230,11 +234,12 @@
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     cell.textLabel.text = [[[menuListArray objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
     cell.textLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:20.0];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    //cell.textLabel.textAlignment = NSTextAlignmentCenter;
     //NSLog(@"MENU %@",[[[menuListArray objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];
     cell.selectedBackgroundView = selectionColor;
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
@@ -377,7 +382,7 @@
     //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
     callout.delegate = self;
     callout.isSingleSelect = YES;
-    //    callout.showFromRight = YES;
+//  callout.showFromRight = YES;
     callout.tintColor = [UIColor colorWithWhite:0.5 alpha:0.55];
     [callout show];
 }

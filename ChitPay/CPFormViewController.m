@@ -66,7 +66,7 @@
         
         [button2 setBackgroundImage:backButtonImage2 forState:UIControlStateNormal];
         
-        [button2 addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+        [button2 addTarget:self action:@selector(onBurger:) forControlEvents:UIControlEventTouchUpInside];
         button2.frame = CGRectMake(0, 0, 30, 30);
         
         //________________________________________________________________________________________________________
@@ -118,6 +118,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
+    Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:Swipeleft];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     
     //Creating some buttons:
@@ -585,6 +589,126 @@
     alertView.animationDuration = 0.15;
     alertView.tag = 888;
     [alertView show];
+}
+
+- (IBAction)onBurger:(id)sender {
+    NSArray *images = @[
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    NSArray *titles = @[
+                        @"HOME",
+                        @"PROFILE",
+                        @"BALANCE",
+                        @"FUND TRANSFER",
+                        @"NOTIFICATIONS",
+                        @"STATEMENT",
+                        @"TRANSACTIONS",
+                        @"LOGOUT",
+                        ];
+    
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors titleTexts:titles];
+    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors];
+    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
+    callout.delegate = self;
+    callout.isSingleSelect = YES;
+    //  callout.showFromRight = YES;
+    callout.tintColor = [UIColor colorWithWhite:0.5 alpha:0.55];
+    [callout show];
+}
+
+#pragma mark - RNFrostedSidebarDelegate
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index
+{
+    [sidebar dismissAnimated:YES];
+    NSLog(@"Tapped item at index %i",index);
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"HOME");
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"PROFILE");
+            CPProfileViewController *ProfileViewController = [[CPProfileViewController alloc]initWithNibName:@"CPProfileViewController" bundle:nil];
+            [self.navigationController pushViewController:ProfileViewController animated:YES];
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"BALANCE");
+            CPBalanceViewController *BalanceViewController = [[CPBalanceViewController alloc]initWithNibName:@"CPBalanceViewController" bundle:nil];
+            [self.navigationController pushViewController:BalanceViewController animated:YES];
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"TRANSFER");
+            CPTransferViewController *TransferViewController = [[CPTransferViewController alloc]initWithNibName:@"CPTransferViewController" bundle:nil];
+            [self.navigationController pushViewController:TransferViewController animated:YES];
+        }
+            break;
+        case 4:
+        {
+            NSLog(@"NOTIFICATIONS");
+            CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
+            [self.navigationController pushViewController:NotificationListViewController animated:YES];
+        }
+            break;
+        case 5:
+        {
+            NSLog(@"STATEMENT");
+            CPStatementViewController *StatementViewController = [[CPStatementViewController alloc]initWithNibName:@"CPStatementViewController" bundle:nil];
+            [self.navigationController pushViewController:StatementViewController animated:YES];
+        }
+            break;
+        case 6:
+        {
+            NSLog(@"TRANSACTIONS");
+            CPTransactionsViewController *TransactionsListViewController = [[CPTransactionsViewController alloc]initWithNibName:@"CPTransactionsViewController" bundle:nil];
+            [self.navigationController pushViewController:TransactionsListViewController animated:YES];
+        }
+            break;
+        case 7:
+        {
+            NSLog(@"LOGOUT");
+            CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
+            CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
+            UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
+            //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            //self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [self.navigationController presentViewController:appNavigationController
+                                                    animated:YES
+                                                  completion:^{
+                                                      
+                                                      appDelegate.window.rootViewController = appNavigationController;
+                                                      
+                                                      
+                                                  }];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 @end

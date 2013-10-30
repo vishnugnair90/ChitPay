@@ -72,7 +72,7 @@
     SKProduct * product = (SKProduct *) _products[indexPath.row];
     cell.textLabel.text = product.localizedTitle;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    //cell.textLabel.textAlignment = NSTextAlignmentCenter;
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];

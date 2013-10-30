@@ -193,6 +193,7 @@
         _label.textAlignment = NSTextAlignmentCenter;
         _label.font = [UIFont fontWithName:@"LaoUI.ttf" size:5.0];
         [self addSubview:_label];
+        
     }
     return self;
 }
@@ -204,7 +205,7 @@
     self.imageView.frame = CGRectMake(0, 0, inset, inset);
     self.imageView.center = CGPointMake(inset, inset);
     self.label.frame = CGRectMake(0, 0, inset+100, inset);
-    self.label.center = CGPointMake(inset, inset+ 50);
+    self.label.center = CGPointMake(inset, inset+ 35);
 }
 
 - (void)setOriginalBackgroundColor:(UIColor *)originalBackgroundColor {
@@ -277,7 +278,7 @@ static RNFrostedSidebar *rn_frostedMenu;
         _contentView.showsHorizontalScrollIndicator = NO;
         _contentView.showsVerticalScrollIndicator = NO;
         
-        _width = 150;
+        _width = 100;
         _animationDuration = 0.25f;
         _itemSize = CGSizeMake(_width/2, _width/2);
         _itemViews = [NSMutableArray array];
@@ -442,6 +443,7 @@ static RNFrostedSidebar *rn_frostedMenu;
 }
 
 - (void)showInViewController:(UIViewController *)controller animated:(BOOL)animated {
+    _showFromRight = YES;
     if (rn_frostedMenu != nil) {
         [rn_frostedMenu dismissAnimated:NO];
     }

@@ -21,16 +21,19 @@
             <rect key="frame" x="0.0" y="64" width="320" height="416"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field_background.png" id="Rbg-Zy-4nY">
+                    <rect key="frame" x="20" y="129" width="280" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4">
-                    <rect key="frame" x="0.0" y="299" width="320" height="67"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.011764707040000001" green="0.36470589040000001" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
+                    <rect key="frame" x="20" y="198" width="136" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Log In">
+                    <state key="normal" title="Log In" backgroundImage="login_normal.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted">
+                    <state key="highlighted" backgroundImage="login_selected.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -38,12 +41,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YNH-Dq-d4e">
-                    <rect key="frame" x="0.0" y="136" width="320" height="30"/>
+                    <rect key="frame" x="259" y="355" width="41" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.011764707040000001" green="0.36470589040000001" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Choose Country">
+                    <state key="normal" backgroundImage="flag_nigeria.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted">
@@ -54,15 +56,14 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="8">
-                    <rect key="frame" x="0.0" y="373" width="156" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.011764707040000001" green="0.36470589040000001" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
+                    <rect key="frame" x="164" y="198" width="136" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                    <state key="normal" title="Signup">
+                    <state key="normal" title="Signup" backgroundImage="signup_normal.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted">
+                    <state key="highlighted" backgroundImage="signup_selected.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -70,12 +71,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="9">
-                    <rect key="frame" x="164" y="373" width="156" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.011764707040000001" green="0.36470589040000001" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
+                    <rect key="frame" x="20" y="242" width="280" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                    <state key="normal" title="Forgot Password">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Forgot Password ?">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted">
@@ -85,8 +85,8 @@
                         <action selector="forgot:" destination="-1" eventType="touchUpInside" id="12"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*username" minimumFontSize="17" id="6">
-                    <rect key="frame" x="20" y="44" width="280" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*username" minimumFontSize="17" id="6">
+                    <rect key="frame" x="60" y="129" width="240" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -94,8 +94,8 @@
                         <outlet property="delegate" destination="-1" id="13"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*password" minimumFontSize="17" id="7">
-                    <rect key="frame" x="20" y="98" width="280" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*password" minimumFontSize="17" id="7">
+                    <rect key="frame" x="60" y="160" width="240" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -103,6 +103,13 @@
                         <outlet property="delegate" destination="-1" id="14"/>
                     </connections>
                 </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bD9-lI-fmj">
+                    <rect key="frame" x="152" y="205" width="16" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -110,4 +117,12 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="field_background.png" width="280" height="64"/>
+        <image name="flag_nigeria.png" width="166" height="166"/>
+        <image name="login_normal.png" width="128" height="31"/>
+        <image name="login_selected.png" width="128" height="31"/>
+        <image name="signup_normal.png" width="128" height="31"/>
+        <image name="signup_selected.png" width="128" height="31"/>
+    </resources>
 </document>

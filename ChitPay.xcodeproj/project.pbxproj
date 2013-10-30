@@ -33,6 +33,22 @@
 		16BCE5BF1819041800ADA950 /* CPRechargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16BCE5BD1819041800ADA950 /* CPRechargeViewController.xib */; };
 		16BCE5C31819243D00ADA950 /* CPInterswitchPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCE5C11819243D00ADA950 /* CPInterswitchPaymentViewController.m */; };
 		16BCE5C41819243D00ADA950 /* CPInterswitchPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16BCE5C21819243D00ADA950 /* CPInterswitchPaymentViewController.xib */; };
+		16C00D631821151400FA4640 /* login_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D5B1821151400FA4640 /* login_normal.png */; };
+		16C00D641821151400FA4640 /* login_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D5C1821151400FA4640 /* login_normal@2x.png */; };
+		16C00D651821151400FA4640 /* login_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D5D1821151400FA4640 /* login_selected.png */; };
+		16C00D661821151400FA4640 /* login_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D5E1821151400FA4640 /* login_selected@2x.png */; };
+		16C00D671821151400FA4640 /* signup_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D5F1821151400FA4640 /* signup_normal.png */; };
+		16C00D681821151400FA4640 /* signup_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D601821151400FA4640 /* signup_normal@2x.png */; };
+		16C00D691821151400FA4640 /* signup_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D611821151400FA4640 /* signup_selected.png */; };
+		16C00D6A1821151400FA4640 /* signup_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D621821151400FA4640 /* signup_selected@2x.png */; };
+		16C00D6D18211BE000FA4640 /* field_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D6B18211BE000FA4640 /* field_background.png */; };
+		16C00D6E18211BE000FA4640 /* field_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D6C18211BE000FA4640 /* field_background@2x.png */; };
+		16C00D7118211D5000FA4640 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D6F18211D5000FA4640 /* tile.png */; };
+		16C00D7218211D5000FA4640 /* tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D7018211D5000FA4640 /* tile@2x.png */; };
+		16C00D77182121FD00FA4640 /* flag_nigeria.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D73182121FD00FA4640 /* flag_nigeria.png */; };
+		16C00D78182121FD00FA4640 /* flag_nigeria@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D74182121FD00FA4640 /* flag_nigeria@2x.png */; };
+		16C00D79182121FD00FA4640 /* flag_southafrica.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D75182121FD00FA4640 /* flag_southafrica.png */; };
+		16C00D7A182121FD00FA4640 /* flag_southafrica@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C00D76182121FD00FA4640 /* flag_southafrica@2x.png */; };
 		16D8EFA617FA9977001B7F87 /* CPNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */; };
 		16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BD17FEAD5600E26B6B /* Home_logo.png */; };
 		16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E470BE17FEAD5600E26B6B /* Home_logo@2x.png */; };
@@ -191,6 +207,22 @@
 		16BCE5C01819243D00ADA950 /* CPInterswitchPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPInterswitchPaymentViewController.h; sourceTree = "<group>"; };
 		16BCE5C11819243D00ADA950 /* CPInterswitchPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPInterswitchPaymentViewController.m; sourceTree = "<group>"; };
 		16BCE5C21819243D00ADA950 /* CPInterswitchPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPInterswitchPaymentViewController.xib; sourceTree = "<group>"; };
+		16C00D5B1821151400FA4640 /* login_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_normal.png; sourceTree = "<group>"; };
+		16C00D5C1821151400FA4640 /* login_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_normal@2x.png"; sourceTree = "<group>"; };
+		16C00D5D1821151400FA4640 /* login_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_selected.png; sourceTree = "<group>"; };
+		16C00D5E1821151400FA4640 /* login_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_selected@2x.png"; sourceTree = "<group>"; };
+		16C00D5F1821151400FA4640 /* signup_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup_normal.png; sourceTree = "<group>"; };
+		16C00D601821151400FA4640 /* signup_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup_normal@2x.png"; sourceTree = "<group>"; };
+		16C00D611821151400FA4640 /* signup_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup_selected.png; sourceTree = "<group>"; };
+		16C00D621821151400FA4640 /* signup_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup_selected@2x.png"; sourceTree = "<group>"; };
+		16C00D6B18211BE000FA4640 /* field_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_background.png; sourceTree = "<group>"; };
+		16C00D6C18211BE000FA4640 /* field_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field_background@2x.png"; sourceTree = "<group>"; };
+		16C00D6F18211D5000FA4640 /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
+		16C00D7018211D5000FA4640 /* tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@2x.png"; sourceTree = "<group>"; };
+		16C00D73182121FD00FA4640 /* flag_nigeria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_nigeria.png; sourceTree = "<group>"; };
+		16C00D74182121FD00FA4640 /* flag_nigeria@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_nigeria@2x.png"; sourceTree = "<group>"; };
+		16C00D75182121FD00FA4640 /* flag_southafrica.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_southafrica.png; sourceTree = "<group>"; };
+		16C00D76182121FD00FA4640 /* flag_southafrica@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_southafrica@2x.png"; sourceTree = "<group>"; };
 		16D8EFA417FA9977001B7F87 /* CPNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNotificationHandler.h; sourceTree = "<group>"; };
 		16D8EFA517FA9977001B7F87 /* CPNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNotificationHandler.m; sourceTree = "<group>"; };
 		16E470BD17FEAD5600E26B6B /* Home_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home_logo.png; sourceTree = "<group>"; };
@@ -600,6 +632,22 @@
 		2041CA1D17D739380091F42C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				16C00D73182121FD00FA4640 /* flag_nigeria.png */,
+				16C00D74182121FD00FA4640 /* flag_nigeria@2x.png */,
+				16C00D75182121FD00FA4640 /* flag_southafrica.png */,
+				16C00D76182121FD00FA4640 /* flag_southafrica@2x.png */,
+				16C00D6F18211D5000FA4640 /* tile.png */,
+				16C00D7018211D5000FA4640 /* tile@2x.png */,
+				16C00D6B18211BE000FA4640 /* field_background.png */,
+				16C00D6C18211BE000FA4640 /* field_background@2x.png */,
+				16C00D5B1821151400FA4640 /* login_normal.png */,
+				16C00D5C1821151400FA4640 /* login_normal@2x.png */,
+				16C00D5D1821151400FA4640 /* login_selected.png */,
+				16C00D5E1821151400FA4640 /* login_selected@2x.png */,
+				16C00D5F1821151400FA4640 /* signup_normal.png */,
+				16C00D601821151400FA4640 /* signup_normal@2x.png */,
+				16C00D611821151400FA4640 /* signup_selected.png */,
+				16C00D621821151400FA4640 /* signup_selected@2x.png */,
 				16F4D002181FD99000E4180E /* cog.png */,
 				16F4D003181FD99100E4180E /* documents.png */,
 				16F4D004181FD99100E4180E /* home.png */,
@@ -800,23 +848,32 @@
 			files = (
 				2041C9FE17D734490091F42C /* InfoPlist.strings in Resources */,
 				16E470C617FEB3A400E26B6B /* share.png in Resources */,
+				16C00D651821151400FA4640 /* login_selected.png in Resources */,
 				2041CA0617D734490091F42C /* Default.png in Resources */,
 				16F680D118150ABC00930F3A /* CPPINViewController.xib in Resources */,
+				16C00D631821151400FA4640 /* login_normal.png in Resources */,
 				2041CA0817D734490091F42C /* Default@2x.png in Resources */,
 				16894662180FD49400BC64BA /* CPTransferViewController.xib in Resources */,
 				16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */,
 				16F4CFFE181FCADA00E4180E /* Profile_image.png in Resources */,
+				16C00D6D18211BE000FA4640 /* field_background.png in Resources */,
 				16EE2CCD181A4A2500503249 /* Settings.bundle in Resources */,
+				16C00D641821151400FA4640 /* login_normal@2x.png in Resources */,
+				16C00D78182121FD00FA4640 /* flag_nigeria@2x.png in Resources */,
 				16E470BF17FEAD5600E26B6B /* Home_logo.png in Resources */,
 				16F4CFE7181FB3B500E4180E /* LaoUI.ttf in Resources */,
+				16C00D7118211D5000FA4640 /* tile.png in Resources */,
 				16F4D011181FD99100E4180E /* user.png in Resources */,
 				16F4D00A181FD99100E4180E /* cog.png in Resources */,
+				16C00D79182121FD00FA4640 /* flag_southafrica.png in Resources */,
 				16F4D001181FCADA00E4180E /* star@2x.png in Resources */,
 				16E470C017FEAD5600E26B6B /* Home_logo@2x.png in Resources */,
 				2041CA0A17D734490091F42C /* Default-568h@2x.png in Resources */,
 				16F680DB18152AD600930F3A /* CPPasswordViewController.xib in Resources */,
 				16F4CFFF181FCADA00E4180E /* Profile_image@2x.png in Resources */,
 				2041CA1A17D735780091F42C /* CPWelcomeViewController.xib in Resources */,
+				16C00D681821151400FA4640 /* signup_normal@2x.png in Resources */,
+				16C00D7A182121FD00FA4640 /* flag_southafrica@2x.png in Resources */,
 				16F4CFFD181FCADA00E4180E /* profile@2x.png in Resources */,
 				160678DE17FD5A7E009D6BB9 /* chit@2x.png in Resources */,
 				2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */,
@@ -824,10 +881,13 @@
 				16E470CB17FED83800E26B6B /* CPNotificationListViewController.xib in Resources */,
 				16F4D00B181FD99100E4180E /* documents.png in Resources */,
 				2041CA7317D745980091F42C /* CPHomeViewController.xib in Resources */,
+				16C00D6A1821151400FA4640 /* signup_selected@2x.png in Resources */,
 				16F680D618152A8900930F3A /* CPProfileEditViewController.xib in Resources */,
 				2041CA7817D745B80091F42C /* CPMenuViewController.xib in Resources */,
+				16C00D77182121FD00FA4640 /* flag_nigeria.png in Resources */,
 				16F4D00F181FD99100E4180E /* money.png in Resources */,
 				16F4CFFA181FCADA00E4180E /* globe.png in Resources */,
+				16C00D6E18211BE000FA4640 /* field_background@2x.png in Resources */,
 				20CEFDE217D87B730042F95F /* CPSignupViewController.xib in Resources */,
 				20CEFDE817D87DED0042F95F /* CPSignupDetailViewController.xib in Resources */,
 				16B2ADFD1806C4970095E641 /* CPBalanceViewController.xib in Resources */,
@@ -837,6 +897,7 @@
 				16F4D010181FD99100E4180E /* shuffle.png in Resources */,
 				16F4CFF9181FCADA00E4180E /* gear@2x.png in Resources */,
 				20CEFDEA17D8A90B0042F95F /* logo.png in Resources */,
+				16C00D7218211D5000FA4640 /* tile@2x.png in Resources */,
 				16E470C417FEB3A400E26B6B /* settings.png in Resources */,
 				16F4CFF8181FCADA00E4180E /* gear.png in Resources */,
 				20C4E01717D9C8BF00C71178 /* CPForgotPasswordViewController.xib in Resources */,
@@ -845,6 +906,7 @@
 				20E5360B17E84393007B4BAA /* CPServiceViewController.xib in Resources */,
 				20E5361017E87935007B4BAA /* CPProductsViewController.xib in Resources */,
 				16E470D017FEE1CA00E26B6B /* CPFavouritesViewController.xib in Resources */,
+				16C00D671821151400FA4640 /* signup_normal.png in Resources */,
 				16BCE5BF1819041800ADA950 /* CPRechargeViewController.xib in Resources */,
 				16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */,
 				16F4D00C181FD99100E4180E /* home.png in Resources */,
@@ -857,7 +919,9 @@
 				16F4CFFC181FCADA00E4180E /* profile.png in Resources */,
 				20C0166F17F0424A00784FE6 /* FlatDatePicker-Icon-Check.png in Resources */,
 				20C0167017F0424A00784FE6 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
+				16C00D661821151400FA4640 /* login_selected@2x.png in Resources */,
 				16BCE5C41819243D00ADA950 /* CPInterswitchPaymentViewController.xib in Resources */,
+				16C00D691821151400FA4640 /* signup_selected.png in Resources */,
 				20C0167117F0424A00784FE6 /* FlatDatePicker-Icon-Close.png in Resources */,
 				20C0167217F0424A00784FE6 /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 				16F4CFFB181FCADA00E4180E /* globe@2x.png in Resources */,

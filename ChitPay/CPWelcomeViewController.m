@@ -39,10 +39,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    /*
     txtUsername.layer.borderWidth = kBorderWidth;
     txtUsername.layer.cornerRadius = kBorderCurve;
     txtPassword.layer.borderWidth = kBorderWidth;
     txtPassword.layer.cornerRadius = kBorderCurve;
+     */
     self.navigationController.navigationBar.translucent = NO;
     
     txtUsername.font = [UIFont fontWithName:@"LaoUI" size:20.0];
@@ -51,12 +53,14 @@
     //[[UINavigationBar appearance] setItems:[NSArray arrayWithObject:item]];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]]];
+
     for(UITextField *field in [self.view subviews])
     {
         if([field isKindOfClass:[UITextField class]])
         {
-            field.layer.borderWidth = kBorderWidth;
-            field.layer.cornerRadius = kBorderCurve;
+            //field.layer.borderWidth = kBorderWidth;
+            //field.layer.cornerRadius = kBorderCurve;
             field.font = [UIFont fontWithName:@"LaoUI.ttf" size:field.font.pointSize];
         }
     }
@@ -66,7 +70,7 @@
         {
             //label.layer.borderWidth = kBorderWidth;
             //label.layer.cornerRadius = kBorderCurve;
-            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:label.font.pointSize];
+            label.font = [UIFont fontWithName:@"LaoUI.ttf" size:10.0];
         }
     }
     for(UIButton *button in [self.view subviews])
@@ -78,6 +82,7 @@
             button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
         }
     }
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -183,5 +188,20 @@
 -(void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"CLicked %d",buttonIndex);
+    switch (buttonIndex)
+    {
+        case 1:
+        {
+            [_btnChooseCountry setBackgroundImage:[UIImage imageNamed:@"flag_nigeria"] forState:UIControlStateNormal];
+        }
+            break;
+        case 2:
+        {
+            [_btnChooseCountry setBackgroundImage:[UIImage imageNamed:@"flag_southafrica"] forState:UIControlStateNormal];
+        }
+            break;
+        default:
+            break;
+    }
 }
 @end

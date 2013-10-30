@@ -107,10 +107,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    menuTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
     NSLog(@"DATA %@",[[menuList objectAtIndex:0]objectForKey:@"name"]);
-    UISwipeGestureRecognizer * Swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
-    Swiperight.direction=UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:Swiperight];
+    UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
+    Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:Swipeleft];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     // Do any additional setup after loading the view from its nib.
 }
@@ -171,11 +172,12 @@
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
     cell.textLabel.text = [[[menuList objectAtIndex:indexPath.row]objectForKey:@"name"]objectForKey:@"text"];
     cell.textLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:20.0];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    //cell.textLabel.textAlignment = NSTextAlignmentCenter;
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
     selectionColor.backgroundColor = [UIColor dullBlueColor];
     cell.selectedBackgroundView = selectionColor;
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
