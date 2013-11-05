@@ -691,6 +691,11 @@
         case 7:
         {
             NSLog(@"LOGOUT");
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults removeObjectForKey:@"username"];
+            [defaults removeObjectForKey:@"password"];
+            [defaults removeObjectForKey:@"account_details"];
+            [defaults synchronize];
             CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
             CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
             UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];

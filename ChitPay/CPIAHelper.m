@@ -23,6 +23,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"ProductPurchasedNotifi
     RequestProductsCompletionHandler _completionHandler;
     NSSet * _productIdentifiers;
     NSMutableSet * _purchasedProductIdentifiers;
+    NSDictionary *userInfo;
 }
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
@@ -129,11 +130,13 @@ NSString *const IAPHelperProductPurchasedNotification = @"ProductPurchasedNotifi
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"completeTransaction...");
     NSString* receiptString = [[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
-    NSLog(@"Receipt:\n\n\n\n%@\n\n\n\n %@",[transaction transactionReceipt],receiptString);
     
+    NSLog(@"Encoded String %@", [[receiptString dataUsingEncoding:NSUTF8StringEncoding] base64Encoding]);
+
+    NSLog(@"Receipt:\n\n\n\n%@\n\n\n\n %@",[transaction transactionReceipt],receiptString);
+    userInfo = [NSDictionary dictionaryWithObject:[[receiptString dataUsingEncoding:NSUTF8StringEncoding] base64Encoding] forKey:@"receipt"];
     [SVProgressHUD dismiss];
     [SVProgressHUD showSuccessWithStatus:@"Wallet recharge success, Amount will be credited after verification."];
-    
     [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
@@ -165,7 +168,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"ProductPurchasedNotifi
     [_purchasedProductIdentifiers addObject:productIdentifier];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductPurchasedNotification object:productIdentifier userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductPurchasedNotification object:productIdentifier userInfo:userInfo];
     
 }
 @end

@@ -14,6 +14,8 @@
 
 #import "CPAPHelper.h"
 
+#import "UIApplication+SimulatorRemoteNotifications.h"
+
 @implementation CPAppDelegate
 
 @synthesize navigationController;
@@ -22,6 +24,7 @@
 {
     [CPAPHelper sharedInstance];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
+    [application listenForRemoteNotifications];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc] initWithNibName:@"CPWelcomeViewController" bundle:nil];
@@ -31,7 +34,7 @@
     //[[UINavigationBar appearance]addSubview:img];
     // Create your image
     
-    [[UINavigationBar appearance]setTintColor:[UIColor whiteColor]];
+    //[[UINavigationBar appearance]setTintColor:[UIColor blackColor]];
     // Set the background image for *all* UINavigationBars
     // Set the background image for *all* UINavigationBars
     [[UIBarButtonItem appearance]
@@ -81,12 +84,23 @@
 }
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-    NSLog(@"My token is: %@", deviceToken);
-    [[CPNotificationHandler singleton]getNotificaton];    
+    
+    const unsigned *tokenBytes = [deviceToken bytes];
+    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+                          ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+                          ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+                          ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:hexToken forKey:@"deviceToken"];
+    [defaults synchronize];
+    [[CPNotificationHandler singleton]getNotificaton];
+    NSLog(@"My token is: %@", hexToken);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    NSLog(@"NOTIFICATION %@",userInfo);
+    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@",userInfo]];
     [[CPNotificationHandler singleton]getNotificaton];
 }
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

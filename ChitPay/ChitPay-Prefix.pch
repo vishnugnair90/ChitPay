@@ -31,6 +31,7 @@
     #import "CPWelcomeViewController.h"
     #import "RNFrostedSidebar.h"
     #import "CPAppDelegate.h"
+    #import "CPBGLayer.h"
     #define kCellColor [UIColor belizeHoleColor]
     #define kTableColor [UIColor belizeHoleColor]
     #define kBorderWidth 2.0;

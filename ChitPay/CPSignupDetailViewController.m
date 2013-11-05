@@ -198,7 +198,8 @@
         NSLog(@"DATA TO BE SENT\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n",txtFirstName.text,txtLastName.text,strEmail,strUsername,strPassword,txtPhone1.text,txtPhone2.text,txtStreet1.text,txtStreet2.text,txtCity.text,txtState.text);
         
         [SVProgressHUD show];
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
         [request setDelegate:self];
         NSMutableData *postBody = [NSMutableData data];
         [postBody appendData:[[NSString stringWithFormat:@"<request method=\"user.create\">"] dataUsingEncoding:NSUTF8StringEncoding]];

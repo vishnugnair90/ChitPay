@@ -39,6 +39,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] >= 7) {
+        self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+        self.navigationController.navigationBar.translucent = NO;
+    }else {
+        self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    }
+    //[[UINavigationBar appearance]setBackgroundColor:[UIColor blackColor]];
+    CAGradientLayer *bgLayer = [CPBGLayer greyGradient];
+    bgLayer.frame = self.view.frame;
+    //[self.view.layer insertSublayer:bgLayer atIndex:0];
+    
     /*
     txtUsername.layer.borderWidth = kBorderWidth;
     txtUsername.layer.cornerRadius = kBorderCurve;
@@ -82,7 +95,15 @@
             button.titleLabel.font = [UIFont fontWithName:@"LaoUI.ttf" size:button.titleLabel.font.pointSize];
         }
     }
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"password"]!= nil)
+    {
+        txtUsername.text = [defaults stringForKey:@"username"];
+        txtPassword.text = [defaults stringForKey:@"password"];
+        [self login:nil];
+    }
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"CP_background"]]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,6 +113,22 @@
     {
         txtUsername.text = [defaults stringForKey:@"username"];
         txtPassword.text = [defaults stringForKey:@"password"];
+    }
+    if([defaults objectForKey:@"server"] == nil)
+    {
+        [defaults setObject:@"https://chitbox247.com/pos/index.php/apiv2" forKey:@"server"];
+        [defaults synchronize];
+    }
+    if([defaults objectForKey:@"server"] != nil)
+    {
+        if([[defaults objectForKey:@"server"] isEqualToString:@"https://chitbox247.com/pos/index.php/apiv2"])
+        {
+            [_btnChooseCountry setBackgroundImage:[UIImage imageNamed:@"flag_nigeria"] forState:UIControlStateNormal];
+        }
+        else
+        {
+            [_btnChooseCountry setBackgroundImage:[UIImage imageNamed:@"flag_southafrica"] forState:UIControlStateNormal];
+        }
     }
     //NSLog(@"NOTIFICATION %d",[[CPNotificationHandler singleton]getNotificaton]);
 }
@@ -112,7 +149,8 @@
     [txtPassword resignFirstResponder];
     [txtUsername resignFirstResponder];
     [SVProgressHUD show];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"user.get\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -160,6 +198,7 @@
                                                 animated:YES
                                               completion:^{
                                                   appDelegate.window.rootViewController = appNavigationController;
+                                                  [[CPNotificationHandler singleton]linkDevice];
                                               }];
     }
     else
@@ -192,11 +231,17 @@
     {
         case 1:
         {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:@"https://chitbox247.com/pos/index.php/apiv2" forKey:@"server"];
+            [defaults synchronize];
             [_btnChooseCountry setBackgroundImage:[UIImage imageNamed:@"flag_nigeria"] forState:UIControlStateNormal];
         }
             break;
         case 2:
         {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:@"https://chitbox247.africa.com/pos/index.php/apiv2" forKey:@"server"];
+            [defaults synchronize];
             [_btnChooseCountry setBackgroundImage:[UIImage imageNamed:@"flag_southafrica"] forState:UIControlStateNormal];
         }
             break;

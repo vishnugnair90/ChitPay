@@ -116,7 +116,8 @@
 {
     //NSArray *array = [[NSArray alloc]init];
     [SVProgressHUD show];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://chitbox247.com/pos/index.php/apiv2?model=services&group_id=&service_id=%d",[[[[favouritesList objectAtIndex:indexPath.row]objectForKey:@"id"]objectForKey:@"text"] integerValue]]]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?model=services&group_id=&service_id=%d",[defaults objectForKey:@"server"],[[[[favouritesList objectAtIndex:indexPath.row]objectForKey:@"id"]objectForKey:@"text"] integerValue]]]];
     [request setDelegate:self];
     [request setUserInfo:[NSDictionary dictionaryWithObject:@"GETSERVICE" forKey:@"TYPE"]];
     [request startAsynchronous];

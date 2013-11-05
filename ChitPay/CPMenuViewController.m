@@ -107,7 +107,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    menuTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    //menuTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
     NSLog(@"DATA %@",[[menuList objectAtIndex:0]objectForKey:@"name"]);
     UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
     Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
@@ -337,6 +337,12 @@
         case 7:
         {
             NSLog(@"LOGOUT");
+            [[CPNotificationHandler singleton]delinkDevive];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults removeObjectForKey:@"username"];
+            [defaults removeObjectForKey:@"password"];
+            [defaults removeObjectForKey:@"account_details"];
+            [defaults synchronize];
             CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
             CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
             UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];

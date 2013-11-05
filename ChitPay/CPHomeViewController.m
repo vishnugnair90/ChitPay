@@ -128,7 +128,7 @@
 {
     [super viewDidLoad];
     //menuTable.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tile"]];
-    menuTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    menuTable.backgroundColor = [UIColor clearColor];
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
@@ -152,7 +152,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [SVProgressHUD show];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2?model=menu"]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?model=menu",[defaults objectForKey:@"server"]]]];
     [request setDelegate:self];
     [request startAsynchronous];
     [[CPNotificationHandler singleton]getNotificaton];
@@ -240,6 +241,8 @@
     selectionColor.backgroundColor = [UIColor dullBlueColor];
     cell.selectedBackgroundView = selectionColor;
     cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundView.frame = CGRectMake(cell.backgroundView.frame.origin.x+10, cell.backgroundView.frame.origin.y+10, cell.backgroundView.frame.size.width-20, cell.backgroundView.frame.size.height-20);
+    cell.backgroundView.backgroundColor = [UIColor redColor];
     return cell;
 }
 
@@ -445,6 +448,12 @@
         case 7:
         {
             NSLog(@"LOGOUT");
+            [[CPNotificationHandler singleton]delinkDevive];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults removeObjectForKey:@"username"];
+            [defaults removeObjectForKey:@"password"];
+            [defaults removeObjectForKey:@"account_details"];
+            [defaults synchronize];
             CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
             CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
             UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
@@ -453,7 +462,7 @@
             [self.navigationController presentViewController:appNavigationController
                                                     animated:YES
                                                   completion:^{
-                                                      
+                                                
                                                       appDelegate.window.rootViewController = appNavigationController;
                                                       
                                                       

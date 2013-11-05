@@ -13,5 +13,7 @@
 +(CPNotificationHandler *)singleton;
 
 -(void)getNotificaton;
+-(void)linkDevice;
+-(void)delinkDevive;
 
 @end

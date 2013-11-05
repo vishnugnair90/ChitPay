@@ -92,14 +92,45 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [ASIFormDataRequest cancelPreviousPerformRequestsWithTarget:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)productPurchased:(NSNotification *)notification
 {
     
-    NSString * productIdentifier = notification.object;
+    NSString * productIdentifier = [[notification.object componentsSeparatedByString:@"."] objectAtIndex:3];
+    
+    NSLog(@"BOUGHT %@ for %@ and %@",notification.object,[productIdentifier stringByTrimmingCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]],[notification.userInfo objectForKey:@"receipt"]);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    [request setDelegate:self];
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"account.recharge\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<amount>%@</amount>",[productIdentifier stringByTrimmingCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<gateway>ITUNES</gateway>"] dataUsingEncoding:NSUTF8StringEncoding]];
+     [postBody appendData:[[NSString stringWithFormat:@"<trans_id></trans_id>"] dataUsingEncoding:NSUTF8StringEncoding]];
+     [postBody appendData:[[NSString stringWithFormat:@"<ref_id>%@</ref_id>",[notification.userInfo objectForKey:@"receipt"]] dataUsingEncoding:NSUTF8StringEncoding]];
+     [postBody appendData:[[NSString stringWithFormat:@"</account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+     [request setPostBody:postBody];
+     NSString* newStr = [[NSString alloc] initWithData:postBody
+                                              encoding:NSUTF8StringEncoding];
+     NSLog(@"POST BODY %@",newStr);
+     [SVProgressHUD show];
+     request.userInfo = [NSDictionary dictionaryWithObject:@"TRANSACTION" forKey:@"TYPE"];
+     [request startAsynchronous];
+
+     /*
     [_products enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop)
     {
         if ([product.productIdentifier isEqualToString:productIdentifier])
@@ -108,7 +139,24 @@
             *stop = YES;
         }
     }];
+    */
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
     
+    [SVProgressHUD dismiss];
+    NSString *receivedString = [request responseString];
+    NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
+    NSLog(@"%@",responseDictionary);
+    if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
+    {
+        [SVProgressHUD showSuccessWithStatus:@"ACCOUNT RECHARGE SUCCESSFULL"];
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"ACCOUNT RECHARGE FAILED"];
+    }
 }
 
 @end
