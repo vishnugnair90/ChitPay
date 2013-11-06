@@ -175,18 +175,10 @@
             if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
             {
                 [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"AMOUNT TRANSFER SUCCESSFUL\n Balance: %@\n Transaction id: %@",[[[[responseDictionary objectForKey:@"response"]objectForKey:@"account"]objectForKey:@"balance"]objectForKey:@"text"],[[[[responseDictionary objectForKey:@"response"]objectForKey:@"account"]objectForKey:@"transaction_id"]objectForKey:@"text"]]];
-                
-                FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"TRANSACTION SUCCESS" message:[NSString stringWithFormat:@"PIN    %@\nSERIAL  %@\nBATCH   %@",[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_no"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_serial"] objectForKey:@"text"],[[[[[[responseDictionary objectForKey:@"response"] objectForKey:@"transaction"] objectForKey:@"pin_details"]objectForKey:@"pin"]objectForKey:@"pin_batch"] objectForKey:@"text"]] delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles: nil];
-                alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
-                alertView.defaultButtonColor = [UIColor midnightBlueColor];
-                alertView.alertContainer.backgroundColor = [UIColor whiteColor];
-                alertView.defaultButtonShadowColor = [UIColor clearColor];
-                alertView.defaultButtonTitleColor = [UIColor whiteColor];
-                [alertView.titleLabel setFont:[UIFont fontWithName:@"LaoUI.ttf" size:20.0]];
-                [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor greenColor]];
-                alertView.animationDuration = 0.15;
-                alertView.tag = 888;
-                [alertView show];
+            }
+            else
+            {
+                [SVProgressHUD showErrorWithStatus:@"transfer failed"];
             }
         }
         
@@ -231,7 +223,7 @@
 
 - (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(alertView.tag != 999)
+    if(alertView.tag == 999)
     {
         switch (buttonIndex)
         {

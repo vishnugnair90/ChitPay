@@ -14,8 +14,6 @@
 
 #import "CPAPHelper.h"
 
-#import "UIApplication+SimulatorRemoteNotifications.h"
-
 @implementation CPAppDelegate
 
 @synthesize navigationController;
@@ -24,7 +22,6 @@
 {
     [CPAPHelper sharedInstance];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
-    [application listenForRemoteNotifications];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc] initWithNibName:@"CPWelcomeViewController" bundle:nil];
