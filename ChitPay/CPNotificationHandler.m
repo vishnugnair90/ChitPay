@@ -8,6 +8,7 @@
 
 #import "CPNotificationHandler.h"
 
+
 @implementation CPNotificationHandler
 
 +(CPNotificationHandler *)singleton
@@ -120,4 +121,132 @@
 {
 	
 }
+
+-(void)showMenu
+{
+    NSArray *images = @[
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    NSArray *titles = @[
+                        @"HOME",
+                        @"PROFILE",
+                        @"BALANCE",
+                        @"FUND TRANSFER",
+                        @"NOTIFICATIONS",
+                        @"STATEMENT",
+                        @"TRANSACTIONS",
+                        @"LOGOUT",
+                        ];
+    
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors titleTexts:titles];
+    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors];
+    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
+    callout.delegate = self;
+    callout.isSingleSelect = YES;
+    //  callout.showFromRight = YES;
+    callout.tintColor = [UIColor colorWithWhite:0.5 alpha:0.55];
+    [callout show];
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index
+{
+    [sidebar dismissAnimated:YES];
+    CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSLog(@"%@",appDelegate.navigationController.viewControllers);
+    NSLog(@"Tapped item at index %i",index);
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"HOME");
+            
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"PROFILE");
+            CPProfileViewController *ProfileViewController = [[CPProfileViewController alloc]initWithNibName:@"CPProfileViewController" bundle:nil];
+            [appDelegate.navigationController pushViewController:ProfileViewController animated:YES];
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"BALANCE");
+            CPBalanceViewController *BalanceViewController = [[CPBalanceViewController alloc]initWithNibName:@"CPBalanceViewController" bundle:nil];
+            [appDelegate.navigationController pushViewController:BalanceViewController animated:YES];
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"TRANSFER");
+            CPTransferViewController *TransferViewController = [[CPTransferViewController alloc]initWithNibName:@"CPTransferViewController" bundle:nil];
+            [appDelegate.navigationController pushViewController:TransferViewController animated:YES];
+        }
+            break;
+        case 4:
+        {
+            NSLog(@"NOTIFICATIONS");
+            CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
+            [appDelegate.navigationController pushViewController:NotificationListViewController animated:YES];
+        }
+            break;
+        case 5:
+        {
+            NSLog(@"STATEMENT");
+            CPStatementViewController *StatementViewController = [[CPStatementViewController alloc]initWithNibName:@"CPStatementViewController" bundle:nil];
+            [appDelegate.navigationController pushViewController:StatementViewController animated:YES];
+        }
+            break;
+        case 6:
+        {
+            NSLog(@"TRANSACTIONS");
+            CPTransactionsViewController *TransactionsListViewController = [[CPTransactionsViewController alloc]initWithNibName:@"CPTransactionsViewController" bundle:nil];
+            [appDelegate.navigationController pushViewController:TransactionsListViewController animated:YES];
+        }
+            break;
+        case 7:
+        {
+            NSLog(@"LOGOUT");
+            [[CPNotificationHandler singleton]delinkDevive];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults removeObjectForKey:@"username"];
+            [defaults removeObjectForKey:@"password"];
+            [defaults removeObjectForKey:@"account_details"];
+            [defaults synchronize];
+            CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
+            CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
+            UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
+            //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            //self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [appDelegate.navigationController presentViewController:appNavigationController
+                                                           animated:YES
+                                                         completion:^{
+                                                             
+                                                             appDelegate.window.rootViewController = appNavigationController;
+                                                             
+                                                             
+                                                         }];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 @end

@@ -16,6 +16,7 @@
 		165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */; };
 		16894661180FD49400BC64BA /* CPTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689465F180FD49400BC64BA /* CPTransferViewController.m */; };
 		16894662180FD49400BC64BA /* CPTransferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16894660180FD49400BC64BA /* CPTransferViewController.xib */; };
+		16AF9DD1182B91EF00DB1696 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AF9DD0182B91EF00DB1696 /* ECSlidingViewController.m */; };
 		16B2ADF21806AE750095E641 /* CPTransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADF01806AE750095E641 /* CPTransactionsViewController.m */; };
 		16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2ADF11806AE750095E641 /* CPTransactionsViewController.xib */; };
 		16B2ADF71806B9D50095E641 /* CPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADF51806B9D50095E641 /* CPProfileViewController.m */; };
@@ -187,6 +188,8 @@
 		1689465E180FD49400BC64BA /* CPTransferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTransferViewController.h; sourceTree = "<group>"; };
 		1689465F180FD49400BC64BA /* CPTransferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTransferViewController.m; sourceTree = "<group>"; };
 		16894660180FD49400BC64BA /* CPTransferViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPTransferViewController.xib; sourceTree = "<group>"; };
+		16AF9DCF182B91EF00DB1696 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		16AF9DD0182B91EF00DB1696 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		16B2ADEF1806AE750095E641 /* CPTransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTransactionsViewController.h; sourceTree = "<group>"; };
 		16B2ADF01806AE750095E641 /* CPTransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTransactionsViewController.m; sourceTree = "<group>"; };
 		16B2ADF11806AE750095E641 /* CPTransactionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPTransactionsViewController.xib; sourceTree = "<group>"; };
@@ -446,6 +449,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16AF9DCE182B91DB00DB1696 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16AF9DCF182B91EF00DB1696 /* ECSlidingViewController.h */,
+				16AF9DD0182B91EF00DB1696 /* ECSlidingViewController.m */,
+			);
+			name = ECSlidingViewController;
+			sourceTree = "<group>";
+		};
 		16BA70B5181A46C10093F1BD /* PayPalMobile */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,6 +632,7 @@
 		2041CA1B17D739140091F42C /* External Classes */ = {
 			isa = PBXGroup;
 			children = (
+				16AF9DCE182B91DB00DB1696 /* ECSlidingViewController */,
 				16CC1E6818277DDA00D9C62E /* UIApplication+SimulatorRemoteNotifications.h */,
 				16CC1E6918277DDA00D9C62E /* UIApplication+SimulatorRemoteNotifications.m */,
 				16F4CFEB181FCA3800E4180E /* RNFrostedSidebar.h */,
@@ -962,6 +975,7 @@
 				2041CA1917D735780091F42C /* CPWelcomeViewController.m in Sources */,
 				16E470D417FEEA8600E26B6B /* CPSettingsViewController.m in Sources */,
 				16B2AE011806C9D50095E641 /* CPStatementViewController.m in Sources */,
+				16AF9DD1182B91EF00DB1696 /* ECSlidingViewController.m in Sources */,
 				2041CA4F17D739B20091F42C /* ASIAuthenticationDialog.m in Sources */,
 				2041CA5017D739B20091F42C /* ASIDownloadCache.m in Sources */,
 				2041CA5117D739B20091F42C /* ASIFormDataRequest.m in Sources */,

@@ -27,13 +27,6 @@
     CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc] initWithNibName:@"CPWelcomeViewController" bundle:nil];
     navigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
     self.window.rootViewController = navigationController;
-    //UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"logo.png"]];
-    //[[UINavigationBar appearance]addSubview:img];
-    // Create your image
-    
-    //[[UINavigationBar appearance]setTintColor:[UIColor blackColor]];
-    // Set the background image for *all* UINavigationBars
-    // Set the background image for *all* UINavigationBars
     [[UIBarButtonItem appearance]
      setBackButtonBackgroundImage:[UIImage imageWithColor:[UIColor clearColor] cornerRadius:10.0]
      forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -49,8 +42,22 @@
       [UIFont boldSystemFontOfSize:15.0],
       UITextAttributeFont,
       nil]forState:UIControlStateNormal];
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreen:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.window addGestureRecognizer:swipeGesture];
     [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture
+{
+    // do stuff
+    NSLog(@"ACTION");
+    [[CPNotificationHandler singleton]showMenu];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

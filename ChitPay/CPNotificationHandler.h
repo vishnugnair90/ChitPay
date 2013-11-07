@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CPNotificationHandler : NSObject
+#import "RNFrostedSidebar.h"
+
+
+@interface CPNotificationHandler : NSObject<RNFrostedSidebarDelegate>
 
 +(CPNotificationHandler *)singleton;
 
 -(void)getNotificaton;
 -(void)linkDevice;
 -(void)delinkDevive;
+-(void)showMenu;
 
 @end

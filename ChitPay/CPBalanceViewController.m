@@ -101,6 +101,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"VIEWCONTROLLERS %@",self.navigationController.viewControllers);
     [super viewDidLoad];
     [SVProgressHUD show];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
