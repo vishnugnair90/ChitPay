@@ -83,6 +83,7 @@
             [self addButtonWithTitle:arg];
         }
         va_end(args);
+        
     }
     return self;
 }
@@ -196,7 +197,6 @@
 
 - (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated {
     //todo delegate
-    
     self.alertContainer.transform = CGAffineTransformIdentity;
     if ([self.delegate respondsToSelector:@selector(alertView:willDismissWithButtonIndex:)]) {
         [self.delegate alertView:self willDismissWithButtonIndex:buttonIndex];
@@ -208,9 +208,12 @@
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
         _visible = NO;
-        if ([self.delegate respondsToSelector:@selector(alertView:didDismissWithButtonIndex:)]) {
+        /*
+        if ([self.delegate respondsToSelector:@selector(alertView:didDismissWithButtonIndex:)])
+        {
             [self.delegate alertView:self didDismissWithButtonIndex:buttonIndex];
         }
+         */
     }];
 }
 

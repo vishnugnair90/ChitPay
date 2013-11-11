@@ -92,7 +92,7 @@
     
 -(IBAction)cancel:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -105,7 +105,7 @@
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
         [SVProgressHUD showSuccessWithStatus:@"Check Inbox for new password"];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }
     else
     {

@@ -100,7 +100,17 @@
     {
         txtUsername.text = [defaults stringForKey:@"username"];
         txtPassword.text = [defaults stringForKey:@"password"];
-        [self login:nil];
+        CPHomeViewController *homeViewController = [[CPHomeViewController alloc]initWithNibName:@"CPHomeViewController" bundle:nil];
+        CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
+        UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:homeViewController];
+        [self.navigationController presentViewController:appNavigationController
+                                                animated:YES
+                                              completion:^{
+                                                  appDelegate.window.rootViewController = appNavigationController;
+                                                  [[CPNotificationHandler singleton]linkDevice];
+                                                  [[CPNotificationHandler singleton]refreshUser];
+                                              }];
+        //[self login:nil];
     }
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"CP_background"]]];

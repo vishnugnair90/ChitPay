@@ -166,22 +166,22 @@
     {
         if([[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"sender_notification"]objectForKey:@"text"] isEqualToString:@"ON"])
         {
-            [switchView setOn:YES animated:YES];
+            [switchView setOn:YES animated:NO];
         }
         else
         {
-            [switchView setOn:NO animated:YES];
+            [switchView setOn:NO animated:NO];
         }
     }
     else
     {
         if([[[[transactionsList objectAtIndex:indexPath.row]objectForKey:@"receiver_notification"]objectForKey:@"text"] isEqualToString:@"ON"])
         {
-            [switchView setOn:YES animated:YES];
+            [switchView setOn:YES animated:NO];
         }
         else
         {
-            [switchView setOn:NO animated:YES];
+            [switchView setOn:NO animated:NO];
         }
     }
     /*
@@ -261,7 +261,7 @@
     {
         //cell.textLabel.text = [NSString stringWithFormat:@"OFF"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
         [request setDelegate:self];
         NSMutableData *postBody = [NSMutableData data];
         [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.update\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -285,7 +285,7 @@
         //cell.textLabel.text = [NSString stringWithFormat:@"ON"];
         //cell.textLabel.text = [NSString stringWithFormat:@"OFF"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
         [request setDelegate:self];
         NSMutableData *postBody = [NSMutableData data];
         [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.update\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -309,7 +309,7 @@
 - (void)LoadTransactionData
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"transaction.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -368,7 +368,7 @@
 }
 -(void)pop:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 @end

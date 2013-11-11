@@ -108,7 +108,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    menuTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    menuTable.backgroundColor = [UIColor clearColor];
     UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
     Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:Swipeleft];
@@ -119,7 +119,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [SVProgressHUD show];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://chitbox247.com/pos/index.php/apiv2?model=services&group_id=%d&service_id=",groupId]]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?model=services&group_id=%d&service_id=",[defaults objectForKey:@"server"],groupId]]];
     [request setDelegate:self];
     [request startAsynchronous];
 }
@@ -310,7 +311,7 @@
         case 0:
         {
             NSLog(@"HOME");
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
             break;
         case 1:

@@ -10,14 +10,18 @@
 
 #import "RNFrostedSidebar.h"
 
+#import "FUIAlertView.h"
 
-@interface CPNotificationHandler : NSObject<RNFrostedSidebarDelegate>
+#import "FlatUIKit.h"
+
+@interface CPNotificationHandler : NSObject<RNFrostedSidebarDelegate,FUIAlertViewDelegate,UITextFieldDelegate>
 
 +(CPNotificationHandler *)singleton;
 
+-(void)refreshUser;
 -(void)getNotificaton;
 -(void)linkDevice;
 -(void)delinkDevive;
--(void)showMenu;
+-(void)crediAction:(NSDictionary *)payload;
 
 @end

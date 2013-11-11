@@ -106,7 +106,7 @@
     NSLog(@"BOUGHT %@ for %@ and %@",notification.object,[productIdentifier stringByTrimmingCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]],[notification.userInfo objectForKey:@"receipt"]);
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"account.recharge\">"] dataUsingEncoding:NSUTF8StringEncoding]];

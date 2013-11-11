@@ -103,7 +103,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _menuTable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    _menuTable.backgroundColor = [UIColor clearColor];
     UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
     Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:Swipeleft];
@@ -157,7 +157,8 @@
     NSLog(@"OBJECT %d",[[[[menuList objectAtIndex:indexPath.row]objectForKey:@"service_id"]objectForKey:@"text"] integerValue]);
     NSLog(@"FIELDS NUMBER %d",array.count);
     [SVProgressHUD show];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://chitbox247.com/pos/index.php/apiv2?model=services&group_id=&service_id=%d",[[[[menuList objectAtIndex:indexPath.row]objectForKey:@"service_id"]objectForKey:@"text"] integerValue]]]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?model=services&group_id=&service_id=%d",[defaults objectForKey:@"server"],[[[[menuList objectAtIndex:indexPath.row]objectForKey:@"service_id"]objectForKey:@"text"] integerValue]]]];
     [request setDelegate:self];
     [request startAsynchronous];
     /*
@@ -364,7 +365,7 @@
         case 0:
         {
             NSLog(@"HOME");
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
             break;
         case 1:

@@ -84,7 +84,7 @@
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
-        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        //[button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
         [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
         
         button4.frame = CGRectMake(0, 0, 100, 40);
@@ -99,6 +99,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
+    Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:Swipeleft];
     [self LoadNotificationData];
     for(UITextField *field in [self.view subviews])
     {
@@ -232,7 +235,7 @@
     {
         //cell.textLabel.text = [NSString stringWithFormat:@"OFF"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
         [request setDelegate:self];
         NSMutableData *postBody = [NSMutableData data];
         [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.update\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -260,7 +263,7 @@
 - (void)LoadNotificationData
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -312,7 +315,133 @@
 }
 -(void)pop:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
+
+- (IBAction)onBurger:(id)sender {
+    NSArray *images = @[
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    NSArray *titles = @[
+                        @"HOME",
+                        @"PROFILE",
+                        @"BALANCE",
+                        @"FUND TRANSFER",
+                        @"NOTIFICATIONS",
+                        @"STATEMENT",
+                        @"TRANSACTIONS",
+                        @"LOGOUT",
+                        ];
+    
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors titleTexts:titles];
+    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors];
+    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
+    callout.delegate = self;
+    callout.isSingleSelect = YES;
+    //  callout.showFromRight = YES;
+    callout.tintColor = [UIColor colorWithWhite:0.5 alpha:0.55];
+    [callout show];
+}
+
+#pragma mark - RNFrostedSidebarDelegate
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index
+{
+    [sidebar dismissAnimated:YES];
+    NSLog(@"Tapped item at index %i",index);
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"HOME");
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"PROFILE");
+            CPProfileViewController *ProfileViewController = [[CPProfileViewController alloc]initWithNibName:@"CPProfileViewController" bundle:nil];
+            [self.navigationController pushViewController:ProfileViewController animated:YES];
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"BALANCE");
+            CPBalanceViewController *BalanceViewController = [[CPBalanceViewController alloc]initWithNibName:@"CPBalanceViewController" bundle:nil];
+            [self.navigationController pushViewController:BalanceViewController animated:YES];
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"TRANSFER");
+            CPTransferViewController *TransferViewController = [[CPTransferViewController alloc]initWithNibName:@"CPTransferViewController" bundle:nil];
+            [self.navigationController pushViewController:TransferViewController animated:YES];
+        }
+            break;
+        case 4:
+        {
+            NSLog(@"NOTIFICATIONS");
+            CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
+            [self.navigationController pushViewController:NotificationListViewController animated:YES];
+        }
+            break;
+        case 5:
+        {
+            NSLog(@"STATEMENT");
+            CPStatementViewController *StatementViewController = [[CPStatementViewController alloc]initWithNibName:@"CPStatementViewController" bundle:nil];
+            [self.navigationController pushViewController:StatementViewController animated:YES];
+        }
+            break;
+        case 6:
+        {
+            NSLog(@"TRANSACTIONS");
+            CPTransactionsViewController *TransactionsListViewController = [[CPTransactionsViewController alloc]initWithNibName:@"CPTransactionsViewController" bundle:nil];
+            [self.navigationController pushViewController:TransactionsListViewController animated:YES];
+        }
+            break;
+        case 7:
+        {
+            NSLog(@"LOGOUT");
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults removeObjectForKey:@"username"];
+            [defaults removeObjectForKey:@"password"];
+            [defaults removeObjectForKey:@"account_details"];
+            [defaults synchronize];
+            CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
+            CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
+            UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
+            //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            //self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [self.navigationController presentViewController:appNavigationController
+                                                    animated:YES
+                                                  completion:^{
+                                                      
+                                                      appDelegate.window.rootViewController = appNavigationController;
+                                                      
+                                                      
+                                                  }];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 
 @end

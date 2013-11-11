@@ -155,7 +155,7 @@
 -(IBAction)HomeAction:(id)sender
 {
     NSLog(@"HOME");
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 -(IBAction)ProfileAction:(id)sender
@@ -252,7 +252,7 @@
 
 -(void)pop:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 @end

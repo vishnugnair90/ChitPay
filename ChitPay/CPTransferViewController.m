@@ -26,13 +26,108 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage = [UIImage imageNamed:@"share.png"];
+        
+        [button setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(showShareMenu) forControlEvents:UIControlEventTouchUpInside];
+        
+        button.frame = CGRectMake(0, 0, 30, 30);
+        //________________________________________________________________________________________________________
+        UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage1 = [UIImage imageNamed:@"fav.png"];
+        
+        [button1 setBackgroundImage:backButtonImage1 forState:UIControlStateNormal];
+        
+        [button1 addTarget:self action:@selector(showFavourites) forControlEvents:UIControlEventTouchUpInside];
+        button1.frame = CGRectMake(0, 0, 30, 30);
+        //________________________________________________________________________________________________________
+        UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage2 = [UIImage imageNamed:@"settings.png"];
+        
+        [button2 setBackgroundImage:backButtonImage2 forState:UIControlStateNormal];
+        
+        [button2 addTarget:self action:@selector(onBurger:) forControlEvents:UIControlEventTouchUpInside];
+        button2.frame = CGRectMake(0, 0, 30, 30);
+        
+        //________________________________________________________________________________________________________
+        UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage3 = [UIImage imageWithColor:[UIColor orangeColor] cornerRadius:3.0];
+        
+        [button3 setBackgroundImage:backButtonImage3 forState:UIControlStateNormal];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [button3 setTitle:[NSString stringWithFormat:@"%@",[defaults objectForKey:@"notification_count"]] forState:UIControlStateNormal];
+        
+        [button3 addTarget:self action:@selector(showNotifications) forControlEvents:UIControlEventTouchUpInside];
+        
+        [button3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        button3.frame = CGRectMake(0, 0, 30, 30);
+        
+        //________________________________________________________________________________________________________
+        
+        
+        UIBarButtonItem *btnNotifications = [[UIBarButtonItem alloc] initWithCustomView:button3];
+        btnNotifications.tintColor = [UIColor yellowColor];
+        UIBarButtonItem *btnSharing = [[UIBarButtonItem alloc] initWithCustomView:button];
+        btnSharing.tintColor = [UIColor greenColor];
+        UIBarButtonItem *btnFavourites = [[UIBarButtonItem alloc] initWithCustomView:button1];
+        btnFavourites.tintColor = [UIColor redColor];
+        UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc] initWithCustomView:button2];
+        btnSetting.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:btnSetting,btnFavourites,btnSharing,btnNotifications, nil];
+        
+        
+        UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
+        
+        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
+        
+        button4.frame = CGRectMake(0, 0, 100, 40);
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button4];
+        
+        self.navigationItem.leftBarButtonItems =[NSArray arrayWithObjects:barButtonItem, nil];
+        
+        
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNotification:)
+                                                 name:SVProgressHUDWillDisappearNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNotification:)
+                                                 name:SVProgressHUDDidDisappearNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNotification:)
+                                                 name:SVProgressHUDWillDisappearNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNotification:)
+                                                 name:SVProgressHUDDidDisappearNotification
+                                               object:nil];
+
+
     for(UITextField *field in [self.view subviews])
     {
         if([field isKindOfClass:[UITextField class]])
@@ -128,7 +223,7 @@
     NSLog(@"START VALIDATION");
     [SVProgressHUD show];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"account.authenticate\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -175,6 +270,7 @@
             if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
             {
                 [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"AMOUNT TRANSFER SUCCESSFUL\n Balance: %@\n Transaction id: %@",[[[[responseDictionary objectForKey:@"response"]objectForKey:@"account"]objectForKey:@"balance"]objectForKey:@"text"],[[[[responseDictionary objectForKey:@"response"]objectForKey:@"account"]objectForKey:@"transaction_id"]objectForKey:@"text"]]];
+                [self performSelector:@selector(delayedPop) withObject:Nil afterDelay:3.0];
             }
             else
             {
@@ -199,7 +295,7 @@
 {
     [SVProgressHUD show];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"account.transfer\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -238,8 +334,61 @@
     }
     else
     {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }
 }
 
+
+- (void)showNotifications
+{
+    CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
+    [self.navigationController pushViewController:NotificationListViewController animated:YES];
+}
+
+- (void)showFavourites
+{
+    CPFavouritesViewController *FavouritesViewController = [[CPFavouritesViewController alloc]initWithNibName:@"CPFavouritesViewController" bundle:nil];
+    [self.navigationController pushViewController:FavouritesViewController animated:YES];
+}
+
+- (void)showSettings
+{
+    CPSettingsViewController *SettingsViewController = [[CPSettingsViewController alloc]initWithNibName:@"CPSettingsViewController" bundle:nil];
+    [self.navigationController pushViewController:SettingsViewController animated:YES];
+}
+
+- (void)showShareMenu
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc]initWithTitle:@"Share to" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Facebook",@"Google+",@"LinkedIn",@"Twitter", nil];
+    alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+    alertView.defaultButtonColor = [UIColor midnightBlueColor];
+    alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+    alertView.defaultButtonShadowColor = [UIColor clearColor];
+    alertView.defaultButtonTitleColor = [UIColor whiteColor];
+    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor redColor]];
+    alertView.animationDuration = 0.15;
+    alertView.tag = 888;
+    [alertView show];
+}
+
+- (void)handleNotification:(NSNotification *)notif
+{
+    NSLog(@"Notification recieved: %@", notif.name);
+    NSLog(@"Status user info key: %@", [notif.userInfo objectForKey:SVProgressHUDStatusUserInfoKey]);
+    NSString *str = [notif.userInfo objectForKey:SVProgressHUDStatusUserInfoKey];
+    if ([str rangeOfString:@"AMOUNT TRANSFER SUCCESSFUL"].location != NSNotFound)
+    {
+        NSLog(@"No it does not contain that word");
+    }
+    else
+    {
+        NSLog(@"Yes it does contain that word");
+    }
+}
+
+- (void)delayedPop
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
 @end

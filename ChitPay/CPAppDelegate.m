@@ -14,6 +14,8 @@
 
 #import "CPAPHelper.h"
 
+#import "CPNotificationListViewController.h"
+
 @implementation CPAppDelegate
 
 @synthesize navigationController;
@@ -49,15 +51,26 @@
     [self.window addGestureRecognizer:swipeGesture];
     [self.window makeKeyAndVisible];
     
+    if(launchOptions != Nil)
+    {
+        NSLog(@"Launch %@",[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]);
+        [[CPNotificationHandler singleton] crediAction:[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]];
+    }
+    else
+    {
+        NSLog(@"Launch NO DATA");
+    }
+    
     return YES;
 }
 
 - (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture
 {
     // do stuff
-    NSLog(@"ACTION");
-    [[CPNotificationHandler singleton]showMenu];
     
+    UINavigationController *myNavCon = (UINavigationController*)self.window.rootViewController;
+    NSLog(@"ACTION %@",myNavCon.viewControllers);
+    [myNavCon popViewControllerAnimated:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -104,8 +117,10 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog(@"NOTIFICATION %@",userInfo);
-    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@",userInfo]];
+
     [[CPNotificationHandler singleton]getNotificaton];
+    
+    [[CPNotificationHandler singleton] crediAction:userInfo];
 }
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {

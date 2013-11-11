@@ -167,7 +167,7 @@
 
 -(void)pop:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 -(void)logout:(id)sender
@@ -400,7 +400,8 @@
         case 0:
         {
             NSLog(@"HOME");
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            
         }
             break;
         case 1:

@@ -4,12 +4,16 @@
 //
 //  Created by Armia on 10/1/13.
 //  Copyright (c) 2013 Armia. All rights reserved.
-//
 
-#import "CPNotificationHandler.h"
+ 
 
 
 @implementation CPNotificationHandler
+{
+    NSString *PIN;
+    NSString *uid;
+    FUIAlertView *alertView;
+}
 
 +(CPNotificationHandler *)singleton
 {
@@ -25,7 +29,7 @@
 -(void)getNotificaton
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"notification.list\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -47,7 +51,7 @@
 - (void)linkDevice
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"device.register\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -62,13 +66,18 @@
     [request setPostBody:postBody];
     NSLog(@"REQUEST BODY \n%@",[defaults objectForKey:@"devicetoken"]);
     [request setUserInfo:[NSDictionary dictionaryWithObject:@"ADDDEVICE" forKey:@"CALLTYPE"]];
-    [request startAsynchronous];
+    if(![[defaults objectForKey:@"devicetoken"] isEqualToString:NULL])
+        [request startAsynchronous];
+    else
+        [SVProgressHUD showErrorWithStatus:@"DEVICE TOKEN ERROR"];
+        
+    
 }
 
 - (void)delinkDevive
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
     [request setDelegate:self];
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"<request method=\"device.unregister\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -82,7 +91,10 @@
     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setPostBody:postBody];
     [request setUserInfo:[NSDictionary dictionaryWithObject:@"REMOVEDEVICE" forKey:@"CALLTYPE"]];
-    [request startAsynchronous];
+    if(![[defaults objectForKey:@"devicetoken"] isEqualToString:NULL])
+        [request startAsynchronous];
+    else
+        [SVProgressHUD showErrorWithStatus:@"DEVICE TOKEN ERROR"];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -109,6 +121,20 @@
         {
             [SVProgressHUD showSuccessWithStatus:@"Device de-linked with user"];
         }
+        if([[request.userInfo objectForKey:@"CALLTYPE"] isEqualToString:@"ACCEPTOFFER"])
+        {
+            [SVProgressHUD showSuccessWithStatus:@"OFFER ACCEPTED"];
+        }
+        if([[request.userInfo objectForKey:@"CALLTYPE"] isEqualToString:@"DECLINEOFFER"])
+        {
+            [SVProgressHUD showSuccessWithStatus:@"OFFER REJECTED"];
+        }
+        if([[request.userInfo objectForKey:@"CALLTYPE"] isEqualToString:@"REFRESHUSER"])
+        {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:responseDictionary forKey:@"account_details"];
+            [defaults synchronize];
+        }
 
         //[SVProgressHUD showSuccessWithStatus:@"NOTIFICATIONS REFRESHED"];
     }
@@ -122,131 +148,161 @@
 	
 }
 
--(void)showMenu
+-(void)crediAction:(NSDictionary *)payload
 {
-    NSArray *images = @[
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"globe"],
-                        [UIImage imageNamed:@"profile"],
-                        [UIImage imageNamed:@"star"],
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"globe"],
-                        [UIImage imageNamed:@"profile"],
-                        [UIImage imageNamed:@"star"],
-                        ];
-    NSArray *colors = @[
-                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
-                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
-                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
-                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
-                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
-                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
-                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
-                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
-                        ];
-    NSArray *titles = @[
-                        @"HOME",
-                        @"PROFILE",
-                        @"BALANCE",
-                        @"FUND TRANSFER",
-                        @"NOTIFICATIONS",
-                        @"STATEMENT",
-                        @"TRANSACTIONS",
-                        @"LOGOUT",
-                        ];
+    NSLog(@"PAYLOAD %@\nAMOUNT %@\nUSER %@\nID %@",[payload objectForKey:@"details"],[[payload objectForKey:@"details"]objectForKey:@"amt"],[[payload objectForKey:@"details"]objectForKey:@"sender"],[[payload objectForKey:@"details"]objectForKey:@"uid"]);
+    alertView = [[FUIAlertView alloc]initWithTitle:@"AMOUNT CREDITED" message:[NSString stringWithFormat:@"%@N CREDITED by %@ \nenter PIN to confirm",[[payload objectForKey:@"details"]objectForKey:@"amt"],[[payload objectForKey:@"details"]objectForKey:@"sender"]] delegate:self cancelButtonTitle:@"ACCEPT" otherButtonTitles:@"DECLINE",@"DECLINE", nil];
+    alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+    alertView.defaultButtonColor = [UIColor redColor];
+    alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+    alertView.defaultButtonShadowColor = [UIColor clearColor];
+    alertView.defaultButtonTitleColor = [UIColor whiteColor];
+    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor dullBlueColor]];
+    alertView.animationDuration = 0.15;
+    alertView.defaultButtonCornerRadius = 10.0;
+    alertView.alertContainer.layer.cornerRadius = 10.0;
+    alertView.tag = 999;
+    uid =[[payload objectForKey:@"details"]objectForKey:@"uid"];
+    UIButton *button = [[alertView buttons]objectAtIndex:1];
+    NSLog(@"%f %f %f %f",button.frame.origin.x,button.frame.origin.y,button.frame.size.height,button.frame.size.width);
+    [button setUserInteractionEnabled:FALSE];
     
-    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors titleTexts:titles];
-    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:Nil borderColors:colors];
-    //RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
-    callout.delegate = self;
-    callout.isSingleSelect = YES;
-    //  callout.showFromRight = YES;
-    callout.tintColor = [UIColor colorWithWhite:0.5 alpha:0.55];
-    [callout show];
+    UIImage *normalBackgroundImage = [UIImage buttonImageWithColor:[UIColor clearColor]
+                                                      cornerRadius:button.layer.cornerRadius
+                                                       shadowColor:alertView.defaultButtonShadowColor
+                                                      shadowInsets:UIEdgeInsetsMake(0, 0, alertView.defaultButtonShadowHeight, 0)];
+    UIImage *highlightedBackgroundImage = [UIImage buttonImageWithColor:[UIColor clearColor]
+                                                           cornerRadius:button.layer.cornerRadius
+                                                            shadowColor:[UIColor clearColor]
+                                                           shadowInsets:UIEdgeInsetsMake(alertView.defaultButtonShadowHeight, 0, 0, 0)];
+    
+    [button setBackgroundImage:normalBackgroundImage forState:UIControlStateNormal];
+    [button setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
+    [button setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(alertView.frame.origin.x+15, alertView.frame.origin.y + 100, 250, 30)];
+
+    textField.backgroundColor = [UIColor clearColor];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.textAlignment = NSTextAlignmentCenter;
+    textField.keyboardType = UIKeyboardTypeNumberPad;
+    textField.tag = 909;
+    textField.clearsOnBeginEditing = YES;
+    textField.secureTextEntry = YES;
+    textField.delegate = self;
+    [alertView.alertContainer addSubview:textField];
+    
+    UIButton *btn = [[alertView buttons] objectAtIndex:0];
+    btn.hidden =YES;
+    UIButton *btn1 = [[alertView buttons] objectAtIndex:2];
+    btn1.hidden =YES;
+    
+    [alertView show];
 }
 
-- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index
+- (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [sidebar dismissAnimated:YES];
-    CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSLog(@"%@",appDelegate.navigationController.viewControllers);
-    NSLog(@"Tapped item at index %i",index);
-    switch (index) {
-        case 0:
-        {
-            NSLog(@"HOME");
-            
-        }
-            break;
-        case 1:
-        {
-            NSLog(@"PROFILE");
-            CPProfileViewController *ProfileViewController = [[CPProfileViewController alloc]initWithNibName:@"CPProfileViewController" bundle:nil];
-            [appDelegate.navigationController pushViewController:ProfileViewController animated:YES];
-        }
-            break;
-        case 2:
-        {
-            NSLog(@"BALANCE");
-            CPBalanceViewController *BalanceViewController = [[CPBalanceViewController alloc]initWithNibName:@"CPBalanceViewController" bundle:nil];
-            [appDelegate.navigationController pushViewController:BalanceViewController animated:YES];
-        }
-            break;
-        case 3:
-        {
-            NSLog(@"TRANSFER");
-            CPTransferViewController *TransferViewController = [[CPTransferViewController alloc]initWithNibName:@"CPTransferViewController" bundle:nil];
-            [appDelegate.navigationController pushViewController:TransferViewController animated:YES];
-        }
-            break;
-        case 4:
-        {
-            NSLog(@"NOTIFICATIONS");
-            CPNotificationListViewController *NotificationListViewController = [[CPNotificationListViewController alloc]initWithNibName:@"CPNotificationListViewController" bundle:nil];
-            [appDelegate.navigationController pushViewController:NotificationListViewController animated:YES];
-        }
-            break;
-        case 5:
-        {
-            NSLog(@"STATEMENT");
-            CPStatementViewController *StatementViewController = [[CPStatementViewController alloc]initWithNibName:@"CPStatementViewController" bundle:nil];
-            [appDelegate.navigationController pushViewController:StatementViewController animated:YES];
-        }
-            break;
-        case 6:
-        {
-            NSLog(@"TRANSACTIONS");
-            CPTransactionsViewController *TransactionsListViewController = [[CPTransactionsViewController alloc]initWithNibName:@"CPTransactionsViewController" bundle:nil];
-            [appDelegate.navigationController pushViewController:TransactionsListViewController animated:YES];
-        }
-            break;
-        case 7:
-        {
-            NSLog(@"LOGOUT");
-            [[CPNotificationHandler singleton]delinkDevive];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults removeObjectForKey:@"username"];
-            [defaults removeObjectForKey:@"password"];
-            [defaults removeObjectForKey:@"account_details"];
-            [defaults synchronize];
-            CPWelcomeViewController *welcomeViewController = [[CPWelcomeViewController alloc]initWithNibName:@"CPWelcomeViewController" bundle:nil];
-            CPAppDelegate *appDelegate = (CPAppDelegate *)[[UIApplication sharedApplication] delegate];
-            UINavigationController *appNavigationController = [[UINavigationController alloc]initWithRootViewController:welcomeViewController];
-            //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-            //self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-            [appDelegate.navigationController presentViewController:appNavigationController
-                                                           animated:YES
-                                                         completion:^{
-                                                             
-                                                             appDelegate.window.rootViewController = appNavigationController;
-                                                             
-                                                             
-                                                         }];
-        }
-            break;
-        default:
-            break;
+    NSLog(@"CLICKED %d",buttonIndex);
+    if(buttonIndex == 0)
+    {
+        NSLog(@"ACCEPTED");
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
+        [request setDelegate:self];
+        NSMutableData *postBody = [NSMutableData data];
+        [postBody appendData:[[NSString stringWithFormat:@"<request method=\"account.pay\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<unique_id>%@</unique_id>",uid] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<trans_status>Completed</trans_status>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<pin>%@</pin>",PIN] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<notes></notes>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setPostBody:postBody];
+        [request setUserInfo:[NSDictionary dictionaryWithObject:@"ACCEPTOFFER" forKey:@"CALLTYPE"]];
+        [SVProgressHUD show];
+        [request startAsynchronous];
     }
+    if (buttonIndex ==2)
+    {
+        NSLog(@"DECLINED");
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
+        [request setDelegate:self];
+        NSMutableData *postBody = [NSMutableData data];
+        [postBody appendData:[[NSString stringWithFormat:@"<request method=\"account.pay\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<unique_id>%@</unique_id>",uid] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<account_no>%@</account_no>",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<trans_status>Declined</trans_status>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<pin>%@</pin>",PIN] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"<notes></notes>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</account>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setPostBody:postBody];
+        [request setUserInfo:[NSDictionary dictionaryWithObject:@"DECLINEOFFER" forKey:@"CALLTYPE"]];
+        [SVProgressHUD show];
+        [request startAsynchronous];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSLog(@"CHANGED length = %d",textField.text.length);
+    if(textField.tag == 909)
+    {
+        if([textField.text length]>=3)
+        {
+            textField.text = [textField.text stringByAppendingString:string];
+            PIN = textField.text;
+            UIButton *btn = [[alertView buttons] objectAtIndex:0];
+            btn.hidden =NO;
+            UIButton *btn1 = [[alertView buttons] objectAtIndex:2];
+            btn1.hidden =NO;
+            [textField resignFirstResponder];
+        }
+    }
+    NSLog(@"PIN %@",PIN);
+    return YES;
+}
+-(void)refreshUser
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
+    [request setDelegate:self];
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"<request method=\"user.get\">"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<user>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<username>%@</username>",[defaults objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"<password>%@</password>",[defaults objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</user>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setUserInfo:[NSDictionary dictionaryWithObject:@"REFRESHUSER" forKey:@"CALLTYPE"]];
+    [request setPostBody:postBody];
+    [request startAsynchronous];
 }
 
 @end

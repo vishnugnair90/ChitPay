@@ -22,7 +22,7 @@
 
 
 
-@interface CPFormViewController ()<FlatDatePickerDelegate,FUIAlertViewDelegate>
+@interface CPFormViewController ()<FlatDatePickerDelegate,FUIAlertViewDelegate,RNFrostedSidebarDelegate>
 {
     FlatDatePicker *datePicker;
     int dateFieldTag;
@@ -118,7 +118,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]];
+    self.view.backgroundColor = [UIColor whiteColor];
     UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
     Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:Swipeleft];
@@ -346,8 +346,7 @@
                 NSLog(@"CREATE TRANSACTION");
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 NSLog(@"ACCOUNT %@",[[[[[defaults objectForKey:@"account_details"]objectForKey:@"response"]objectForKey:@"user"]objectForKey:@"account_id"]objectForKey:@"text"]);
-                
-                ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"https://chitbox247.com/pos/index.php/apiv2"]];
+                ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[defaults objectForKey:@"server"]]];
                 [request setDelegate:self];
                 NSMutableData *postBody = [NSMutableData data];
                 [postBody appendData:[[NSString stringWithFormat:@"<request method=\"transaction.create\">"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -449,7 +448,7 @@
     }
     else if(alertView.tag == 888)
     {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }
 }
 - (void)addFavourite:(id)sender
@@ -475,6 +474,12 @@
     request.userInfo = [NSDictionary dictionaryWithObject:@"ADDFAVOURITE" forKey:@"TYPE"];
     [request startAsynchronous];
 }
+
+-(void)alertView:(FUIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"DISMISSED");
+}
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     [SVProgressHUD dismiss];
@@ -643,7 +648,7 @@
         case 0:
         {
             NSLog(@"HOME");
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
             break;
         case 1:
