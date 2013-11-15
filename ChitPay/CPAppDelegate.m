@@ -61,13 +61,14 @@
         NSLog(@"Launch NO DATA");
     }
     
+    
     return YES;
 }
 
 - (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture
 {
     // do stuff
-    
+    [[CPNotificationHandler singleton]getNotificaton];
     UINavigationController *myNavCon = (UINavigationController*)self.window.rootViewController;
     NSLog(@"ACTION %@",myNavCon.viewControllers);
     [myNavCon popViewControllerAnimated:YES];

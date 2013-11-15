@@ -149,4 +149,15 @@
     CPInAppViewController *InAppViewController = [[CPInAppViewController alloc]initWithNibName:@"CPInAppViewController" bundle:Nil];
     [self.navigationController pushViewController:InAppViewController animated:YES];
 }
+
+- (void)observeValueForKeyPath:(NSString *) keyPath ofObject:(id) object change:(NSDictionary *) change context:(void *) context
+{
+    if([keyPath isEqual:@"notification_count"])
+    {
+        NSLog(@"SomeKey change: %@", change);
+        UIBarButtonItem *btnBar = [self.navigationItem.rightBarButtonItems objectAtIndex:3];
+        UIButton *btn = (UIButton *)btnBar.customView;
+        [btn setTitle:[NSString stringWithFormat:@"%@",[change objectForKey:@"new"]] forState:UIControlStateNormal];
+    }
+}
 @end

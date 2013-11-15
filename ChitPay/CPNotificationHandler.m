@@ -45,7 +45,7 @@
     [request setPostBody:postBody];
     [request setUserInfo:[NSDictionary dictionaryWithObject:@"NOTIFICATIONREFRESH" forKey:@"CALLTYPE"]];
     [request startAsynchronous];
-    //[SVProgressHUD show];
+    [SVProgressHUD show];
 }
 
 - (void)linkDevice
@@ -99,19 +99,19 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    //[SVProgressHUD dismiss];
+    [SVProgressHUD dismiss];
     
 	NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-    NSLog(@"\n\nRESPONSE\n%d",[[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"]integerValue]);
+    NSLog(@"DATA %@ \n\nRESPONSE\n%d",responseDictionary,[[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"]integerValue]);
     if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
     {
         if([[request.userInfo objectForKey:@"CALLTYPE"] isEqualToString:@"NOTIFICATIONREFRESH"])
         {
             //[self LoadNotificationData];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"] forKey:@"notification_count"];
-            [defaults synchronize];
+//            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//            [defaults setObject:[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"] forKey:@"notification_count"];
+//            [defaults synchronize];
         }
         if([[request.userInfo objectForKey:@"CALLTYPE"] isEqualToString:@"ADDDEVICE"])
         {

@@ -84,7 +84,7 @@
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
-        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        [button4 setUserInteractionEnabled:NO];
         [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
         
         button4.frame = CGRectMake(0, 0, 100, 40);
@@ -101,6 +101,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                                                forKeyPath:@"notification_count"
+                                                                   options:NSKeyValueObservingOptionNew
+                                                                   context:NULL];
     UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
     Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:Swipeleft];
@@ -115,8 +119,10 @@
     [postBody appendData:[[NSString stringWithFormat:@"</credentials>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"</request>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setPostBody:postBody];
-    [SVProgressHUD show];
-    [request startAsynchronous];
+    
+    [SVProgressHUD showErrorWithStatus:@"Feature not available right now"];
+    //[SVProgressHUD show];
+    //[request startAsynchronous];
 
     for(UITextField *field in [self.view subviews])
     {
@@ -148,6 +154,7 @@
 
     // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -202,6 +209,7 @@
     [SVProgressHUD dismiss];
     NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
+    NSLog(@"DATA %@",responseDictionary);
     if([[request.userInfo objectForKey:@"TYPE"] isEqualToString:@"GETSERVICE"])
     {
         NSLog(@"RESULT %@",[[[responseDictionary objectForKey:@"response"]objectForKey:@"services"]objectForKey:@"service"]);
@@ -426,6 +434,17 @@
     alertView.animationDuration = 0.15;
     alertView.tag = 888;
     [alertView show];
+}
+
+- (void)observeValueForKeyPath:(NSString *) keyPath ofObject:(id) object change:(NSDictionary *) change context:(void *) context
+{
+    if([keyPath isEqual:@"notification_count"])
+    {
+        NSLog(@"SomeKey change: %@", change);
+        UIBarButtonItem *btnBar = [self.navigationItem.rightBarButtonItems objectAtIndex:3];
+        UIButton *btn = (UIButton *)btnBar.customView;
+        [btn setTitle:[NSString stringWithFormat:@"%@",[change objectForKey:@"new"]] forState:UIControlStateNormal];
+    }
 }
 
 @end

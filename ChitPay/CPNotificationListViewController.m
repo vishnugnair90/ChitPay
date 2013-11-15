@@ -48,7 +48,7 @@
         
         [button2 setBackgroundImage:backButtonImage2 forState:UIControlStateNormal];
         
-        [button2 addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+        [button2 addTarget:self action:@selector(onBurger:) forControlEvents:UIControlEventTouchUpInside];
         button2.frame = CGRectMake(0, 0, 30, 30);
         
         //________________________________________________________________________________________________________
@@ -84,7 +84,7 @@
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
-        //[button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        [button4 setUserInteractionEnabled:NO];
         [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
         
         button4.frame = CGRectMake(0, 0, 100, 40);
@@ -100,6 +100,10 @@
 {
     [super viewDidLoad];
     UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onBurger:)];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"notification_count"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:NULL];
     Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:Swipeleft];
     [self LoadNotificationData];
@@ -133,6 +137,7 @@
 
     // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -200,6 +205,7 @@
 {
     
     [SVProgressHUD dismiss];
+    
     NSString *receivedString = [request responseString];
     NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
     NSLog(@"%@",responseDictionary);
@@ -208,6 +214,9 @@
         if([[request.userInfo objectForKey:@"ACTION"] isEqualToString:@"CHANGESTATUS"])
         {
             [self LoadNotificationData];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"] forKey:@"notification_count"];
+            [defaults synchronize];
         }
         else
         {
@@ -221,6 +230,9 @@
                 NSLog(@"ARRAY %@",notificationList);
                 [SVProgressHUD dismiss];
                 [notificationTable reloadData];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:[[[responseDictionary objectForKey:@"response"] objectForKey:@"total_records"] objectForKey:@"text"] forKey:@"notification_count"];
+                [defaults synchronize];
             }
         }
 
@@ -443,5 +455,15 @@
     }
 }
 
+- (void)observeValueForKeyPath:(NSString *) keyPath ofObject:(id) object change:(NSDictionary *) change context:(void *) context
+{
+    if([keyPath isEqual:@"notification_count"])
+    {
+        NSLog(@"SomeKey change: %@", change);
+        UIBarButtonItem *btnBar = [self.navigationItem.rightBarButtonItems objectAtIndex:3];
+        UIButton *btn = (UIButton *)btnBar.customView;
+        [btn setTitle:[NSString stringWithFormat:@"%@",[change objectForKey:@"new"]] forState:UIControlStateNormal];
+    }
+}
 
 @end

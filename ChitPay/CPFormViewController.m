@@ -102,7 +102,7 @@
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
-        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        [button4 setUserInteractionEnabled:NO];
         [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
         
         button4.frame = CGRectMake(0, 0, 100, 40);
@@ -232,6 +232,7 @@
 
     // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -487,7 +488,7 @@
     {
         NSString *receivedString = [request responseString];
         NSDictionary *responseDictionary = [XMLReader dictionaryForXMLString:receivedString error:nil];
-        NSLog(@"%@",[request responseString]);
+        NSLog(@"FAVOURITE RESPONSE %@",[request responseString]);
         if([[[[responseDictionary objectForKey:@"response"]objectForKey:@"response_code"]objectForKey:@"text"]integerValue] == 100)
         {
             [SVProgressHUD showSuccessWithStatus:@"Added to favourites"];

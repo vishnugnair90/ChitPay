@@ -84,7 +84,7 @@
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
-        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        [button4 setUserInteractionEnabled:NO];
         [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
         
         button4.frame = CGRectMake(0, 0, 100, 40);
@@ -99,6 +99,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"notification_count"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:NULL];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -235,4 +239,14 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
+- (void)observeValueForKeyPath:(NSString *) keyPath ofObject:(id) object change:(NSDictionary *) change context:(void *) context
+{
+    if([keyPath isEqual:@"notification_count"])
+    {
+        NSLog(@"SomeKey change: %@", change);
+        UIBarButtonItem *btnBar = [self.navigationItem.rightBarButtonItems objectAtIndex:3];
+        UIButton *btn = (UIButton *)btnBar.customView;
+        [btn setTitle:[NSString stringWithFormat:@"%@",[change objectForKey:@"new"]] forState:UIControlStateNormal];
+    }
+}
 @end

@@ -39,13 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [_orLabel setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_or"]]];
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
-        self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
         self.navigationController.navigationBar.translucent = NO;
     }else {
-        self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     }
     //[[UINavigationBar appearance]setBackgroundColor:[UIColor blackColor]];
     CAGradientLayer *bgLayer = [CPBGLayer greyGradient];
@@ -59,14 +59,15 @@
     txtPassword.layer.cornerRadius = kBorderCurve;
      */
     self.navigationController.navigationBar.translucent = NO;
-    
+    self.navigationController.navigationBarHidden = YES;
     txtUsername.font = [UIFont fontWithName:@"LaoUI" size:20.0];
     // set the text view to the image view
     //self.navigationItem.titleView = imageview;
     //[[UINavigationBar appearance] setItems:[NSArray arrayWithObject:item]];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tile"]]];
+    //[[UINavigationBar appearance] setHidden:YES];
 
     for(UITextField *field in [self.view subviews])
     {
@@ -118,6 +119,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.navigationController.navigationBarHidden = YES;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"password"]!= nil)
     {
@@ -259,4 +261,9 @@
             break;
     }
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
+}
+
 @end

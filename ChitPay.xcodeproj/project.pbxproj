@@ -24,6 +24,7 @@
 		16B2ADFD1806C4970095E641 /* CPBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2ADFB1806C4970095E641 /* CPBalanceViewController.xib */; };
 		16B2AE011806C9D50095E641 /* CPStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */; };
 		16B2AE021806C9D50095E641 /* CPStatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2AE001806C9D50095E641 /* CPStatementViewController.xib */; };
+		16B6D7AE1834AB3400AEE062 /* chitPayImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B6D7AD1834AB3400AEE062 /* chitPayImages.xcassets */; };
 		16BA70BA181A46C10093F1BD /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70B6181A46C10093F1BD /* libPayPalMobile.a */; };
 		16BA70BC181A47AF0093F1BD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70BB181A47AF0093F1BD /* AVFoundation.framework */; };
 		16BA70BE181A47B70093F1BD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA70BD181A47B70093F1BD /* AudioToolbox.framework */; };
@@ -199,6 +200,7 @@
 		16B2ADFE1806C9D50095E641 /* CPStatementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPStatementViewController.h; sourceTree = "<group>"; };
 		16B2ADFF1806C9D50095E641 /* CPStatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPStatementViewController.m; sourceTree = "<group>"; };
 		16B2AE001806C9D50095E641 /* CPStatementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPStatementViewController.xib; sourceTree = "<group>"; };
+		16B6D7AD1834AB3400AEE062 /* chitPayImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = chitPayImages.xcassets; sourceTree = "<group>"; };
 		16BA70B6181A46C10093F1BD /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
 		16BA70B7181A46C10093F1BD /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
 		16BA70B8181A46C10093F1BD /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
@@ -446,6 +448,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16B6D7AC1834AA6200AEE062 /* newImages */ = {
+			isa = PBXGroup;
+			children = (
+				16B6D7AD1834AB3400AEE062 /* chitPayImages.xcassets */,
+			);
+			path = newImages;
+			sourceTree = "<group>";
+		};
 		16BA70B5181A46C10093F1BD /* PayPalMobile */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +650,7 @@
 			isa = PBXGroup;
 			children = (
 				16F4CFE6181FB3B500E4180E /* LaoUI.ttf */,
+				16B6D7AC1834AA6200AEE062 /* newImages */,
 				2041CA1D17D739380091F42C /* Images */,
 			);
 			path = Resources;
@@ -894,6 +905,7 @@
 				2041CA1A17D735780091F42C /* CPWelcomeViewController.xib in Resources */,
 				16C00D681821151400FA4640 /* signup_normal@2x.png in Resources */,
 				16C00D7A182121FD00FA4640 /* flag_southafrica@2x.png in Resources */,
+				16B6D7AE1834AB3400AEE062 /* chitPayImages.xcassets in Resources */,
 				16F4CFFD181FCADA00E4180E /* profile@2x.png in Resources */,
 				160678DE17FD5A7E009D6BB9 /* chit@2x.png in Resources */,
 				2041CA6B17D742420091F42C /* SVProgressHUD.bundle in Resources */,
@@ -1096,6 +1108,8 @@
 		2041CA1417D734490091F42C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1120,6 +1134,8 @@
 		2041CA1517D734490091F42C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

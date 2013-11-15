@@ -18,6 +18,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *btnChooseCountry;
 @property (nonatomic, strong) IBOutlet UITextField *txtUsername;
 @property (nonatomic, strong) IBOutlet UITextField *txtPassword;
+@property (strong, nonatomic) IBOutlet UILabel *orLabel;
 
 -(IBAction)login:(id)sender;
 -(IBAction)signup:(id)sender;

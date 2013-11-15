@@ -87,9 +87,7 @@
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
-        
-        [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
-        
+        [button4 setUserInteractionEnabled:NO];
         [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
         
         button4.frame = CGRectMake(0, 0, 100, 40);

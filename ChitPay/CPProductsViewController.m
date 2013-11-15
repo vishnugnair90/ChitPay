@@ -88,6 +88,7 @@
         UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
+        [button4 setUserInteractionEnabled:NO];
         [button4 addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
         [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
         
@@ -110,6 +111,7 @@
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chit.png"]];
     // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
