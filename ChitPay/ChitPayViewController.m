@@ -97,7 +97,7 @@
         toolbar = [[UIToolbar alloc] initWithFrame:frame];
         [toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
         [toolbar setBarStyle:UIBarStyleBlackTranslucent];
-        [toolbar setBarTintColor:[UIColor clearColor]];
+        //[toolbar setBarTintColor:[UIColor clearColor]];
         [toolbar setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
         //[toolbar setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"btn_bg"]]];
         //[toolbar setBarTintColor:[UIColor colorWithWhite:0.7 alpha:0.9]];
