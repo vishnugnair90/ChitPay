@@ -68,7 +68,7 @@
 - (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture
 {
     // do stuff
-    [[CPNotificationHandler singleton]getNotificaton];
+    //[[CPNotificationHandler singleton]getNotificaton];
     UINavigationController *myNavCon = (UINavigationController*)self.window.rootViewController;
     NSLog(@"ACTION %@",myNavCon.viewControllers);
     [myNavCon popViewControllerAnimated:YES];
@@ -119,9 +119,17 @@
 {
     NSLog(@"NOTIFICATION %@",userInfo);
 
-    [[CPNotificationHandler singleton]getNotificaton];
     
-    [[CPNotificationHandler singleton] crediAction:userInfo];
+    
+    if([[[userInfo objectForKey:@"details"]objectForKey:@"type"] isEqualToString:@"ACCEPTED"]||[[[userInfo objectForKey:@"details"]objectForKey:@"type"] isEqualToString:@"DECLINED"])
+    {
+        [[CPNotificationHandler singleton]respondAction:userInfo];
+    }
+    else
+    {
+        [[CPNotificationHandler singleton]getNotificaton];
+        [[CPNotificationHandler singleton] crediAction:userInfo];
+    }
 }
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {

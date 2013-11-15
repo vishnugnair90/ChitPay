@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPGroupViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CPGroupViewController : ChitPayViewController<UITableViewDataSource,UITableViewDelegate>
 {
     
 }

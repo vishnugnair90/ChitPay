@@ -23,75 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        UIImage *backButtonImage = [UIImage imageNamed:@"share.png"];
-        
-        [button setBackgroundImage:backButtonImage forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(showShareMenu) forControlEvents:UIControlEventTouchUpInside];
-        
-        button.frame = CGRectMake(0, 0, 30, 30);
-        //________________________________________________________________________________________________________
-        UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        UIImage *backButtonImage1 = [UIImage imageNamed:@"fav.png"];
-        
-        [button1 setBackgroundImage:backButtonImage1 forState:UIControlStateNormal];
-        
-        [button1 addTarget:self action:@selector(showFavourites) forControlEvents:UIControlEventTouchUpInside];
-        button1.frame = CGRectMake(0, 0, 30, 30);
-        //________________________________________________________________________________________________________
-        UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        UIImage *backButtonImage2 = [UIImage imageNamed:@"settings.png"];
-        
-        [button2 setBackgroundImage:backButtonImage2 forState:UIControlStateNormal];
-        
-        [button2 addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
-        button2.frame = CGRectMake(0, 0, 30, 30);
-        
-        //________________________________________________________________________________________________________
-        UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        UIImage *backButtonImage3 = [UIImage imageWithColor:[UIColor orangeColor] cornerRadius:3.0];
-        
-        [button3 setBackgroundImage:backButtonImage3 forState:UIControlStateNormal];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        [button3 setTitle:[NSString stringWithFormat:@"%@",[defaults objectForKey:@"notification_count"]] forState:UIControlStateNormal];
-        
-        [button3 addTarget:self action:@selector(showNotifications) forControlEvents:UIControlEventTouchUpInside];
-        
-        [button3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        button3.frame = CGRectMake(0, 0, 30, 30);
-        
-        //________________________________________________________________________________________________________
-        
-        
-        UIBarButtonItem *btnNotifications = [[UIBarButtonItem alloc] initWithCustomView:button3];
-        btnNotifications.tintColor = [UIColor yellowColor];
-        UIBarButtonItem *btnSharing = [[UIBarButtonItem alloc] initWithCustomView:button];
-        btnSharing.tintColor = [UIColor greenColor];
-        UIBarButtonItem *btnFavourites = [[UIBarButtonItem alloc] initWithCustomView:button1];
-        btnFavourites.tintColor = [UIColor redColor];
-        UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc] initWithCustomView:button2];
-        btnSetting.tintColor = [UIColor blackColor];
-        self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:btnSetting,btnFavourites,btnSharing,btnNotifications, nil];
-        
-        UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        UIImage *backButtonImage4 = [UIImage imageNamed:@"Home_logo@2x.png"];
-        [button4 setUserInteractionEnabled:NO];
-        [button4 setBackgroundImage:backButtonImage4 forState:UIControlStateNormal];
-        
-        button4.frame = CGRectMake(0, 0, 100, 40);
-        
-        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button4];
-        
-        self.navigationItem.leftBarButtonItems =[NSArray arrayWithObjects:barButtonItem, nil];
     }
     return self;
 }

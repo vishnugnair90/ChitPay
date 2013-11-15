@@ -13,9 +13,9 @@
 		161F9C7B1823AC1400AB7707 /* CP_background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 161F9C791823AC1400AB7707 /* CP_background-568h@2x.png */; };
 		161F9C7C1823AC1400AB7707 /* CP_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 161F9C7A1823AC1400AB7707 /* CP_background@2x.png */; };
 		161F9C7E1823AC3B00AB7707 /* CP_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 161F9C7D1823AC3B00AB7707 /* CP_background.png */; };
-		165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */; };
 		16894661180FD49400BC64BA /* CPTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689465F180FD49400BC64BA /* CPTransferViewController.m */; };
 		16894662180FD49400BC64BA /* CPTransferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16894660180FD49400BC64BA /* CPTransferViewController.xib */; };
+		168F324218360C0E00F5817C /* ChitPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168F324018360C0E00F5817C /* ChitPayViewController.m */; };
 		16B2ADF21806AE750095E641 /* CPTransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADF01806AE750095E641 /* CPTransactionsViewController.m */; };
 		16B2ADF31806AE750095E641 /* CPTransactionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B2ADF11806AE750095E641 /* CPTransactionsViewController.xib */; };
 		16B2ADF71806B9D50095E641 /* CPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2ADF51806B9D50095E641 /* CPProfileViewController.m */; };
@@ -183,11 +183,11 @@
 		161F9C791823AC1400AB7707 /* CP_background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CP_background-568h@2x.png"; sourceTree = "<group>"; };
 		161F9C7A1823AC1400AB7707 /* CP_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CP_background@2x.png"; sourceTree = "<group>"; };
 		161F9C7D1823AC3B00AB7707 /* CP_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CP_background.png; sourceTree = "<group>"; };
-		165E04A517FACE7100E9E64B /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
-		165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		1689465E180FD49400BC64BA /* CPTransferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTransferViewController.h; sourceTree = "<group>"; };
 		1689465F180FD49400BC64BA /* CPTransferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTransferViewController.m; sourceTree = "<group>"; };
 		16894660180FD49400BC64BA /* CPTransferViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPTransferViewController.xib; sourceTree = "<group>"; };
+		168F323F18360C0E00F5817C /* ChitPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChitPayViewController.h; sourceTree = "<group>"; };
+		168F324018360C0E00F5817C /* ChitPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChitPayViewController.m; sourceTree = "<group>"; };
 		16B2ADEF1806AE750095E641 /* CPTransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTransactionsViewController.h; sourceTree = "<group>"; };
 		16B2ADF01806AE750095E641 /* CPTransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTransactionsViewController.m; sourceTree = "<group>"; };
 		16B2ADF11806AE750095E641 /* CPTransactionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPTransactionsViewController.xib; sourceTree = "<group>"; };
@@ -523,6 +523,8 @@
 			isa = PBXGroup;
 			children = (
 				160967D418227B1100A5FF5F /* CPBGLayer.h */,
+				168F323F18360C0E00F5817C /* ChitPayViewController.h */,
+				168F324018360C0E00F5817C /* ChitPayViewController.m */,
 				160967D518227B1100A5FF5F /* CPBGLayer.m */,
 				2041CA0217D734490091F42C /* CPAppDelegate.h */,
 				2041CA0317D734490091F42C /* CPAppDelegate.m */,
@@ -634,8 +636,6 @@
 				16CC1E6918277DDA00D9C62E /* UIApplication+SimulatorRemoteNotifications.m */,
 				16F4CFEB181FCA3800E4180E /* RNFrostedSidebar.h */,
 				16F4CFEC181FCA3800E4180E /* RNFrostedSidebar.m */,
-				165E04A517FACE7100E9E64B /* MTStatusBarOverlay.h */,
-				165E04A617FACE7100E9E64B /* MTStatusBarOverlay.m */,
 				16BA70B5181A46C10093F1BD /* PayPalMobile */,
 				20E49B9417F1743F00B37822 /* FlatUI */,
 				20C0166817F0424A00784FE6 /* FlatDatePicker */,
@@ -997,13 +997,13 @@
 				20C4E01617D9C8BF00C71178 /* CPForgotPasswordViewController.m in Sources */,
 				20E5360417E8437D007B4BAA /* CPGroupViewController.m in Sources */,
 				16894661180FD49400BC64BA /* CPTransferViewController.m in Sources */,
-				165E04A717FACE7100E9E64B /* MTStatusBarOverlay.m in Sources */,
 				20E5360A17E84393007B4BAA /* CPServiceViewController.m in Sources */,
 				20E5360F17E87935007B4BAA /* CPProductsViewController.m in Sources */,
 				16E470CF17FEE1CA00E26B6B /* CPFavouritesViewController.m in Sources */,
 				20C0166117F01B5D00784FE6 /* CPFormViewController.m in Sources */,
 				16F680D518152A8900930F3A /* CPProfileEditViewController.m in Sources */,
 				20C0167317F0424A00784FE6 /* FlatDatePicker.m in Sources */,
+				168F324218360C0E00F5817C /* ChitPayViewController.m in Sources */,
 				20E49BBC17F1743F00B37822 /* FUIAlertView.m in Sources */,
 				20E49BBD17F1743F00B37822 /* FUIButton.m in Sources */,
 				16FC2A9B181E45530084CE10 /* CPInAppViewController.m in Sources */,

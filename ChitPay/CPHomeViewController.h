@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RNFrostedSidebar.h"
+#import "ChitPayViewController.h"
 
-@interface CPHomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,RNFrostedSidebarDelegate>
+@interface CPHomeViewController : ChitPayViewController<UITableViewDataSource,UITableViewDelegate,RNFrostedSidebarDelegate>
 {
     NSArray *menuListArray;
 }

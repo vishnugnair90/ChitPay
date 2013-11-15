@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RNFrostedSidebar.h"
+#import "ChitPayViewController.h"
 
-@interface CPMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,RNFrostedSidebarDelegate>
+@interface CPMenuViewController : ChitPayViewController<UITableViewDataSource,UITableViewDelegate,RNFrostedSidebarDelegate>
 {
     
 }

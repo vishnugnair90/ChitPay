@@ -75,8 +75,18 @@
     //cell.textLabel.textAlignment = NSTextAlignmentCenter;
     //NSLog(@"MENU %@",[[[menuList objectAtIndex:indexPath.row]objectForKey:@"groupname"]objectForKey:@"name"]);
     UIView *selectionColor = [[UIView alloc] init];
-    selectionColor.backgroundColor = [UIColor dullBlueColor];
+    selectionColor.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"btn_bg"]];
     cell.selectedBackgroundView = selectionColor;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (indexPath.row % 2)
+    {
+        [cell setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:1.0]];
+    }
+    else
+    {
+        [cell setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:0.9]];
+    }
+
     return cell;
 }
 

@@ -23,5 +23,5 @@
 -(void)linkDevice;
 -(void)delinkDevive;
 -(void)crediAction:(NSDictionary *)payload;
-
+-(void)respondAction:(NSDictionary *)payload;
 @end

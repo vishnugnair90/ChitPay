@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChitPayViewController.h"
 
-@interface CPProfileViewController : UIViewController
+@interface CPProfileViewController : ChitPayViewController
 {
     
 }

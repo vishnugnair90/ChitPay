@@ -59,7 +59,7 @@
     txtPassword.layer.cornerRadius = kBorderCurve;
      */
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
     txtUsername.font = [UIFont fontWithName:@"LaoUI" size:20.0];
     // set the text view to the image view
     //self.navigationItem.titleView = imageview;
@@ -119,7 +119,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"password"]!= nil)
     {

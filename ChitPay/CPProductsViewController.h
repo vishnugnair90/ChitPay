@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPProductsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CPProductsViewController : ChitPayViewController<UITableViewDataSource,UITableViewDelegate>
 {
     
 }

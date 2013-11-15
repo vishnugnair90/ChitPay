@@ -32,6 +32,7 @@
     #import "RNFrostedSidebar.h"
     #import "CPAppDelegate.h"
     #import "CPBGLayer.h"
+#import "ChitPayViewController.h"
     #define kCellColor [UIColor belizeHoleColor]
     #define kTableColor [UIColor belizeHoleColor]
     #define kBorderWidth 2.0;

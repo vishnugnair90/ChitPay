@@ -203,6 +203,24 @@
     
     [alertView show];
 }
+-(void)respondAction:(NSDictionary *)payload
+{
+    NSLog(@"PAYLOAD %@\nAMOUNT %@\nUSER %@\nID %@",[payload objectForKey:@"details"],[[payload objectForKey:@"details"]objectForKey:@"amt"],[[payload objectForKey:@"details"]objectForKey:@"sender"],[[payload objectForKey:@"details"]objectForKey:@"uid"]);
+    alertView = [[FUIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"AMOUNT CREDIT OFFER %@ by %@",[[payload objectForKey:@"details"]objectForKey:@"type"],[[payload objectForKey:@"details"]objectForKey:@"sender"]] message:nil delegate:self cancelButtonTitle:@"OKAY" otherButtonTitles:nil];
+    alertView.backgroundOverlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.75];
+    alertView.defaultButtonColor = [UIColor redColor];
+    alertView.alertContainer.backgroundColor = [UIColor whiteColor];
+    alertView.defaultButtonShadowColor = [UIColor clearColor];
+    alertView.defaultButtonTitleColor = [UIColor whiteColor];
+    [alertView.titleLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [[[alertView buttons]objectAtIndex:0] setButtonColor:[UIColor dullBlueColor]];
+    alertView.animationDuration = 0.15;
+    alertView.defaultButtonCornerRadius = 10.0;
+    alertView.alertContainer.layer.cornerRadius = 10.0;
+    alertView.tag = 777;
+    [alertView show];
+}
+
 
 - (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
